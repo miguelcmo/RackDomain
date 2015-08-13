@@ -146,15 +146,22 @@ class LocationController extends Controller
 	 */
 	public function actionIndex()
 	{	
-		$criteria = new CDbCriteria();
-		$criteria->select = '*';
-		$criteria->alias = 'tbl_location';
-		$criteria->join = 'INNER JOIN tbl_location_user_assignment ON tbl_location_user_assignment.locationId = tbl_location.locationId';
-		$criteria->condition = 'tbl_location_user_assignment.userId=:userId';
-		$criteria->params = array(':userId'=>Yii::app()->user->id);
-		$dataProvider = new CActiveDataProvider('Location', array(
+		if(Yii::app()->getmodule('user')->isAdmin())
+		{
+			$dataProvider = new CActiveDataProvider('Location');
+		}
+		else{	
+			$criteria = new CDbCriteria();
+			$criteria->select = '*';
+			$criteria->alias = 'tbl_location';
+			$criteria->join = 'INNER JOIN tbl_location_user_assignment ON tbl_location_user_assignment.locationId = tbl_location.locationId';
+			$criteria->condition = 'tbl_location_user_assignment.userId=:userId';
+			$criteria->params = array(':userId'=>Yii::app()->user->id);
+			$criteria->order = 'locationName ASC';
+			$dataProvider = new CActiveDataProvider('Location', array(
 			'criteria'=>$criteria,
-		));
+			));
+		}
 		
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
@@ -303,7 +310,31 @@ class LocationController extends Controller
 				}
 			}
 		}
+		 
+		//The CActiveRecord method with relations does not return the role data, by this reason
+		// is needed to obtain thye data from a raw query to the database and convert it into an Data Provider type
+		// using CArrayDataProvider
+		$rawData = Yii::app()->db->createCommand()
+			->select('tbl_users.id, tbl_users.username, tbl_location_user_assignment.role')
+			->from('tbl_users')
+			->join('tbl_location_user_assignment', 'tbl_location_user_assignment.userId = tbl_users.id')
+			->where('tbl_location_user_assignment.locationId=:locationId', array(':locationId'=>$lid))
+			->queryAll();
+		
+		$locationUsers=new CArrayDataProvider($rawData, array(
+			'id'=>'id',
+			'sort'=>array(
+				'attributes'=>array(
+					'username', 'role'
+				),
+			),
+		));
+		
 		$form->location = $location;
-		$this->render('adduser', array('model'=>$form));
+		
+		$this->render('adduser', array(
+			'model'=>$form,
+			'locationUsers'=>$locationUsers,
+		));
 	}
 }

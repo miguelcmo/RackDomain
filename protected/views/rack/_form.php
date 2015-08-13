@@ -45,13 +45,13 @@
 		<?php echo $form->textField($model,'rackFacePosition',array('size'=>1,'maxlength'=>1)); ?>
 		<?php echo $form->error($model,'rackFacePosition'); ?>
 	</div>
-
+	*/ ?>
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'rackType'); ?>
-		<?php echo $form->textField($model,'rackType'); ?>
+		<?php echo $form->dropDownList($model,'rackType', $this->getRackTypeOptions()); ?>
 		<?php echo $form->error($model,'rackType'); ?>
 	</div>
-	*/ ?>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

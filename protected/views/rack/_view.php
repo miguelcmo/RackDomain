@@ -9,7 +9,6 @@
 	<?php echo CHtml::link(CHtml::encode($data->rackName), array('rack/view', 'id'=>$data->rackId)); ?>
 	<br />
 
-	<?php echo CHtml::image('images/racks/RackModelThumbnail.png','Rack miniature'); ?>
-
+	<?php echo CHtml::image($data->rackType0->thumbnailPath,'Rack miniature'); ?>
 
 </div>

@@ -60,10 +60,14 @@ class RowController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$rackDataProvider=new CActiveDataProvider('rack', array(
+		$rackDataProvider=new CActiveDataProvider('Rack', array(
 			'criteria'=>array(
+				'select'=>'tbl_rack.rackId, tbl_rack.rackName, tbl_rack_type.thumbnailPath as rackThumb',
+				'alias'=>'tbl_rack',
+				'with'=>'rackType0',
 				'condition'=>'rowId=:rowId',
-				'params'=>array(':rowId'=>$this->loadModel($id)->rowId),
+				'join'=>'INNER JOIN tbl_rack_type ON tbl_rack_type.rackTypeId=tbl_rack.rackType',
+				'params'=>array(':rowId'=>$id),
 				'order'=>'sortOrder ASC',
 			),
 			'pagination'=>false,

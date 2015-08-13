@@ -84,6 +84,7 @@ class ObjectController extends Controller
 		$usedSpace = RackSpace::model()->findAll($criteria);
 			
 		$model=new Object;
+		$modelRack=Rack::model()->findByPk($this->_rack->rackId);
 		$rackSpace=new RackSpace;
 		
 		//$this->performAjaxValidation(array($model,$rackSpace));
@@ -121,6 +122,7 @@ class ObjectController extends Controller
 		}
 		$this->render('create',array(
 			'model'=>$model,
+			'modelRack'=>$modelRack,
 			'rackSpace'=>$rackSpace,
 			'rackSpaceView'=>$rackSpaceView,
 			'usedSpace'=>$usedSpace,

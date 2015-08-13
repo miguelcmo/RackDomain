@@ -3,18 +3,20 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	$model->row->rowName=>array('row/view','id'=>$model->row->rowId),
+	$model->room->location->locationName=>array('location/view','id'=>$model->room->location->locationId),
+	$model->room->roomName=>array('room/view','id'=>$model->room->roomId),
+	$model->rowName=>array('row/view','id'=>$model->rowId),
 	'Order',
 );
 
 $this->menu=array(
-	array('label'=>'Back To Row', 'url'=>array('row/view', 'id'=>$model->row->rowId)),
-	array('label'=>'Create Rack', 'url'=>array('create')),
-	array('label'=>'Manage Rack', 'url'=>array('admin')),
+	array('label'=>'Back To Row', 'url'=>array('row/view', 'id'=>$model->rowId)),
+	//array('label'=>'Create Rack', 'url'=>array('create')),
+	//array('label'=>'Manage Rack', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Racks</h1>
+<h1>Order Racks</h1>
 
 <p class="note">Drag and drop the racks to reorder their position, then click on submit button.</p>
 

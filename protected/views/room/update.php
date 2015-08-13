@@ -10,12 +10,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Back To Location', 'url'=>array('location/view','id'=>$model->location->locationId)),
+	//array('label'=>'Back To Location', 'url'=>array('location/view','id'=>$model->location->locationId)),
 	array('label'=>'Back To Room', 'url'=>array('room/view', 'id'=>$model->roomId)),
 	//array('label'=>'List Room', 'url'=>array('index')),
-	array('label'=>'Create Room', 'url'=>array('create')),
+	//array('label'=>'Create Room', 'url'=>array('create', 'lid'=>$model->location->locationId)),
 	//array('label'=>'View Room', 'url'=>array('view', 'id'=>$model->roomId)),
-	array('label'=>'Manage Room', 'url'=>array('admin')),
+	//array('label'=>'Manage Room', 'url'=>array('admin', 'lid'=>$model->location->locationId)),
 );
 ?>
 

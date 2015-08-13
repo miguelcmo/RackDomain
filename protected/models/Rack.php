@@ -12,7 +12,9 @@
  * @property integer $rackType
  *
  * The followings are the available model relations:
+ * @property RackType $rackType0
  * @property Row $row
+ * @property Object[] $tblObjects
  */
 class Rack extends InfraActiveRecord
 {
@@ -50,7 +52,9 @@ class Rack extends InfraActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'rackType0' => array(self::BELONGS_TO, 'RackType', 'rackType'),
 			'row' => array(self::BELONGS_TO, 'Row', 'rowId'),
+			'tblObjects' => array(self::MANY_MANY, 'Object', '{{rack_space}}(rackId, objectId)'),
 		);
 	}
 

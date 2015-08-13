@@ -64,8 +64,18 @@ class RackController extends Controller
 	 */
 	public function actionView($id)
 	{	
+		$rackSpaceView = Yii::app()->db->createCommand()
+			->select('tbl_rack_space.objectId, tbl_rack_space.initialRU, tbl_platform.platformImagePath')
+			->from('tbl_rack_space')
+			->join('tbl_object', 'tbl_rack_space.objectId = tbl_object.objectId')
+			->join('tbl_platform', 'tbl_object.platformId = tbl_platform.platformId')
+			->where('rackId=:rackId', array(':rackId'=>$id))
+			->queryAll();
+			
+	
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'rackSpaceView'=>$rackSpaceView,
 		));
 	}
 
@@ -159,7 +169,7 @@ class RackController extends Controller
 	}
 	
 	/**
-	 * Lists all models on a specific row.
+	 * Lists all models on a specific row $rid is rowId
 	 */
 	public function actionOrder($rid)
 	{
@@ -191,7 +201,7 @@ class RackController extends Controller
 				),
 			));
  
-			$model=$this->loadModel($rid);
+			$model=Row::model()->findByPk($rid);
 			$this->render('order',array(
 				'dataProvider' => $dataProvider,
 				'model'=>$model,
@@ -295,5 +305,16 @@ class RackController extends Controller
 		$this->_count = Rack::model()->count($criteria) + 1;
 		
 		return $this->_count;
+	}
+	
+	/*
+	 * Returns a list of valid rack type available
+	 */
+	public function getRackTypeOptions()
+	{
+		$criteria=new CDbCriteria();
+		$criteria->order='rackTypeName ASC';
+		$rackType=RackType::model()->findAll($criteria);
+		return CHtml::listData($rackType,'rackTypeId','rackTypeName');
 	}
 }	

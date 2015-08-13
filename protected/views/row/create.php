@@ -3,6 +3,7 @@
 /* @var $model Row */
 
 $this->breadcrumbs=array(
+	$model->room->location->locationName=>array('location/view', 'id'=>$model->room->location->locationId),
 	$model->room->roomName=>array('room/view','id'=>$model->room->roomId),
 	//'Rows'=>array('index'),
 	'Create',

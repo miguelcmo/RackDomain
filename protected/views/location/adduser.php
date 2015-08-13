@@ -53,3 +53,18 @@ $this->menu=array(
 
 <?php $this->endWidget(); ?>
 </div>
+
+<h1>Active Users in this Location</h1>
+
+<?php //var_dump($locationUsers); ?>
+
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'locationUsers-grid',
+	'itemsCssClass'=>'table table-striped',
+	'dataProvider'=>$locationUsers,
+	//'filter'=>$model,
+	'columns'=>array(
+		'username',
+		'role',
+	),
+)); ?>

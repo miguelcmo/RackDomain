@@ -3,19 +3,15 @@
 /* @var $model Row */
 
 $this->breadcrumbs=array(
+	$model->room->location->locationName=>array('location/view','id'=>$model->room->location->locationId),
 	$model->room->roomName=>array('room/view','id'=>$model->room->roomId),
-	//'Room'=>array('room/index'),
-	//'Rows'=>array('index', 'rid'=>$model->room->roomId),
 	$model->rowName,
 );
 
 $this->menu=array(
 	array('label'=>'Back To Room', 'url'=>array('room/view', 'id'=>$model->room->roomId)),
-	//array('label'=>'List Row', 'url'=>array('index', 'rid'=>$model->room->roomId)),
-	array('label'=>'Create Row', 'url'=>array('create', 'rid'=>$model->room->roomId)),
 	array('label'=>'Update Row', 'url'=>array('update', 'id'=>$model->rowId)),
 	array('label'=>'Delete Row', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->rowId),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Row', 'url'=>array('admin')),
 	array('label'=>'Create Racks', 'url'=>array('rack/create', 'rid'=>$model->rowId)),
 	array('label'=>'Order Racks', 'url'=>array('rack/order', 'rid'=>$model->rowId)),
 );
@@ -26,16 +22,8 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		//'rowId',
-		//'roomId',
 		'rowName',
 		'rowDescription',
-		//'createTime',
-		//'createUserId',
-		//'updateTime',
-		//'updateUserId',
-		//'Status',
-		//'Flag',
 	),
 )); ?>
 

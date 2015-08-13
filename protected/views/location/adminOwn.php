@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Location', 'url'=>array('index')),
+	array('label'=>'Back To Locations', 'url'=>array('index')),
 	array('label'=>'Create Location', 'url'=>array('create')),
 );
 

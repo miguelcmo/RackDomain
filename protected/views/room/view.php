@@ -11,10 +11,10 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Back To Location', 'url'=>array('location/view','id'=>$model->location->locationId)),
 	//array('label'=>'List Room', 'url'=>array('index', 'lid'=>$model->location->locationId)),
-	array('label'=>'Create Room', 'url'=>array('create', 'lid'=>$model->location->locationId)),
+	//array('label'=>'Create Room', 'url'=>array('create', 'lid'=>$model->location->locationId)),
 	array('label'=>'Update Room', 'url'=>array('update', 'id'=>$model->roomId)),
-	array('label'=>'Delete Room', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->roomId),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Room', 'url'=>array('admin', 'lid'=>$model->location->locationId)),
+	array('label'=>'Delete Room', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->roomId,'lid'=>$model->location->locationId),'confirm'=>'Are you sure you want to delete this item?')),
+	//array('label'=>'Manage Room', 'url'=>array('admin', 'lid'=>$model->location->locationId)),
 	array('label'=>'Create Row', 'url'=>array('row/create', 'rid'=>$model->roomId)),
 );
 ?>

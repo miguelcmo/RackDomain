@@ -3,19 +3,18 @@
 /* @var $model Rack */
 
 $this->breadcrumbs=array(
-	'Racks'=>array('index'),
-	$model->rackId=>array('view','id'=>$model->rackId),
+	$model->row->room->location->locationName=>array('location/view','id'=>$model->row->room->location->locationId),
+	$model->row->room->roomName=>array('room/view','id'=>$model->row->room->roomId),
+	$model->row->rowName=>array('row/view','id'=>$model->row->rowId),
+	$model->rackName=>array('view','id'=>$model->rackId),
 	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'List Rack', 'url'=>array('index')),
-	array('label'=>'Create Rack', 'url'=>array('create')),
-	array('label'=>'View Rack', 'url'=>array('view', 'id'=>$model->rackId)),
-	array('label'=>'Manage Rack', 'url'=>array('admin')),
+	array('label'=>'Back To Rack', 'url'=>array('view', 'id'=>$model->rackId)),
 );
 ?>
 
-<h1>Update Rack <?php echo $model->rackId; ?></h1>
+<h1>Update Rack # <?php echo $model->rackName; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

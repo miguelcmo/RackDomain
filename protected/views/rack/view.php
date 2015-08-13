@@ -3,34 +3,38 @@
 /* @var $model Rack */
 
 $this->breadcrumbs=array(
-	'Racks'=>array('index'),
-	$model->rackId,
+	$model->row->room->location->locationName=>array('location/view', 'id'=>$model->row->room->location->locationId),
+	$model->row->room->roomName=>array('room/view', 'id'=>$model->row->room->roomId),
+	$model->row->rowName=>array('row/view', 'id'=>$model->rowId),
+	$model->rackName,
 );
 
 $this->menu=array(
-	array('label'=>'List Rack', 'url'=>array('index')),
-	array('label'=>'Create Rack', 'url'=>array('create')),
+	array('label'=>'Back To Row', 'url'=>array('row/view', 'id'=>$model->rowId)),
 	array('label'=>'Update Rack', 'url'=>array('update', 'id'=>$model->rackId)),
 	array('label'=>'Delete Rack', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->rackId),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Rack', 'url'=>array('admin')),
 	array('label'=>'Create Object', 'url'=>array('/object/create', 'rid'=>$model->rackId)),
 );
 ?>
 
-<h1>View Rack #<?php echo $model->rackId; ?></h1>
+<h1>View Rack # <?php echo $model->rackName; ?></h1>
 
-<?php /* 
-$this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'rackId',
-		'rowId',
-		'sortOrder',
-		'rackName',
-		'rackFacePosition',
-		'rackType',
-	),
-)); */
-?>
+<div id="rackDetail">
+<img id="rack" width="<?php echo $model->rackType0->imageWidth; ?>" src="<?php echo $model->rackType0->imagePath; ?>"/> 
+<?php foreach($rackSpaceView as $value): ?>
+	<embed 
+		class="ru<?php echo $value['initialRU']?>" 
+		style="left:<?php echo $model->rackType0->deviceLeft; ?>px;
+			top:<?php $ur=(($value['initialRU']-1)*13)+$model->rackType0->deviceTop; 
+				echo $ur; ?>px;" 
+		src="<?php echo $value['platformImagePath']; ?>"/>
+<?php endforeach; ?>
+</div>
 
-<?php echo CHtml::image('images/racks/rackModelView.png','Rack detail view'); ?>
+
+
+
+
+
+
+
