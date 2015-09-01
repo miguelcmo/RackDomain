@@ -29,7 +29,8 @@ class LocationStatus extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('locationStatusName, locationStatusDescription', 'length', 'max'=>255),
+			array('locationStatusName', 'length', 'max'=>255),
+			array('locationStatusDescription', 'length', 'max'=>1024),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('locationStatusId, locationStatusName, locationStatusDescription', 'safe', 'on'=>'search'),

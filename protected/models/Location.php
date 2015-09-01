@@ -67,6 +67,7 @@ class Location extends InfraActiveRecord
 			array('departmentId, cityId, divisionId, subdivisionId, locationName, locationAddress', 'required'),
 			array('departmentId, cityId, divisionId, subdivisionId, locationType, locationStatus, locationManager, locationOperator, Status, Flag', 'numerical', 'integerOnly'=>true),
 			array('locationName, locationAddress, locationNeighborhood, locationLongitude, locationLatitude', 'length', 'max'=>255),
+			array('locationDescriptionNotes', 'length', 'max'=>1024),
 			//array('createTime, updateTime', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

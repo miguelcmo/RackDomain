@@ -38,7 +38,8 @@ class Vendor extends InfraActiveRecord
 		return array(
 			array('vendorName', 'required'),
 			array('createUserId, updateUserId', 'numerical', 'integerOnly'=>true),
-			array('vendorName, vendorDescription, vendorSite, Status, Flag', 'length', 'max'=>255),
+			array('vendorName, vendorSite, Status, Flag', 'length', 'max'=>255),
+			array('vendorDescription', 'length', 'max'=>1024),
 			array('vendorSite', 'url'),
 			array('createTime, updateTime', 'safe'),
 			// The following rule is used by search().

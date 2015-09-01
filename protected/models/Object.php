@@ -41,7 +41,8 @@ class Object extends InfraActiveRecord
 		return array(
 			array('platformId', 'required'),
 			array('platformId, createUserId, updateUserId', 'numerical', 'integerOnly'=>true),
-			array('objectName, objectAlias, objectDescription, Status, Flag', 'length', 'max'=>255),
+			array('objectName, objectAlias, Status, Flag', 'length', 'max'=>255),
+			array('objectDescription', 'length', 'max'=>1024),
 			array('createTime, updateTime', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

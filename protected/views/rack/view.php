@@ -12,7 +12,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Back To Row', 'url'=>array('row/view', 'id'=>$model->rowId)),
 	array('label'=>'Update Rack', 'url'=>array('update', 'id'=>$model->rackId)),
-	array('label'=>'Delete Rack', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->rackId),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Delete Rack', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->rackId,'rid'=>$model->row->rowId),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Create Object', 'url'=>array('/object/create', 'rid'=>$model->rackId)),
 );
 ?>

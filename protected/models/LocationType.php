@@ -29,7 +29,8 @@ class LocationType extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('locationTypeName, locationTypeDescription', 'length', 'max'=>255),
+			array('locationTypeName', 'length', 'max'=>255),
+			array('locationTypeDescription', 'length', 'max'=>1024),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('locationTypeId, locationTypeName, locationTypeDescription', 'safe', 'on'=>'search'),

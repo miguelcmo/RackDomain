@@ -69,6 +69,7 @@ class ObjectController extends Controller
 	 */
 	public function actionCreate()
 	{	
+		//Generates a list of available objects on a specific rack, to use in the graphical rack rendering in the view file
 		$rackSpaceView = Yii::app()->db->createCommand()
 			->select('tbl_rack_space.objectId, tbl_rack_space.initialRU, tbl_platform.platformImagePath')
 			->from('tbl_rack_space')
@@ -76,13 +77,7 @@ class ObjectController extends Controller
 			->join('tbl_platform', 'tbl_object.platformId = tbl_platform.platformId')
 			->where('rackId=:rackId', array(':rackId'=>$this->_rack->rackId))
 			->queryAll();
-			
-		$criteria = new CDbCriteria();
-		$criteria->condition = 'rackId=:rackId';
-		$criteria->params = array(':rackId'=>$this->_rack->rackId);
-		$criteria->order = 'initialRU ASC';
-		$usedSpace = RackSpace::model()->findAll($criteria);
-			
+	
 		$model=new Object;
 		$modelRack=Rack::model()->findByPk($this->_rack->rackId);
 		$rackSpace=new RackSpace;
@@ -125,7 +120,6 @@ class ObjectController extends Controller
 			'modelRack'=>$modelRack,
 			'rackSpace'=>$rackSpace,
 			'rackSpaceView'=>$rackSpaceView,
-			'usedSpace'=>$usedSpace,
 		));
 	}
 
@@ -267,21 +261,27 @@ class ObjectController extends Controller
 		return CHtml::listData($platform,'platformId','platformName');
 	}
 	
-	public function validateAvailableSpace($initialRU,$endRU) {
-		$criteria = new CDbCriteria();
-		$criteria->select = 'initialRU, endRU';
-		$criteria->condition = 'rackId=:rackId';
-		$criteria->params = array(':rackId'=>$this->_rack->rackId);
-		$criteria->order = 'initialRU ASC';
-		$usedSpace=RackSpace::model()->findAll($criteria);
+	public function validateAvailableSpace($initialRU,$endRU) 
+	{
+		if($endRU<=44)
+		{
+			$criteria = new CDbCriteria();
+			$criteria->select = 'initialRU, endRU';
+			$criteria->condition = 'rackId=:rackId';
+			$criteria->params = array(':rackId'=>$this->_rack->rackId);
+			$criteria->order = 'initialRU ASC';
+			$usedSpace=RackSpace::model()->findAll($criteria);
 		
-		foreach ($usedSpace as $value){
-			for($i=$initialRU;$i<$endRU;$i++){
-				if($i>=$value['initialRU'] && $i<=$value['endRU']){
-					return false;
+			foreach ($usedSpace as $value){
+				for($i=$initialRU;$i<$endRU;$i++){
+					if($i>=$value['initialRU'] && $i<=$value['endRU']){
+						return false;
+					}
 				}
 			}
+			return true;
+		} else{
+			return false;
 		}
-		return true;
 	}
 }

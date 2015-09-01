@@ -2,6 +2,7 @@
 /* @var $this ObjectController */
 /* @var $model Object */
 /* @var $modelRack Rack */
+/* @var $rackSpaceView List of Devices */
 
 $this->breadcrumbs=array(
 	$modelRack->row->room->location->locationName=>array('location/view', 'id'=>$modelRack->row->room->location->locationId),

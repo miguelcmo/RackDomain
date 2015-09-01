@@ -39,7 +39,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'platformDescription'); ?>
-		<?php echo $form->textField($model,'platformDescription',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->textArea($model,'platformDescription',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'platformDescription'); ?>
 	</div>
 

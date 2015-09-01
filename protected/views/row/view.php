@@ -11,7 +11,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Back To Room', 'url'=>array('room/view', 'id'=>$model->room->roomId)),
 	array('label'=>'Update Row', 'url'=>array('update', 'id'=>$model->rowId)),
-	array('label'=>'Delete Row', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->rowId),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Delete Row', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->rowId, 'rid'=>$model->room->roomId),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Create Racks', 'url'=>array('rack/create', 'rid'=>$model->rowId)),
 	array('label'=>'Order Racks', 'url'=>array('rack/order', 'rid'=>$model->rowId)),
 );

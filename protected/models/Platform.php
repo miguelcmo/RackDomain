@@ -45,7 +45,8 @@ class Platform extends InfraActiveRecord
 		return array(
 			array('vendorId, chapterId, platformName', 'required'),
 			array('vendorId, chapterId, platformRackUnits, createUserId, updateUserId', 'numerical', 'integerOnly'=>true),
-			array('platformName, platformDescription, platformImagePath, platformBackgroundTextColor, Status, Flag', 'length', 'max'=>255),
+			array('platformName, platformImagePath, platformBackgroundTextColor, Status, Flag', 'length', 'max'=>255),
+			array('platformDescription', 'length', 'max'=>1024),
 			array('createTime, updateTime', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

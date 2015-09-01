@@ -40,7 +40,8 @@ class Attributes extends InfraActiveRecord
 		return array(
 			array('attributeName', 'required'),
 			array('attributeChapterId, createUserId, updateUserId', 'numerical', 'integerOnly'=>true),
-			array('attributeName, attributeDescription, Satus, Flag', 'length', 'max'=>255),
+			array('attributeName, Satus, Flag', 'length', 'max'=>255),
+			array('attributesDescription', 'length', 'max'=>1024),
 			array('createTime, updateTime', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

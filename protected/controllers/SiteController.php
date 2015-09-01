@@ -29,7 +29,14 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		$locations=Location::model()->count();
+		$rooms=Room::model()->count();
+		$racks=Rack::model()->count();
+		$this->render('index', array(
+			'locations'=>$locations,
+			'rooms'=>$rooms,
+			'racks'=>$racks,
+		));
 	}
 
 	/**

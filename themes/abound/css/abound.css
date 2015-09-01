@@ -580,9 +580,15 @@ ADITIONAL STYLES SPECIFIC FOR RACK SPACE APPLICATION AND ITS COMPONENTS
 }
 
 .form, .form div.row {
-	width:50%;
+	width:100%;
 	display:inline-block;
 	margin:0px 30px 0px;
+}
+
+.form div .custom-row{
+	float:left;
+	display:inline;
+	padding-right:20px;
 }
 
 
@@ -784,4 +790,15 @@ ADITIONAL STYLES SPECIFIC FOR RACK SPACE APPLICATION AND ITS COMPONENTS
 	-webkit-border-radius:6px;
 }
 #rights #menu ul.actions a:hover { color:#ffffff; text-decoration:none; }
+
+/* Styles for pduTable By Macsim
+-----------------------------------------*/
+.pduTable{
+	border:1px solid #CCC; 
+	display:inline-block; 
+	table-layout:fixed;
+}
+.pduTable tr:hover{
+	background-color:#E6E6E6;
+}
 

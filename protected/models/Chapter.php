@@ -37,7 +37,8 @@ class Chapter extends InfraActiveRecord
 		return array(
 			array('chapterName', 'required'),
 			array('createUserId, updateUserId', 'numerical', 'integerOnly'=>true),
-			array('chapterName, chapterDescription, Status, Flag', 'length', 'max'=>255),
+			array('chapterName, Status, Flag', 'length', 'max'=>255),
+			array('chapterDescription', 'length', 'max'=>1024),
 			array('createTime, updateTime', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

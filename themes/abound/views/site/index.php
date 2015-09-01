@@ -18,8 +18,8 @@ $gridDataProvider = new CArrayDataProvider(array(
   <div class="span3 ">
 	<div class="stat-block">
 	  <ul>
-		<li class="stat-graph inlinebar" id="weekly-visit">8,4,6,5,9,10</li>
-		<li class="stat-count"><span>$23,000</span><span>Weekly Sales</span></li>
+		<li class="stat-graph inlinebar" id="weekly-visit">8,9,10,11,12</li>
+		<li class="stat-count"><span><?php echo $locations; ?></span><span>Locations</span></li>
 		<li class="stat-percent"><span class="text-success stat-percent">20%</span></li>
 	  </ul>
 	</div>
@@ -28,7 +28,7 @@ $gridDataProvider = new CArrayDataProvider(array(
 	<div class="stat-block">
 	  <ul>
 		<li class="stat-graph inlinebar" id="new-visits">2,4,9,1,5,7,6</li>
-		<li class="stat-count"><span>$123,780</span><span>Monthly Sales</span></li>
+		<li class="stat-count"><span><?php echo $rooms; ?></span><span>Rooms</span></li>
 		<li class="stat-percent"><span class="text-error stat-percent">-15%</span></li>
 	  </ul>
 	</div>
@@ -37,7 +37,7 @@ $gridDataProvider = new CArrayDataProvider(array(
 	<div class="stat-block">
 	  <ul>
 		<li class="stat-graph inlinebar" id="unique-visits">200,300,500,200,300,500,1000</li>
-		<li class="stat-count"><span>$12,456</span><span>Open Invoices</span></li>
+		<li class="stat-count"><span><?php echo $racks; ?></span><span>Racks</span></li>
 		<li class="stat-percent"><span class="text-success stat-percent">10%</span></li>
 	  </ul>
 	</div>
@@ -46,7 +46,7 @@ $gridDataProvider = new CArrayDataProvider(array(
 	<div class="stat-block">
 	  <ul>
 		<li class="stat-graph inlinebar" id="">1000,3000,6000,8000,3000,8000,10000</li>
-		<li class="stat-count"><span>$25,000</span><span>Overdue</span></li>
+		<li class="stat-count"><span><?php echo $racks*42; ?></span><span>Rack Units</span></li>
 		<li class="stat-percent"><span><span class="text-success stat-percent">20%</span></li>
 	  </ul>
 	</div>
@@ -112,79 +112,6 @@ $gridDataProvider = new CArrayDataProvider(array(
 
 	</div>
 </div>
-
-
-<div class="row-fluid">
-	<div class="span6">
-	  <?php $this->widget('zii.widgets.grid.CGridView', array(
-			/*'type'=>'striped bordered condensed',*/
-			'htmlOptions'=>array('class'=>'table table-striped table-bordered table-condensed'),
-			'dataProvider'=>$gridDataProvider,
-			'template'=>"{items}",
-			'columns'=>array(
-				array('name'=>'id', 'header'=>'#'),
-				array('name'=>'firstName', 'header'=>'First name'),
-				array('name'=>'lastName', 'header'=>'Last name'),
-				array('name'=>'language', 'header'=>'Language'),
-				array('name'=>'usage', 'header'=>'Usage', 'type'=>'raw'),
-				
-			),
-		)); ?>
-	</div><!--/span-->
-	<div class="span6">
-		 <?php $this->widget('zii.widgets.grid.CGridView', array(
-			/*'type'=>'striped bordered condensed',*/
-			'htmlOptions'=>array('class'=>'table table-striped table-bordered table-condensed'),
-			'dataProvider'=>$gridDataProvider,
-			'template'=>"{items}",
-			'columns'=>array(
-				array('name'=>'id', 'header'=>'#'),
-				array('name'=>'firstName', 'header'=>'First name'),
-				array('name'=>'lastName', 'header'=>'Last name'),
-				array('name'=>'language', 'header'=>'Language'),
-				array('name'=>'usage', 'header'=>'Usage', 'type'=>'raw'),
-				
-			),
-		)); ?>
-        	
-	</div><!--/span-->
-</div><!--/row-->
-
-<div class="row-fluid">
-	<div class="span6">
-	  <?php
-		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-th-large"></span>Income Chart',
-			'titleCssClass'=>''
-		));
-		?>
-        
-        <div class="visitors-chart" style="height: 230px;width:100%;margin-top:15px; margin-bottom:15px;"></div>
-        
-        <?php $this->endWidget(); ?>
-	</div><!--/span-->
-    <div class="span6">
-    	<?php
-		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'<span class="icon-th-list"></span> Visitors Chart',
-			'titleCssClass'=>''
-		));
-		?>
-        
-        <div class="pieStats" style="height: 230px;width:100%;margin-top:15px; margin-bottom:15px;"></div>
-        
-        <?php $this->endWidget(); ?>
-    </div>
-	<!--<div class="span2">
-    	<input class="knob" data-width="100" data-displayInput=false data-fgColor="#5EB95E" value="35">
-    </div>
-	<div class="span2">
-     	<input class="knob" data-width="100" data-cursor=true data-fgColor="#B94A48" data-thickness=.3 value="29">
-    </div>
-	<div class="span2">
-         <input class="knob" data-width="100" data-min="-100" data-fgColor="#F89406" data-displayPrevious=true value="44">     	
-	</div><!--/span-->
-</div><!--/row-->
 
 
 <script>

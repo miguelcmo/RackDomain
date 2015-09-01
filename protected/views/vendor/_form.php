@@ -27,7 +27,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'vendorDescription'); ?>
-		<?php echo $form->textField($model,'vendorDescription',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->textArea($model,'vendorDescription',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'vendorDescription'); ?>
 	</div>
 

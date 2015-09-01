@@ -50,7 +50,8 @@ class Room extends InfraActiveRecord
 		return array(
 			array('roomName, roomAlias', 'required'),
 			array('locationId, floorLocation, Status, Flag', 'numerical', 'integerOnly'=>true),
-			array('roomName, roomAlias, roomDescription', 'length', 'max'=>255),
+			array('roomName, roomAlias', 'length', 'max'=>255),
+			array('roomDescription', 'length', 'max'=>1024),
 			//array('createTime, updateTime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

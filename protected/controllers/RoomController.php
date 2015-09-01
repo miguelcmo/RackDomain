@@ -68,9 +68,20 @@ class RoomController extends Controller
 			),
 		));
 		
+		$pduDataProvider=new CActiveDataProvider('Pdu', array(
+			'criteria'=>array(
+				'condition'=>'roomId=:roomId',
+				'params'=>array(':roomId'=>$this->loadModel($id)->roomId),
+			),
+			'pagination'=>array(
+				'pageSize'=>5,
+			),
+		));
+		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 			'rowDataProvider'=>$rowDataProvider,
+			'pduDataProvider'=>$pduDataProvider,
 		));
 	}
 

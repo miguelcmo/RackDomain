@@ -32,7 +32,7 @@ class RackSpace extends InfraActiveRecord
 		// will receive user inputs.
 		return array(
 			array('objectId, rackId, initialRU, endRU', 'required'),
-			array('objectId, rackId, ,initialRU, endRU, createUserId, updateUserId', 'numerical', 'integerOnly'=>true),
+			array('objectId, rackId, initialRU, endRU, createUserId, updateUserId', 'numerical', 'integerOnly'=>true),
 			array('createTime, updateTime', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

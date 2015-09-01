@@ -35,7 +35,8 @@ class Row extends InfraActiveRecord
 		return array(
 			array('roomId, rowName', 'required'),
 			array('roomId, createUserId, updateUserId, Status, Flag', 'numerical', 'integerOnly'=>true),
-			array('rowName, rowDescription', 'length', 'max'=>255),
+			array('rowName', 'length', 'max'=>255),
+			array('rowDescription', 'length', 'max'=>1024),
 			array('createTime, updateTime', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
