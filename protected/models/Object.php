@@ -20,6 +20,7 @@
  * @property Attributes[] $tblAttributes
  * @property Platform $platform
  * @property Rack[] $tblRacks
+ * @property RackSpace $rackSpace
  */
 class Object extends InfraActiveRecord
 {
@@ -39,7 +40,7 @@ class Object extends InfraActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('platformId', 'required'),
+			array('platformId, objectName', 'required'),
 			array('platformId, createUserId, updateUserId', 'numerical', 'integerOnly'=>true),
 			array('objectName, objectAlias, Status, Flag', 'length', 'max'=>255),
 			array('objectDescription', 'length', 'max'=>1024),
@@ -61,6 +62,7 @@ class Object extends InfraActiveRecord
 			'tblAttributes' => array(self::MANY_MANY, 'Attributes', '{{attributes_value}}(objectId, attributeId)'),
 			'platform' => array(self::BELONGS_TO, 'Platform', 'platformId'),
 			'tblRacks' => array(self::MANY_MANY, 'Rack', '{{rack_space}}(objectId, rackId)'),
+			'rackSpace' => array(self::HAS_ONE, 'RackSpace', 'objectId'),
 		);
 	}
 

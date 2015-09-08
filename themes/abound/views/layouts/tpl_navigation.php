@@ -35,6 +35,7 @@
 							array('label'=>'User', 'url'=>array('/user')),
 							array('label'=>'Vendor', 'url'=>array('/vendor')),
 							array('label'=>'Rights', 'url'=>array('/rights')),
+							array('label'=>'Gii', 'url'=>array('/gii')),
 							//array('label'=>'', 'url'=>array('/')),
 						)),
 						/*
@@ -46,6 +47,16 @@
                         array('label'=>'Gii generated', 'url'=>array('customer/index')),*/
 						
 						array('label'=>'Locations', 'url'=>array('/location/index'), 'visible'=>!Yii::app()->user->isGuest),
+						
+						array('label'=>'Requests', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
+                        'visible'=>!Yii::app()->user->isGuest,
+						'items'=>array(
+                            array('label'=>'Civil', 'url'=>array('/requestCivil')),
+							array('label'=>'Fuel', 'url'=>array('/requestFuel')),
+							array('label'=>'HVAC', 'url'=>array('/requestHvac')),
+							array('label'=>'Power', 'url'=>array('/requestPower')),
+							array('label'=>'Setup Module', 'url'=>'#', 'visible'=>Yii::app()->getModule('user')->isAdmin()),
+                        )),
                         
 						
 						array('label'=>'My Account <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 

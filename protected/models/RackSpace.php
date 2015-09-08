@@ -48,6 +48,7 @@ class RackSpace extends InfraActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+				'rack' => array(self::BELONGS_TO, 'Rack', 'rackId'),
 		);
 	}
 

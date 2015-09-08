@@ -62,20 +62,22 @@ class RackController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	public function actionView($id)//$id is the rackId
 	{	
 		$rackSpaceView = Yii::app()->db->createCommand()
-			->select('tbl_rack_space.objectId, tbl_rack_space.initialRU, tbl_platform.platformImagePath')
+			->select('tbl_rack_space.objectId, tbl_rack_space.rackId, tbl_rack_space.initialRU, tbl_object.objectName, tbl_rack_space.endRU, tbl_platform.platformImagePath, tbl_platform.platformRackUnits')
 			->from('tbl_rack_space')
 			->join('tbl_object', 'tbl_rack_space.objectId = tbl_object.objectId')
 			->join('tbl_platform', 'tbl_object.platformId = tbl_platform.platformId')
 			->where('rackId=:rackId', array(':rackId'=>$id))
+			->order ('tbl_rack_space.initialRU ASC')
 			->queryAll();
-			
+		
 	
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 			'rackSpaceView'=>$rackSpaceView,
+			'devices'=>sizeof($rackSpaceView),
 		));
 	}
 

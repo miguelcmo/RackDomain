@@ -55,6 +55,7 @@ class Rack extends InfraActiveRecord
 			'rackType0' => array(self::BELONGS_TO, 'RackType', 'rackType'),
 			'row' => array(self::BELONGS_TO, 'Row', 'rowId'),
 			'tblObjects' => array(self::MANY_MANY, 'Object', '{{rack_space}}(rackId, objectId)'),
+			
 		);
 	}
 

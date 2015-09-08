@@ -17,6 +17,7 @@ $this->menu=array(
 ?>
 
 <div class="span6">
+
 <h1>View Pdu -> <?php echo $model->pduName; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
@@ -44,6 +45,19 @@ $reservedPercent = ($reservedCircuits*100)/($model->pduType->pduCircuits*2);
 ?>
 
 <h2>PDU Indicators</h2>
+
+<h4>PDU Load</h4>
+<table width="100%">
+	<tr>
+		<th width="50%">Bus A</th>
+		<th width="50%">Bus B</th>
+	</tr>
+	<tr>
+		<td><p class="pduDisplay">124,5A</p></td>
+		<td><p class="pduDisplay">125,3A</p></td>
+	</tr>
+</table>
+
 <h4>Free Circuits</h4>
 <p>Actually there are <?php echo $freeCircuits; ?> free circuits of <?php echo $model->pduType->pduCircuits*2; ?> available.</p>
 	<div class="progress progress-striped active" title="Total <?php echo $model->pduType->pduCircuits*2;?>">
@@ -73,6 +87,10 @@ $reservedPercent = ($reservedCircuits*100)/($model->pduType->pduCircuits*2);
       <div class="bar" title="<?php echo $reservedCircuits;?> reserved circuits" style="width: <?php echo $reservedPercent; ?>%;"></div>
     </div>
 <p></p>
+
+
+
+
 
 </div>
 

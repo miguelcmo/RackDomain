@@ -65,6 +65,7 @@ class Location extends InfraActiveRecord
 		// will receive user inputs.
 		return array(
 			array('departmentId, cityId, divisionId, subdivisionId, locationName, locationAddress', 'required'),
+			array('locationName', 'unique', 'message'=>'This Location Name already exists.'),
 			array('departmentId, cityId, divisionId, subdivisionId, locationType, locationStatus, locationManager, locationOperator, Status, Flag', 'numerical', 'integerOnly'=>true),
 			array('locationName, locationAddress, locationNeighborhood, locationLongitude, locationLatitude', 'length', 'max'=>255),
 			array('locationDescriptionNotes', 'length', 'max'=>1024),

@@ -27,6 +27,7 @@ $this->menu=array(
 	'modelRack'=>$modelRack,
 )); ?>
 
+<?php //This part visualizes the circuits table in the bus A of an PDU ?>
 <table class="pduTable">
 	<tr>
 		<th colspan="4">Bus A</th>
@@ -40,7 +41,13 @@ $this->menu=array(
 	
 <?php foreach($circuitBusA as $value)
 	{
-		echo '<tr>';
+		if($value->pduCircuitState==3)
+		{
+			$backColor='#999';
+		} else
+			$backColor='black';
+		
+		echo '<tr style="color:'.$backColor.'">';
 			echo '<td>'.$value->pduCircuitNumber.'</td>';
 			echo '<td style="text-align:center;">'.$value->breakerRate0->breakerRate.'</td>';
 			echo '<td style="text-overflow: ellipsis;overflow: hidden;white-space:nowrap;max-width:200px">'.$value->pduCircuitDescription.'</td>';
@@ -56,6 +63,7 @@ $this->menu=array(
 ?>
 </table>
 
+<?php //This part visualizes the circuits table in the bus B of an PDU ?>
 <table class="pduTable">
 	<tr>
 		<th colspan="4">Bus B</th>
@@ -70,7 +78,13 @@ $this->menu=array(
 
 <?php foreach($circuitBusB as $value)
 	{
-		echo '<tr>';
+		if($value->pduCircuitState==3)
+		{
+			$backColor='#999';
+		} else
+			$backColor='black';
+		
+		echo '<tr style="color:'.$backColor.'">';
 			echo '<td>'.$value->pduCircuitNumber.'</td>';
 			echo '<td style="text-align:center;">'.$value->breakerRate0->breakerRate.'</td>';
 			echo '<td style="text-overflow: ellipsis;overflow: hidden;white-space:nowrap;max-width:200px">'.$value->pduCircuitDescription.'</td>';

@@ -15,20 +15,42 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Back To Rack', 'url'=>array('rack/view', 'id'=>$modelRack->rackId)),
 );
+
+Yii::app()->clientScript->registerScript('rackRule', "
+$('#RackSpace_initialRU').focus(function(){
+	$('#rackRule').fadeIn(2000);
+});
+$('#RackSpace_initialRU').focusout(function(){
+	$('#rackRule').fadeOut(2000);
+});
+");
 ?>
 
+<div class="span6">
 <h1>Create Object</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model,'rackSpace'=>$rackSpace)); ?>
+</div>
 
-<div id="rackDetail">
-<img id="rack" width="<?php echo $modelRack->rackType0->imageWidth; ?>" src="<?php echo $modelRack->rackType0->imagePath; ?>"/> 
-<?php foreach($rackSpaceView as $value): ?>
-	<embed 
-		class="ru<?php echo $value['initialRU']?>" 
-		style="left:<?php echo $modelRack->rackType0->deviceLeft; ?>px;
-			top:<?php $ur=(($value['initialRU']-1)*13)+$modelRack->rackType0->deviceTop; 
-				echo $ur; ?>px;"  
-		src="<?php echo $value['platformImagePath']; ?>"/>
-<?php endforeach; ?>
+<div class="span5">
+<div class="rackDetail">
+<?php 
+ echo CHtml::image($modelRack->rackType0->imagePath);
+ echo CHtml::image('images/racks/rack_numbers.png', '#',array(
+	'class'=>'ru',
+	'id'=>'rackRule',
+	'style'=>'display:none;left:16px;top:'.$modelRack->rackType0->deviceTop.'px;'));
+ 
+ foreach($rackSpaceView as $value)
+ {
+	$ur=(($value['initialRU']-1)*13)+$modelRack->rackType0->deviceTop;
+	$platformPicture = CHtml::image($value['platformImagePath'], 'Platform picture', array(
+		'class'=>'ru', 
+		'title'=>'Click to view device details',
+		'style'=>'left:'.$modelRack->rackType0->deviceLeft.'px;top:'.$ur.'px',	
+	));
+	echo CHtml::link($platformPicture, array('/object/view','id'=>$value['objectId']));
+ }
+ ?>
+</div>
 </div>

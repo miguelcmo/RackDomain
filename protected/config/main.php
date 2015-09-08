@@ -138,6 +138,8 @@ return array(
 		
 		
 		
+		
+		
 		'authManager' => array(
 			'class' => 'RDbAuthManager',
 			'connectionID' => 'db',
@@ -152,7 +154,7 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
-		'notificationEmail'=>'notification@rackspace.info',
+		'adminEmail'=>'miguel.carrillo@hotmail.com',
+		'notificationEmail'=>'miguel.carrillo@hotmail.info',
 	),
 );

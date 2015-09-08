@@ -46,8 +46,10 @@ return array(
 	'SMTPSecure' => 'ssl',
 	'SMTPAuth' => true,
 	'isHTML' => true,
-	'Username' => 'rackspacesoft@gmail.com',
-	'Password' => 'pass1683rackspace',
+	//'Username' => 'rackspacesoft@gmail.com',
+	//'Password' => 'pass1683rackspace',
+	'Username' => 'rackdomainsoft@gmail.com',
+	'Password' => 'rackDomain2015*',
 /*
 	'Mailer' => 'mail',
 	'Host' => 'localhost',

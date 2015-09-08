@@ -595,13 +595,18 @@ ADITIONAL STYLES SPECIFIC FOR RACK SPACE APPLICATION AND ITS COMPONENTS
 
 /* Styles for rack positioning of devices
 -----------------------------------------*/
-#rackDetail{
+.rackDetail{
 	float:left;
 	position:relative;
 }
+.rackDetail img.ru{
+	position:absolute;
+}
+/*
 #rack{
 	position:relative;
 }
+
 .ru1{
 	position:absolute;
 	width:144px;
@@ -802,3 +807,16 @@ ADITIONAL STYLES SPECIFIC FOR RACK SPACE APPLICATION AND ITS COMPONENTS
 	background-color:#E6E6E6;
 }
 
+/* Special font family for display the current value in the PDU View
+-------------------------------------------------------------------*/
+@font-face{
+	font-family:'display16font';
+	src: url('../fonts/display16font.ttf');
+}
+.pduDisplay{
+	font-family:'display16font';
+	font-size: 40px;
+	font-style:italic;
+	text-align:center;
+	color:orange;
+}

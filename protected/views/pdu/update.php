@@ -3,19 +3,17 @@
 /* @var $model Pdu */
 
 $this->breadcrumbs=array(
-	'Pdus'=>array('index'),
-	$model->pduId=>array('view','id'=>$model->pduId),
+	$model->room->location->locationName=>array('location/view','id'=>$model->room->location->locationId),
+	$model->room->roomName=>array('room/view','id'=>$model->room->roomId),
+	$model->pduName=>array('view','id'=>$model->pduId),
 	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'List Pdu', 'url'=>array('index')),
-	array('label'=>'Create Pdu', 'url'=>array('create')),
-	array('label'=>'View Pdu', 'url'=>array('view', 'id'=>$model->pduId)),
-	array('label'=>'Manage Pdu', 'url'=>array('admin')),
+	array('label'=>'Back To Pdu', 'url'=>array('view','id'=>$model->pduId)),
 );
 ?>
 
-<h1>Update Pdu <?php echo $model->pduId; ?></h1>
+<h1>Update Pdu -> <?php echo $model->pduName; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -44,50 +44,6 @@
 		<?php echo $form->error($rackSpace,'initialRU'); ?>
 	</div>
 
-	<?php /*
-	<div class="row">
-		<?php echo $form->labelEx($model,'objectDescription'); ?>
-		<?php echo $form->textField($model,'objectDescription',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'objectDescription'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'createTime'); ?>
-		<?php echo $form->textField($model,'createTime'); ?>
-		<?php echo $form->error($model,'createTime'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'createUserId'); ?>
-		<?php echo $form->textField($model,'createUserId'); ?>
-		<?php echo $form->error($model,'createUserId'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'updateTime'); ?>
-		<?php echo $form->textField($model,'updateTime'); ?>
-		<?php echo $form->error($model,'updateTime'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'updateUserId'); ?>
-		<?php echo $form->textField($model,'updateUserId'); ?>
-		<?php echo $form->error($model,'updateUserId'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Status'); ?>
-		<?php echo $form->textField($model,'Status',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'Status'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Flag'); ?>
-		<?php echo $form->textField($model,'Flag',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'Flag'); ?>
-	</div>
-	*/ ?>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn')); ?>
 	</div>
