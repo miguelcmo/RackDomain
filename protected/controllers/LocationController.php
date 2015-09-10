@@ -337,4 +337,12 @@ class LocationController extends Controller
 			'locationUsers'=>$locationUsers,
 		));
 	}
+	
+	public function actionMap($id)
+	{
+		$model = $this->loadModel($id);
+		$this->render('map', array(
+			'model'=>$model,
+		));
+	}
 }

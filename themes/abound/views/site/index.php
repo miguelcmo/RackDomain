@@ -14,11 +14,11 @@ $gridDataProvider = new CArrayDataProvider(array(
 ));
 ?>
 
-<div class="row-fluid" style="margin:0 auto;">
+<div class="row-fluid">
 
 
 
-  <div class="span3" style="width:23%">
+  <div class="span3">
 	<div class="stat-block">
 	  <ul>
 		<li class="stat-graph inlinebar" id="weekly-visit">8,9,10,11,12</li>
@@ -27,7 +27,7 @@ $gridDataProvider = new CArrayDataProvider(array(
 	  </ul>
 	</div>
   </div>
-  <div class="span3" style="width:23%">
+  <div class="span3">
 	<div class="stat-block">
 	  <ul>
 		<li class="stat-graph inlinebar" id="new-visits">2,4,9,1,5,7,6</li>
@@ -36,7 +36,7 @@ $gridDataProvider = new CArrayDataProvider(array(
 	  </ul>
 	</div>
   </div>
-  <div class="span3" style="width:23%">
+  <div class="span3">
 	<div class="stat-block">
 	  <ul>
 		<li class="stat-graph inlinebar" id="unique-visits">200,300,500,200,300,500,1000</li>
@@ -45,7 +45,7 @@ $gridDataProvider = new CArrayDataProvider(array(
 	  </ul>
 	</div>
   </div>
-  <div class="span3" style="width:23%">
+  <div class="span3">
 	<div class="stat-block">
 	  <ul>
 		<li class="stat-graph inlinebar" id="">1000,3000,6000,8000,3000,8000,10000</li>

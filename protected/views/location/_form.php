@@ -101,7 +101,6 @@
 		<?php echo $form->error($model,'locationStatus'); ?>
 	</div>
 
-	<?php /*
 	<div class="row">
 		<?php echo $form->labelEx($model,'locationLongitude'); ?>
 		<?php echo $form->textField($model,'locationLongitude',array('size'=>60,'maxlength'=>255)); ?>
@@ -114,6 +113,7 @@
 		<?php echo $form->error($model,'locationLatitude'); ?>
 	</div>
 
+	<?php /*
 	<div class="row">
 		<?php echo $form->labelEx($model,'Status'); ?>
 		<?php echo $form->textField($model,'Status'); ?>

@@ -53,7 +53,7 @@ $this->menu=array(
 		*/
 	),
 )); ?>
-
+<?php echo CHtml::link('Show location on Google Maps', array('location/map', 'id'=>$model->locationId)); ?>
 <br />
 <h1>Location Rooms</h1>
 
