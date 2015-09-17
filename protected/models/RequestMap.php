@@ -65,16 +65,16 @@ class RequestMap extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'requestMapId' => 'Request Map',
-			'requestServiceId' => 'Request Service',
-			'solverId' => 'Solver',
-			'solverRoleId' => 'Solver Role',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
-			'Status' => 'Status',
-			'Flag' => 'Flag',
+			'requestMapId' => Yii::t('modelstranslation', 'Request Map'),
+			'requestServiceId' => Yii::t('modelstranslation', 'Request Service'),
+			'solverId' => Yii::t('modelstranslation', 'Solver'),
+			'solverRoleId' => Yii::t('modelstranslation', 'Solver Role'),
+			'createTime' => Yii::t('modelstranslation', 'Create Time'),
+			'createUserId' => Yii::t('modelstranslation', 'Create User'),
+			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
+			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
+			'Status' => Yii::t('modelstranslation', 'Status'),
+			'Flag' => Yii::t('modelstranslation', 'Flag'),
 		);
 	}
 

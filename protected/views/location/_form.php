@@ -15,7 +15,8 @@
 
 	<?php echo $form->errorSummary($model); ?>
 	
-	<div class="row">
+	<div style="float:left;">
+	<div class="custom-row">
 		<?php echo $form->labelEx($model,'departmentId'); ?>
 		<?php echo $form->dropDownList($model,'departmentId',$this->actionDepartmentOptions(),
 			array(
@@ -30,13 +31,15 @@
 		<?php echo $form->error($model,'departmentId'); ?>
 	</div>
 	
-	<div class="row">
+	<div class="custom-row">
 		<?php echo $form->labelEx($model,'cityId'); ?>
 		<?php echo $form->dropDownList($model,'cityId',array('empty'=>'-- Select a city --')); ?>
 		<?php echo $form->error($model,'cityId'); ?>
 	</div>
+	</div>
 	
-	<div class="row">
+	<div style="float:left;">
+	<div class="custom-row">
 		<?php echo $form->labelEx($model,'divisionId'); ?>
 		<?php echo $form->dropDownList($model,'divisionId',$this->actionDivisionOptions(),
 			array(
@@ -51,10 +54,11 @@
 		<?php echo $form->error($model,'divisionId'); ?>
 	</div>
 	
-	<div class="row">
+	<div class="custom-row">
 		<?php echo $form->labelEx($model,'subdivisionId'); ?>
 		<?php echo $form->dropDownList($model,'subdivisionId',array('empty'=>'-- Select a subdivision --')); ?>
 		<?php echo $form->error($model,'subdivisionId'); ?>
+	</div>
 	</div>
 	
 	<div class="row">
@@ -63,16 +67,18 @@
 		<?php echo $form->error($model,'locationName'); ?>
 	</div>
 	
-	<div class="row">
+	<div style="float:left;">
+	<div class="custom-row">
 		<?php echo $form->labelEx($model,'locationAddress'); ?>
 		<?php echo $form->textField($model,'locationAddress',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'locationAddress'); ?>
 	</div>
 	
-	<div class="row">
+	<div class="custom-row">
 		<?php echo $form->labelEx($model,'locationNeighborhood'); ?>
 		<?php echo $form->textField($model,'locationNeighborhood',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'locationNeighborhood'); ?>
+	</div>
 	</div>
 	
 	<?php /*
@@ -89,28 +95,32 @@
 	</div>
 	*/ ?>
 
-	<div class="row">
+	<div style="float:left;">
+	<div class="custom-row">
 		<?php echo $form->labelEx($model,'locationType'); ?>
 		<?php echo $form->dropDownList($model,'locationType', $this->getLocationTypeOptions(), array('empty'=>'-- Select an option --')); ?>
 		<?php echo $form->error($model,'locationType'); ?>
 	</div>
 
-	<div class="row">
+	<div class="custom-row">
 		<?php echo $form->labelEx($model,'locationStatus'); ?>
 		<?php echo $form->dropDownList($model,'locationStatus', $this->getLocationStatusOptions(), array('empty'=>'-- Select an option--')); ?>
 		<?php echo $form->error($model,'locationStatus'); ?>
 	</div>
+	</div>
 
-	<div class="row">
+	<div style="float:left;">
+	<div class="custom-row">
 		<?php echo $form->labelEx($model,'locationLongitude'); ?>
 		<?php echo $form->textField($model,'locationLongitude',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'locationLongitude'); ?>
 	</div>
 
-	<div class="row">
+	<div class="custom-row">
 		<?php echo $form->labelEx($model,'locationLatitude'); ?>
 		<?php echo $form->textField($model,'locationLatitude',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'locationLatitude'); ?>
+	</div>
 	</div>
 
 	<?php /*
@@ -128,7 +138,7 @@
 	*/ ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

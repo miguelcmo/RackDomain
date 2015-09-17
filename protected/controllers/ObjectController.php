@@ -93,12 +93,17 @@ class ObjectController extends Controller
 			//FK objectId has a temporary value as zero to validate
 			$rackSpace->objectId=0;
 			$rackSpace->rackId=$this->_rack->rackId;
-			$rackSpace->initialRU=$_POST['RackSpace']['initialRU'];
-			$rackSpace->endRU=$_POST['RackSpace']['initialRU']+$endRU->platformRackUnits-1;
+			if($_POST['ruleOrder']==1){
+				$rackSpace->initialRU=($modelRack->rackType0->rackUnits+1)-$_POST['RackSpace']['initialRU'];
+			} else{
+				$rackSpace->initialRU=$_POST['RackSpace']['initialRU'];
+			}
+			$rackSpace->endRU=$rackSpace->initialRU+$endRU->platformRackUnits-1;
 			
 			$valid = $model->validate();
 			$valid = $rackSpace->validate() && $valid;
-			$valid = $this->validateAvailableSpace($initialRU=$_POST['RackSpace']['initialRU'],$endRU=$_POST['RackSpace']['initialRU']+$endRU->platformRackUnits) && $valid;
+			//$valid = $this->validateAvailableSpace($initialRU=$_POST['RackSpace']['initialRU'],$endRU=$_POST['RackSpace']['initialRU']+$endRU->platformRackUnits) && $valid;
+			$valid = $this->validateAvailableSpace($rackSpace->initialRU,$rackSpace->initialRU+$endRU->platformRackUnits,$modelRack->rackType0->rackUnits) && $valid;
 			
 			if($valid)
 			{
@@ -261,9 +266,9 @@ class ObjectController extends Controller
 		return CHtml::listData($platform,'platformId','platformName');
 	}
 	
-	public function validateAvailableSpace($initialRU,$endRU) 
+	public function validateAvailableSpace($initialRU,$endRU,$rackUnits) 
 	{
-		if($endRU<=44)
+		if($endRU<=($rackUnits+1))
 		{
 			$criteria = new CDbCriteria();
 			$criteria->select = 'initialRU, endRU';
@@ -282,6 +287,44 @@ class ObjectController extends Controller
 			return true;
 		} else{
 			return false;
+		}
+	}
+	
+	public function getVendorOptions()
+	{
+		$model = Vendor::model()->findAll();
+		return CHtml::listData($model,'vendorId','vendorName');
+	}
+	
+	public function actionPlatformByVendorOptions()
+	{
+		$criteria = new CDbCriteria();
+		$criteria->condition = 'vendorId=:vendorId';
+		$criteria->params = array(':vendorId'=>$_POST['vendorId']);
+		$model = Platform::model()->findAll($criteria);
+		$platform = CHtml::listData($model,'platformId','platformName');
+		foreach($platform as $value=>$platformName)
+		{
+			echo CHtml::tag('option',array('value'=>$value),CHtml::encode($platformName),true);
+		}
+	}
+	
+	public function getChapterOptions()
+	{
+		$model = Chapter::model()->findAll();
+		return CHtml::listData($model,'chapterId','chapterName');
+	}
+	
+	public function actionPlatformByChapterOptions()
+	{
+		$criteria = new CDbCriteria();
+		$criteria->condition = 'chapterId=:chapterId';
+		$criteria->params = array(':chapterId'=>$_POST['chapterId']);
+		$model = Platform::model()->findAll($criteria);
+		$platform = CHtml::listData($model,'platformId','platformName');
+		foreach($platform as $value=>$platformName)
+		{
+			echo CHtml::tag('option',array('value'=>$value),CHtml::encode($platformName),true);
 		}
 	}
 }

@@ -72,17 +72,17 @@ class Object extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'objectId' => 'Object',
-			'platformId' => 'Platform',
-			'objectName' => 'Object Name',
-			'objectAlias' => 'Object Alias',
-			'objectDescription' => 'Object Description',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
-			'Status' => 'Status',
-			'Flag' => 'Flag',
+			'objectId' => Yii::t('modelstranslation', 'Object'),
+			'platformId' => Yii::t('modelstranslation', 'Platform'),
+			'objectName' => Yii::t('modelstranslation', 'Object Name'),
+			'objectAlias' => Yii::t('modelstranslation', 'Object Alias'),
+			'objectDescription' => Yii::t('modelstranslation', 'Object Description'),
+			'createTime' => Yii::t('modelstranslation', 'Create Time'),
+			'createUserId' => Yii::t('modelstranslation', 'Create User'),
+			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
+			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
+			'Status' => Yii::t('modelstranslation', 'Status'),
+			'Flag' => Yii::t('modelstranslation', 'Flag'),
 		);
 	}
 

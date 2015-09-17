@@ -68,11 +68,11 @@ class Country extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'countryId' => 'Country',
-			'countryName' => 'Country Name',
-			'countryAbbreviation' => 'Country Abbreviation',
-			'Status' => 'Status',
-			'Flag' => 'Flag',
+			'countryId' => Yii::t('modelstranslation', 'Country'),
+			'countryName' => Yii::t('modelstranslation', 'Country Name'),
+			'countryAbbreviation' => Yii::t('modelstranslation', 'Country Abbreviation'),
+			'Status' => Yii::t('modelstranslation', 'Status'),
+			'Flag' => Yii::t('modelstranslation', 'Flag'),
 		);
 	}
 

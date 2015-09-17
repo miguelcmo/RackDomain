@@ -4,15 +4,17 @@ $this->breadcrumbs=array(
 	$model->username=>array('view','id'=>$model->id),
 	(UserModule::t('Update')),
 );
+$this->menu=array(
+	array('label'=>'Create User', 'url'=>array('create')),
+	array('label'=>'View User', 'url'=>array('view','id'=>$model->id)),
+	array('label'=>'List User', 'url'=>array('/user')),
+	array('label'=>'Manage User', 'url'=>array('admin')),
+	array('label'=>'Manage Profile Field', 'url'=>array('profileField/admin')),
+);
 ?>
 
-<h1><?php echo  UserModule::t('Update User')." ".$model->id; ?></h1>
+<h1><?php echo  UserModule::t('Update User')." ".$model->username; ?></h1>
 
-<?php echo $this->renderPartial('_menu', array(
-		'list'=> array(
-			CHtml::link(UserModule::t('Create User'),array('create')),
-			CHtml::link(UserModule::t('View User'),array('view','id'=>$model->id)),
-		),
-	)); 
-
-	echo $this->renderPartial('_form', array('model'=>$model,'profile'=>$profile)); ?>
+<?php 
+	echo $this->renderPartial('_form', array('model'=>$model,'profile'=>$profile)); 
+?>

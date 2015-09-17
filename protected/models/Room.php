@@ -77,18 +77,18 @@ class Room extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'roomId' => 'Room',
-			'locationId' => 'Location',
-			'roomName' => 'Room Name',
-			'roomAlias' => 'Room Alias',
-			'roomDescription' => 'Room Description',
-			'floorLocation' => 'Floor Location',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
-			'Status' => 'Status',
-			'Flag' => 'Flag',
+			'roomId' => Yii::t('modelstranslation', 'Room'),
+			'locationId' => Yii::t('modelstranslation', 'Location'),
+			'roomName' => Yii::t('modelstranslation', 'Room Name'),
+			'roomAlias' => Yii::t('modelstranslation', 'Room Alias'),
+			'roomDescription' => Yii::t('modelstranslation', 'Room Description'),
+			'floorLocation' => Yii::t('modelstranslation', 'Floor Location'),
+			'createTime' => Yii::t('modelstranslation', 'Create Time'),
+			'createUserId' => Yii::t('modelstranslation', 'Create User'),
+			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
+			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
+			'Status' => Yii::t('modelstranslation', 'Status'),
+			'Flag' => Yii::t('modelstranslation', 'Flag'),
 		);
 	}
 

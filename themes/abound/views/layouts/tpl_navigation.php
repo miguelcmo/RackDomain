@@ -69,6 +69,7 @@
 							//array('label'=>'Separated link', 'url'=>'#'),
 							//array('label'=>'One more separated link', 'url'=>'#'),
                         )),
+						
                         //array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                         //array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 						array('url'=>Yii::app()->getModule('user')->loginUrl, 'label'=>Yii::app()->getModule('user')->t("Login"), 'visible'=>Yii::app()->user->isGuest),
@@ -80,6 +81,12 @@
                 )); ?>
     	</div>
     </div>
+	
+	<!-- Language Selector Widget -->
+	<div  id="language-selector">
+	<?php $this->widget('application.components.widgets.LanguageSelector'); ?>
+	</div>
+	
 	</div>
 </div>
 <?php /*

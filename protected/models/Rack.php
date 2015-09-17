@@ -65,12 +65,12 @@ class Rack extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'rackId' => 'Rack',
-			'rowId' => 'Row',
-			'sortOrder' => 'Sort Order',
-			'rackName' => 'Name',
-			'rackFacePosition' => 'Rack Face Position',
-			'rackType' => 'Rack Type',
+			'rackId' => Yii::t('modelstranslation', 'Rack'),
+			'rowId' => Yii::t('modelstranslation', 'Row'),
+			'sortOrder' => Yii::t('modelstranslation', 'Sort Order'),
+			'rackName' => Yii::t('modelstranslation', 'Name'),
+			'rackFacePosition' => Yii::t('modelstranslation', 'Rack Face Position'),
+			'rackType' => Yii::t('modelstranslation', 'Rack Type'),
 		);
 	}
 

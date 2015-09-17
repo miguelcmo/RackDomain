@@ -54,8 +54,8 @@ class BreakerRate extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'breakerRateId' => 'Breaker Rate',
-			'breakerRate' => 'Breaker Rate',
+			'breakerRateId' => Yii::t('modelstranslation', 'Breaker Rate'),
+			'breakerRate' => Yii::t('modelstranslation', 'Breaker Rate'),
 		);
 	}
 

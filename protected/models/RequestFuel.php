@@ -73,19 +73,19 @@ class RequestFuel extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'requestFuelId' => 'Request Fuel',
-			'requesterId' => 'Requester',
-			'requestLocationId' => 'Request Location',
-			'onSiteContactId' => 'On Site Contact',
-			'fuelQty' => 'Fuel Qty',
-			'fuelTypeId' => 'Fuel Type',
-			'requestFuelNotes' => 'Request Fuel Notes',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
-			'Status' => 'Status',
-			'Flag' => 'Flag',
+			'requestFuelId' => Yii::t('modelstranslation', 'Request Fuel'),
+			'requesterId' => Yii::t('modelstranslation', 'Requester'),
+			'requestLocationId' => Yii::t('modelstranslation', 'Request Location'),
+			'onSiteContactId' => Yii::t('modelstranslation', 'On Site Contact'),
+			'fuelQty' => Yii::t('modelstranslation', 'Fuel Qty'),
+			'fuelTypeId' => Yii::t('modelstranslation', 'Fuel Type'),
+			'requestFuelNotes' => Yii::t('modelstranslation', 'Request Fuel Notes'),
+			'createTime' => Yii::t('modelstranslation', 'Create Time'),
+			'createUserId' => Yii::t('modelstranslation', 'Create User'),
+			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
+			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
+			'Status' => Yii::t('modelstranslation', 'Status'),
+			'Flag' => Yii::t('modelstranslation', 'Flag'),
 		);
 	}
 

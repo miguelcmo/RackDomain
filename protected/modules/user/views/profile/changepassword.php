@@ -3,10 +3,17 @@ $this->breadcrumbs=array(
 	UserModule::t("Profile") => array('/user/profile'),
 	UserModule::t("Change Password"),
 );
+$this->menu=array(
+	array('label'=>'Manage User', 'url'=>array('/user/admin'), 'visible'=>UserModule::isAdmin()),
+	array('label'=>'List User', 'url'=>array('/user'), 'visible'=>!UserModule::isAdmin()),
+	//array('label'=>'Profile', 'url'=>array('/user/profile')),
+	array('label'=>'Edit', 'url'=>array('edit')),
+	array('label'=>'Change Password', 'url'=>array('changepassword')),
+	array('label'=>'Logout', 'url'=>array('/user/logout')),
+);
 ?>
 
 <h2><?php echo UserModule::t("Change password"); ?></h2>
-<?php echo $this->renderPartial('menu'); ?>
 
 <div class="form">
 <?php $form=$this->beginWidget('UActiveForm', array(

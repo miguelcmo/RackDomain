@@ -52,9 +52,9 @@ class LocationUserAssignment extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'locationId' => 'Location',
-			'userId' => 'User',
-			'role' => 'Role',
+			'locationId' => Yii::t('modelstranslation', 'Location'),
+			'userId' => Yii::t('modelstranslation', 'User'),
+			'role' => Yii::t('modelstranslation', 'Role'),
 		);
 	}
 

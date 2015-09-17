@@ -30,7 +30,7 @@ body {
 @media only screen 
 and (min-width : 1224px) {
 	.container-fluid{padding-top: 60px;}
-	.navbar .brand {margin-left:-60px;}
+	.navbar .brand {margin-left: 0px;}
 	.style-switcher{margin-left:-40px;}
 }
 
@@ -820,3 +820,18 @@ ADITIONAL STYLES SPECIFIC FOR RACK SPACE APPLICATION AND ITS COMPONENTS
 	text-align:center;
 	color:orange;
 }
+
+/* Styles for Languege Selector Widget By Macsim
+-------------------------------------------------*/
+#language-selector{
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+#language-selector form{
+	margin: 0px;
+}
+#language-selector a{
+	color: gray;
+}
+

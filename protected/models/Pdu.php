@@ -71,18 +71,18 @@ class Pdu extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'pduId' => 'Pdu',
-			'roomId' => 'Room',
-			'pduName' => 'Pdu Name',
-			'pduAlias' => 'Pdu Alias',
-			'pduDescription' => 'Pdu Description',
-			'pduTypeId' => 'Pdu Type',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
-			'Status' => 'Status',
-			'Flag' => 'Flag',
+			'pduId' => Yii::t('modelstranslation', 'Pdu'),
+			'roomId' => Yii::t('modelstranslation', 'Room'),
+			'pduName' => Yii::t('modelstranslation', 'Pdu Name'),
+			'pduAlias' => Yii::t('modelstranslation', 'Pdu Alias'),
+			'pduDescription' => Yii::t('modelstranslation', 'Pdu Description'),
+			'pduTypeId' => Yii::t('modelstranslation', 'Pdu Type'),
+			'createTime' => Yii::t('modelstranslation', 'Create Time'),
+			'createUserId' => Yii::t('modelstranslation', 'Create User'),
+			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
+			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
+			'Status' => Yii::t('modelstranslation', 'Status'),
+			'Flag' => Yii::t('modelstranslation', 'Flag'),
 		);
 	}
 

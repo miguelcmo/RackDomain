@@ -64,16 +64,16 @@ class PduType extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'pduTypeId' => 'Pdu Type',
-			'pduTypeName' => 'Pdu Type Name',
-			'pduTypeDescription' => 'Pdu Type Description',
-			'pduCircuits' => 'Pdu Circuits',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
-			'Status' => 'Status',
-			'Flag' => 'Flag',
+			'pduTypeId' => Yii::t('modelstranslation', 'Pdu Type'),
+			'pduTypeName' => Yii::t('modelstranslation', 'Pdu Type Name'),
+			'pduTypeDescription' => Yii::t('modelstranslation', 'Pdu Type Description'),
+			'pduCircuits' => Yii::t('modelstranslation', 'Pdu Circuits'),
+			'createTime' => Yii::t('modelstranslation', 'Create Time'),
+			'createUserId' => Yii::t('modelstranslation', 'Create User'),
+			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
+			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
+			'Status' => Yii::t('modelstranslation', 'Status'),
+			'Flag' => Yii::t('modelstranslation', 'Flag'),
 		);
 	}
 

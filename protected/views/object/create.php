@@ -17,12 +17,19 @@ $this->menu=array(
 );
 
 Yii::app()->clientScript->registerScript('rackRule', "
-$('#RackSpace_initialRU').focus(function(){
-	$('#rackRule').fadeIn(2000);
-});
-$('#RackSpace_initialRU').focusout(function(){
-	$('#rackRule').fadeOut(2000);
-});
+	$('#RackSpace_initialRU').focus(function(){
+		var value = $('#ruleOrder').val();
+		if(value==0){
+			$('#rackRuleAsc').fadeIn(2000);
+		} 
+		else if(value==1){
+			$('#rackRuleDesc').fadeIn(2000);
+		}
+	});
+	$('#RackSpace_initialRU').focusout(function(){
+		$('#rackRuleAsc').fadeOut(2000);
+		$('#rackRuleDesc').fadeOut(2000);
+	});
 ");
 ?>
 
@@ -36,10 +43,14 @@ $('#RackSpace_initialRU').focusout(function(){
 <div class="rackDetail">
 <?php 
  echo CHtml::image($modelRack->rackType0->imagePath);
- echo CHtml::image('images/racks/rack_numbers.png', '#',array(
+ echo CHtml::image('images/racks/rule_'.$modelRack->rackType0->rackUnits.'ru_asc.png', '#',array(
 	'class'=>'ru',
-	'id'=>'rackRule',
-	'style'=>'display:none;left:16px;top:'.$modelRack->rackType0->deviceTop.'px;'));
+	'id'=>'rackRuleAsc',
+	'style'=>'display:none;left:'.$modelRack->rackType0->ruleLeft.'px;top:'.$modelRack->rackType0->deviceTop.'px;'));
+ echo CHtml::image('images/racks/rule_'.$modelRack->rackType0->rackUnits.'ru_desc.png', '#',array(
+	'class'=>'ru',
+	'id'=>'rackRuleDesc',
+	'style'=>'display:none;left:'.$modelRack->rackType0->ruleLeft.'px;top:'.$modelRack->rackType0->deviceTop.'px;'));
  
  foreach($rackSpaceView as $value)
  {

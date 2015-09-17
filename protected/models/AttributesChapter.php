@@ -60,12 +60,12 @@ class AttributesChapter extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'attributeChapterId' => 'Attribute Chapter',
-			'attributeChapterName' => 'Attribute Chapter Name',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
+			'attributeChapterId' => Yii::t('modelstranslation','Attribute Chapter'),
+			'attributeChapterName' => Yii::t('modelstranslation','Attribute Chapter Name'),
+			'createTime' => Yii::t('modelstranslation','Create Time'),
+			'createUserId' => Yii::t('modelstranslation','Create User'),
+			'updateTime' => Yii::t('modelstranslation','Update Time'),
+			'updateUserId' => Yii::t('modelstranslation','Update User'),
 		);
 	}
 

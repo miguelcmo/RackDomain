@@ -3,17 +3,16 @@ $this->breadcrumbs=array(
 	UserModule::t('Users')=>array('admin'),
 	UserModule::t('Manage'),
 );
+$this->menu=array(
+	array('label'=>'Create User', 'url'=>array('create')),
+	array('label'=>'List User', 'url'=>array('/user')),
+	array('label'=>'Manage Profile Field', 'url'=>array('profileField/admin')),
+);
 ?>
 <h1><?php echo UserModule::t("Manage Users"); ?></h1>
 
-<?php echo $this->renderPartial('_menu', array(
-		'list'=> array(
-			CHtml::link(UserModule::t('Create User'),array('create')),
-		),
-	));
-?>
-
 <?php $this->widget('zii.widgets.grid.CGridView', array(
+	'itemsCssClass'=>'table table-striped',
 	'dataProvider'=>$dataProvider,
 	'columns'=>array(
 		array(

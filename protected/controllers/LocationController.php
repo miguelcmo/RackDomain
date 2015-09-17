@@ -82,6 +82,14 @@ class LocationController extends Controller
 		if(isset($_POST['Location']))
 		{
 			$model->attributes=$_POST['Location'];
+			// This code asures that if no longitude neither latitude parameter is set on location-form
+			// Automatically set the location coordinates parameters be set based on the location city
+			if($_POST['Location']['locationLongitude']==null||$_POST['Location']['locationLatitude']==null){
+				$cityCoord = City::model()->findByPk($_POST['Location']['cityId']);
+				$model->locationLongitude = $cityCoord->cityLongitude;
+				$model->locationLatitude = $cityCoord->cityLatitude;
+			}
+			
 			if($model->save())
 			{
 				//assign the user creating the new location as an owner of the location
@@ -118,6 +126,14 @@ class LocationController extends Controller
 		if(isset($_POST['Location']))
 		{
 			$model->attributes=$_POST['Location'];
+			// This code asures that if no longitude neither latitude parameter is set on location-form
+			// Automatically set the location coordinates parameters be set based on the location city
+			if($_POST['Location']['locationLongitude']==null||$_POST['Location']['locationLatitude']==null){
+				$cityCoord = City::model()->findByPk($_POST['Location']['cityId']);
+				$model->locationLongitude = $cityCoord->cityLongitude;
+				$model->locationLatitude = $cityCoord->cityLatitude;
+			}
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->locationId));
 		}

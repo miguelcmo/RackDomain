@@ -105,7 +105,7 @@ class EGMap extends EGMapBase {
 	 * </pre>
 	 * @var array
 	 */
-	private $_styleOptions = array('width' => '512px', 'height' => '512px');
+	private $_styleOptions = array('width' => '100%', 'height' => '512px');
 
 	/**
 	 * 

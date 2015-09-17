@@ -2,6 +2,8 @@
 
 class RegistrationController extends Controller
 {
+	public $layout = 'column2';
+	
 	public $defaultAction = 'registration';
 	
 

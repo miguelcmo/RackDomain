@@ -75,20 +75,20 @@ class Platform extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'platformId' => 'Platform',
-			'vendorId' => 'Vendor',
-			'chapterId' => 'Chapter',
-			'platformName' => 'Platform Name',
-			'platformDescription' => 'Platform Description',
-			'platformImagePath' => 'Platform Image Path',
-			'platformBackgroundTextColor' => 'Platform Background Text Color',
-			'platformRackUnits' => 'Platform Rack Units',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
-			'Status' => 'Status',
-			'Flag' => 'Flag',
+			'platformId' => Yii::t('modelstranslation', 'Platform'),
+			'vendorId' => Yii::t('modelstranslation', 'Vendor'),
+			'chapterId' => Yii::t('modelstranslation', 'Chapter'),
+			'platformName' => Yii::t('modelstranslation', 'Platform Name'),
+			'platformDescription' => Yii::t('modelstranslation', 'Platform Description'),
+			'platformImagePath' => Yii::t('modelstranslation', 'Platform Image Path'),
+			'platformBackgroundTextColor' => Yii::t('modelstranslation', 'Platform Background Text Color'),
+			'platformRackUnits' => Yii::t('modelstranslation', 'Platform Rack Units'),
+			'createTime' => Yii::t('modelstranslation', 'Create Time'),
+			'createUserId' => Yii::t('modelstranslation', 'Create User'),
+			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
+			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
+			'Status' => Yii::t('modelstranslation', 'Status'),
+			'Flag' => Yii::t('modelstranslation', 'Flag'),
 		);
 	}
 

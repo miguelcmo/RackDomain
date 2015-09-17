@@ -2,6 +2,8 @@
 
 class AdminController extends Controller
 {
+	public $layout = 'column2';
+	
 	public $defaultAction = 'admin';
 	
 	private $_model;
@@ -78,7 +80,8 @@ class AdminController extends Controller
 			$profile->attributes=$_POST['Profile'];
 			$profile->user_id=0;
 			if($model->validate()&&$profile->validate()) {
-				$model->password=Yii::app()->controller->module->encrypting($model->password);
+				//$model->password=Yii::app()->controller->module->encrypting($model->password);
+				$model->password=Yii::app()->controller->module->hashPassword($model->password);
 				if($model->save()) {
 					$profile->user_id=$model->id;
 					$profile->save();

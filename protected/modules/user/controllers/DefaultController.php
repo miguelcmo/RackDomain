@@ -2,6 +2,8 @@
 
 class DefaultController extends Controller
 {
+	public $layout = 'column2';
+	
 	/**
 	 * @return array action filters
 	 */

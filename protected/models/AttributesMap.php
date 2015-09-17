@@ -55,12 +55,12 @@ class AttributesMap extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'platformId' => 'Platform',
-			'attributeId' => 'Attribute',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
+			'platformId' => Yii::t('modelstranslation','Platform'),
+			'attributeId' => Yii::t('modelstranslation','Attribute'),
+			'createTime' => Yii::t('modelstranslation','Create Time'),
+			'createUserId' => Yii::t('modelstranslation','Create User'),
+			'updateTime' => Yii::t('modelstranslation','Update Time'),
+			'updateUserId' => Yii::t('modelstranslation','Update User'),
 		);
 	}
 

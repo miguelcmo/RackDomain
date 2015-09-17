@@ -11,7 +11,7 @@ return array(
     'username or email' => "Nombre de Usuario o Email",
     'password' => 'Contraseña',
     'Remember me next time' => 'Recordarme más tarde',
-    'Username is incorrect.' => "El nombre de usuario es incorrecto.",
+    'Username is incorrect.' => 'El nombre de usuario es incorrecto.',
     'Email is incorrect.' => 'El E-mail es incorrecto.',
     'This user\'s name already exists.' => 'Este nombre de usuario ya existe.',
     'This user\'s email address already exists.' => 'El dirección de email ya existe.',
@@ -125,5 +125,6 @@ return array(
     'The value of the default field (database).' => 'El valor por defecto del campo (base de datos)',
     'Display order of fields.' => 'Mostrar orden de los campos',
 	'Not visited' => 'No visitó',
-
+	'Mobile Number' => 'Numero de Celular',
+	'Change Password' => 'Cambiar Contraseña',
 );

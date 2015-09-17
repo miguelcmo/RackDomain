@@ -69,16 +69,16 @@ class Attributes extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'attributeId' => 'Attribute',
-			'attributeChapterId' => 'Attribute Chapter',
-			'attributeName' => 'Attribute Name',
-			'attributeDescription' => 'Attribute Description',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
-			'Satus' => 'Satus',
-			'Flag' => 'Flag',
+			'attributeId' => Yii::t('modelstranslation', 'Attribute'),
+			'attributeChapterId' => Yii::t('modelstranslation', 'Attribute Chapter'),
+			'attributeName' => Yii::t('modelstranslation', 'Attribute Name'),
+			'attributeDescription' => Yii::t('modelstranslation', 'Attribute Description'),
+			'createTime' => Yii::t('modelstranslation', 'Create Time'),
+			'createUserId' => Yii::t('modelstranslation', 'Create User'),
+			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
+			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
+			'Satus' => Yii::t('modelstranslation', 'Satus'),
+			'Flag' => Yii::t('modelstranslation', 'Flag'),
 		);
 	}
 

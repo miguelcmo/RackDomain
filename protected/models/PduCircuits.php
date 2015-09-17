@@ -70,21 +70,21 @@ class PduCircuits extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'pduCircuitId' => 'Pdu Circuit',
-			'pduId' => 'Pdu',
-			'objectId' => 'Object',
-			'pduCircuitBus' => 'Pdu Circuit Bus',
-			'pduCircuitNumber' => 'Pdu Circuit Number',
-			'pduCircuitState' => 'Pdu Circuit State',
-			'breakerRate' => 'Breaker Rate',
-			'breakerState' => 'Breaker State',
-			'pduCircuitDescription' => 'Pdu Circuit Description',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
-			'Status' => 'Status',
-			'Flag' => 'Flag',
+			'pduCircuitId' => Yii::t('modelstranslation', 'Pdu Circuit'),
+			'pduId' => Yii::t('modelstranslation', 'Pdu'),
+			'objectId' => Yii::t('modelstranslation', 'Object'),
+			'pduCircuitBus' => Yii::t('modelstranslation', 'Pdu Circuit Bus'),
+			'pduCircuitNumber' => Yii::t('modelstranslation', 'Pdu Circuit Number'),
+			'pduCircuitState' => Yii::t('modelstranslation', 'Pdu Circuit State'),
+			'breakerRate' => Yii::t('modelstranslation', 'Breaker Rate'),
+			'breakerState' => Yii::t('modelstranslation', 'Breaker State'),
+			'pduCircuitDescription' => Yii::t('modelstranslation', 'Pdu Circuit Description'),
+			'createTime' => Yii::t('modelstranslation', 'Create Time'),
+			'createUserId' => Yii::t('modelstranslation', 'Create User'),
+			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
+			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
+			'Status' => Yii::t('modelstranslation', 'Status'),
+			'Flag' => Yii::t('modelstranslation', 'Flag'),
 		);
 	}
 

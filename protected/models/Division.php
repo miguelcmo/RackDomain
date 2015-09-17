@@ -58,10 +58,10 @@ class Division extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'divisionId' => 'Division',
-			'divisionName' => 'Division Name',
-			'Status' => 'Status',
-			'Flag' => 'Flag',
+			'divisionId' => Yii::t('modelstranslation', 'Division'),
+			'divisionName' => Yii::t('modelstranslation', 'Division Name'),
+			'Status' => Yii::t('modelstranslation', 'Status'),
+			'Flag' => Yii::t('modelstranslation', 'Flag'),
 		);
 	}
 

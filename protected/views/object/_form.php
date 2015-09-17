@@ -21,6 +21,40 @@
 	<?php echo $form->errorSummary(array($model,$rackSpace)); ?>
 
 	<div class="row">
+		<?php echo CHtml::label('Vendor Filter', 'vendorId'); ?>
+		<?php echo CHtml::dropDownList(
+			'vendorId',
+			'',
+			$this->getVendorOptions(),
+			array(
+				'empty'=>'-- Select an Option --',
+				'ajax'=>array(
+					'type'=>'POST',
+					'url'=>$this->createUrl('platformByVendorOptions'),
+					'update'=>'#Object_platformId',
+				),
+			)
+		); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo CHtml::label('Chapter Filter', 'chapterId'); ?>
+		<?php echo CHtml::dropDownList(
+			'chapterId',
+			'',
+			$this->getChapterOptions(),
+			array(
+				'empty'=>'-- Select an Option --',
+				'ajax'=>array(
+					'type'=>'POST',
+					'url'=>$this->createUrl('platformByChapterOptions'),
+					'update'=>'#Object_platformId',
+				),
+			)
+		); ?>
+	</div>
+	
+	<div class="row">
 		<?php echo $form->labelEx($model,'platformId'); ?>
 		<?php echo $form->dropDownList($model,'platformId', $this->getPlatformOptions(), array('empty'=>'-- Select an option --')); ?>
 		<?php echo $form->error($model,'platformId'); ?>
@@ -36,6 +70,11 @@
 		<?php echo $form->labelEx($model,'objectAlias'); ?>
 		<?php echo $form->textField($model,'objectAlias',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'objectAlias'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo CHtml::label('Rule Order', 'ruleOrder'); ?>
+		<?php echo CHtml::dropDownList('ruleOrder','',array('0'=>'Ascendant','1'=>'Descendant')); ?>
 	</div>
 	
 	<div class="row">

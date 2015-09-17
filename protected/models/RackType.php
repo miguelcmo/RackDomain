@@ -10,6 +10,8 @@
  * @property string $imagePath
  * @property integer $imageWidth
  * @property integer $imageHeight
+ * @property integer $rulePath
+ * @property integer $ruleLeft
  * @property integer $deviceTop
  * @property integer $deviceLeft
  * @property integer $rackUnits
@@ -42,12 +44,12 @@ class RackType extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('rackTypeName', 'required'),
-			array('imageWidth, imageHeight, deviceTop, deviceLeft, rackUnits, createUserId, updateUserId', 'numerical', 'integerOnly'=>true),
+			array('imageWidth, imageHeight, rulePath, ruleLeft, deviceTop, deviceLeft, rackUnits, createUserId, updateUserId', 'numerical', 'integerOnly'=>true),
 			array('rackTypeName, thumbnailPath, imagePath, Status, Flag', 'length', 'max'=>255),
 			array('createTime, updateTime', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('rackTypeId, rackTypeName, thumbnailPath, imagePath, imageWidth, imageHeight, deviceTop, deviceLeft, rackUnits, createTime, createUserId, updateTime, updateUserId, Status, Flag', 'safe', 'on'=>'search'),
+			array('rackTypeId, rackTypeName, thumbnailPath, imagePath, imageWidth, imageHeight, rulePath, ruleLeft, deviceTop, deviceLeft, rackUnits, createTime, createUserId, updateTime, updateUserId, Status, Flag', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,21 +71,23 @@ class RackType extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'rackTypeId' => 'Rack Type',
-			'rackTypeName' => 'Rack Type Name',
-			'thumbnailPath' => 'Thumbnail Path',
-			'imagePath' => 'Image Path',
-			'imageWidth' => 'Image Width',
-			'imageHeight' => 'Image Height',
-			'deviceTop' => 'Device Top',
-			'deviceLeft' => 'Device Left',
-			'rackUnits' => 'Rack Units',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
-			'Status' => 'Status',
-			'Flag' => 'Flag',
+			'rackTypeId' => Yii::t('modelstranslation', 'Rack Type'),
+			'rackTypeName' => Yii::t('modelstranslation', 'Rack Type Name'),
+			'thumbnailPath' => Yii::t('modelstranslation', 'Thumbnail Path'),
+			'imagePath' => Yii::t('modelstranslation', 'Image Path'),
+			'imageWidth' => Yii::t('modelstranslation', 'Image Width'),
+			'imageHeight' => Yii::t('modelstranslation', 'Image Height'),
+			'rulePath' => Yii::t('modelstranslation', 'Rule Path'),
+			'ruleLeft' => Yii::t('modelstranslation', 'Rule Left'),
+			'deviceTop' => Yii::t('modelstranslation', 'Device Top'),
+			'deviceLeft' => Yii::t('modelstranslation', 'Device Left'),
+			'rackUnits' => Yii::t('modelstranslation', 'Rack Units'),
+			'createTime' => Yii::t('modelstranslation', 'Create Time'),
+			'createUserId' => Yii::t('modelstranslation', 'Create User'),
+			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
+			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
+			'Status' => Yii::t('modelstranslation', 'Status'),
+			'Flag' => Yii::t('modelstranslation', 'Flag'),
 		);
 	}
 
@@ -111,6 +115,8 @@ class RackType extends CActiveRecord
 		$criteria->compare('imagePath',$this->imagePath,true);
 		$criteria->compare('imageWidth',$this->imageWidth);
 		$criteria->compare('imageHeight',$this->imageHeight);
+		$criteria->compare('rulePath',$this->rulePath);
+		$criteria->compare('ruleLeft',$this->ruleLeft);
 		$criteria->compare('deviceTop',$this->deviceTop);
 		$criteria->compare('deviceLeft',$this->deviceLeft);
 		$criteria->compare('rackUnits',$this->rackUnits);

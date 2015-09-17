@@ -77,7 +77,7 @@ if($freeSpace==0){
 				$update = CHtml::image('/RackDomain/assets/4ee46d47/gridview/update.png', 'update');
 				echo CHtml::link($update, array('/object/update', 'id'=>$value['objectId']));
 				$delete = CHtml::image('/RackDomain/assets/4ee46d47/gridview/delete.png', 'delete');
-				echo CHtml::link($delete, '#', array('submit'=>array('/object/delete','id'=>$value['objectId'],'rid'=>$value['rackId']),'confirm'=>'Are you sure you want to delete this item?'));
+				echo CHtml::link($delete, '#', array('submit'=>array('/object/delete','id'=>$value['objectId'],'rid'=>$value['rackId']),'confirm'=>'Are you sure you want to delete this item?','params'=> array('YII_CSRF_TOKEN' => Yii::app()->request->csrfToken)));
 			?></td>
 		</tr>
 		<?php endforeach; ?>

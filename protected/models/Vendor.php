@@ -66,16 +66,16 @@ class Vendor extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'vendorId' => 'Vendor',
-			'vendorName' => 'Vendor Name',
-			'vendorDescription' => 'Vendor Description',
-			'vendorSite' => 'Vendor Site',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
-			'Status' => 'Status',
-			'Flag' => 'Flag',
+			'vendorId' => Yii::t('modelstranslation', 'Vendor'),
+			'vendorName' => Yii::t('modelstranslation', 'Vendor Name'),
+			'vendorDescription' => Yii::t('modelstranslation', 'Vendor Description'),
+			'vendorSite' => Yii::t('modelstranslation', 'Vendor Site'),
+			'createTime' => Yii::t('modelstranslation', 'Create Time'),
+			'createUserId' => Yii::t('modelstranslation', 'Create User'),
+			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
+			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
+			'Status' => Yii::t('modelstranslation', 'Status'),
+			'Flag' => Yii::t('modelstranslation', 'Flag'),
 		);
 	}
 

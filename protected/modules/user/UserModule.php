@@ -9,7 +9,7 @@
  */
 
 class UserModule extends CWebModule
-{
+{	
 	/**
 	 * @var int
 	 * @desc items on page
@@ -60,7 +60,7 @@ class UserModule extends CWebModule
 	public $returnUrl = array("/user/profile");
 	public $returnLogoutUrl = array("/user/login");
 	
-	public $fieldsMessage = '';
+	public $fieldsMessage = 'es';
 	
 	/**
 	 * @var array
@@ -98,11 +98,6 @@ class UserModule extends CWebModule
 	 * @desc Behaviors for models
 	 */
 	public $componentBehaviors=array();
-	
-	/**
-	* @property string the path to the layout file to use for displaying User.
-	*/
-	public $layout = 'application.views.layouts.column2';
 	
 	public function init()
 	{
@@ -252,5 +247,40 @@ class UserModule extends CWebModule
 	 */
 	public function users() {
 		return User;
+	}
+	
+	/**
+	 * apply a hash on the password before we store it in the database --- Added By MAC
+	 */
+	protected function afterValidate()
+	{
+		parent::afterValidate();
+		if(!$this->hasErrors())
+			$this->password=$this->hashPassword($this->password);
+	}
+	
+	/**
+	 * Generates the password hash.       ----- Added By MAC
+	 * @param string password
+	 * @return string hash
+	 */
+	public function hashPassword($password)
+	{
+		// uses the default PHP method for hashing passwords
+		// actually (22/04/2015) is bcrypt for php5.5 
+		//return password_hash($password, PASSWORD_DEFAULT);
+		//return md5($password);
+		return CPasswordHelper::hashPassword($password);// for yii 1.1.14 or superior
+	}
+	
+	/**
+	 * Checks if the given password is correct.         ------ Added By MAC
+	 * @param string the password to be validated
+	 * @return boolean wheter the password is valid
+	 */
+	public function validatePassword($password,$hash)
+	{
+		//return $this->hashPassword($password)===$this->password;
+		return CPasswordHelper::verifyPassword($password,$hash);// for yii 1.1.14 or superior
 	}
 }

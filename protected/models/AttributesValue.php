@@ -57,13 +57,13 @@ class AttributesValue extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'objectId' => 'Object',
-			'attributeId' => 'Attribute',
-			'attributeValue' => 'Attribute Value',
-			'createTime' => 'Create Time',
-			'createUserId' => 'Create User',
-			'updateTime' => 'Update Time',
-			'updateUserId' => 'Update User',
+			'objectId' => Yii::t('modelstranslation', 'Object'),
+			'attributeId' => Yii::t('modelstranslation', 'Attribute'),
+			'attributeValue' => Yii::t('modelstranslation', 'Attribute Value'),
+			'createTime' => Yii::t('modelstranslation', 'Create Time'),
+			'createUserId' => Yii::t('modelstranslation', 'Create User'),
+			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
+			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
 		);
 	}
 

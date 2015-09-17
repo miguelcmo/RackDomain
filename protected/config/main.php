@@ -9,6 +9,7 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Rack Domain',
 	'theme'=>'abound',
+	'sourceLanguage'=>'en',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -23,6 +24,15 @@ return array(
 		'application.modules.user.components.*',
 		'ext.YiiMailer.YiiMailer',
 	),
+	
+	// Associates a behavior-class with the onBeginRequest event.
+    // By placing this within the primary array, it applies to the application as a whole
+    'behaviors'=>array(
+        'onBeginRequest' => array(
+            'class' => 'application.components.behaviors.BeginRequest'
+        ),
+    ),
+
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
@@ -137,8 +147,10 @@ return array(
 		),
 		
 		
-		
-		
+		'request'=>array(
+            'enableCookieValidation'=>true,
+            'enableCsrfValidation'=>true,
+			),
 		
 		'authManager' => array(
 			'class' => 'RDbAuthManager',
@@ -156,5 +168,7 @@ return array(
 		// this is used in contact page
 		'adminEmail'=>'miguel.carrillo@hotmail.com',
 		'notificationEmail'=>'miguel.carrillo@hotmail.info',
+		'languages'=>array('es'=>'Español', 'en'=>'English'),
+
 	),
 );
