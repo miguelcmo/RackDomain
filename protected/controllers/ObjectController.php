@@ -51,6 +51,13 @@ class ObjectController extends Controller
 			),
 		);
 	} */
+	
+	public function setLocationId($id)
+	{
+		$model = Object::model()->findByPk($id);
+		$lid = $model->rackSpace->rack->row->room->location->locationId;
+		Yii::app()->user->setState('lid',$lid);
+	}
 
 	/**
 	 * Displays a particular model.
@@ -58,6 +65,8 @@ class ObjectController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$this->setLocationId($id);
+		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -118,7 +127,7 @@ class ObjectController extends Controller
 					}
 				}
 			} else 
-				throw new CHttpException(409,'The requested space for the new object is not available.');
+				throw new CHttpException(409,Yii::t('controllerstranslation','The requested space for the new object is not available.'));
 		}
 		$this->render('create',array(
 			'model'=>$model,
@@ -135,6 +144,8 @@ class ObjectController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		$this->setLocationId($id);
+		
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
@@ -159,6 +170,8 @@ class ObjectController extends Controller
 	 */
 	public function actionDelete($id,$rid)
 	{
+		$this->setLocationId($id);
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -203,7 +216,7 @@ class ObjectController extends Controller
 	{
 		$model=Object::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,Yii::t('controllerstranslation','The requested page does not exist.'));
 		return $model;
 	}
 
@@ -233,7 +246,7 @@ class ObjectController extends Controller
 			$this->_rack=Rack::model()->findByPk($rackId);
 			if($this->_rack===null)
 			{
-				throw new CHttpException(404, 'The requested row does not exist.');
+				throw new CHttpException(404, Yii::t('controllerstranslation','The requested row does not exist.'));
 			}
 		}
 		return $this->_rack;
@@ -251,9 +264,13 @@ class ObjectController extends Controller
 		{
 			$this->loadRack($_GET['rid']);
 		}
-		else 
-			throw new CHttpException(403, 'Must specify a row before performing this action.');
+		else {
+			throw new CHttpException(403, Yii::t('controllerstranslation','Must specify a row before performing this action.'));
+		}
 		
+		$model = Rack::model()->findByPk($this->_rack->rackId);
+		$lid = $model->row->room->location->locationId;
+		Yii::app()->user->setState('lid',$lid);
 		//complete the running of the filters and execute the requested action
 		$filterChain->run();
 	}

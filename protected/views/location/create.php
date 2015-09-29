@@ -3,16 +3,16 @@
 /* @var $model Location */
 
 $this->breadcrumbs=array(
-	'Locations'=>array('index'),
-	'Create',
+	Yii::t('viewst','Locations')=>array('index'),
+	Yii::t('viewst','Create'),
 );
 
 $this->menu=array(
-	array('label'=>'Back To Locations', 'url'=>array('index')),
-	array('label'=>'Manage Location', 'url'=>array('admin')),
+	array('label'=>Yii::t('viewst','Back To Locations'), 'url'=>array('index')),
+	//array('label'=>Yii::t('viewst','Manage Location'), 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Location</h1>
+<h1><?php echo Yii::t('viewst','Create Location'); ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

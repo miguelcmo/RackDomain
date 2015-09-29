@@ -15,19 +15,19 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note"><?php echo Yii::t('viewst','Fields with <span class="required">*</span> are required.'); ?></p>
 
 	<?php echo $form->errorSummary($model); ?>
 
 	<div>
 	
-	<p>Use this items to filter the objects.</p>
+	<p><?php echo Yii::t('viewst','Use this items to filter the objects.'); ?></p>
 	
 	<div class="custom-row">
-		<?php echo $form->labelEx($modelRoom,'roomId',array('label'=>'Room Name')); ?>
+		<?php echo $form->labelEx($modelRoom,'roomId',array('label'=>Yii::t('viewst','Room Name'))); ?>
 		<?php echo $form->dropDownList($modelRoom,'roomId',$this->actionRoomOptions($model->pduId),
 			array(
-				'empty'=>'-- Select an option to filter --',
+				'empty'=>Yii::t('viewst','- Choose an option -'),
 				'ajax'=>array(
 					'type'=>'POST',
 					'url'=>$this->createUrl('rowOptions'),
@@ -38,11 +38,11 @@
 	</div>
 	
 	<div class="custom-row">
-		<?php echo $form->labelEx($modelRow,'rowId',array('label'=>'Row Name')); ?>
+		<?php echo $form->labelEx($modelRow,'rowId',array('label'=>Yii::t('viewst','Row Name'))); ?>
 		<?php //echo $form->dropDownList($modelRow,'rowId',
 				echo CHtml::dropDownList('rowId','',array(), //MAC: this replacces the form field dropdownlist an insert a plain html drop down list
 			array(
-				'empty'=>'-- Select an option to filter --',
+				'empty'=>Yii::t('viewst','- Choose an option -'),
 				'ajax'=>array(
 					'type'=>'POST',
 					'url'=>$this->createUrl('rackOptions'),
@@ -53,11 +53,11 @@
 	</div>
 	
 	<div class="custom-row">
-		<?php echo $form->labelEx($modelRack,'rackId',array('label'=>'Rack Name')); ?>
+		<?php echo $form->labelEx($modelRack,'rackId',array('label'=>Yii::t('viewst','Rack Name'))); ?>
 		<?php //echo $form->dropDownList($modelRack,'rackName',
 				echo CHtml::dropDownList('rackId','',array(), //MAC: this replacces the form field dropdownlist an insert a plain html drop down list
 			array(
-				'empty'=>'-- Select an option to filter --',
+				'empty'=>Yii::t('viewst','- Choose an option -'),
 				'ajax'=>array(
 					'type'=>'POST',
 					'url'=>$this->createUrl('objectOptions'),
@@ -71,19 +71,19 @@
 	<div>
 	<div class="custom-row">
 		<?php echo $form->labelEx($model,'objectId'); ?>
-		<?php echo $form->dropDownList($model,'objectId',array('empty'=>'-- Select an Object --')); ?>
+		<?php echo $form->dropDownList($model,'objectId',array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'objectId'); ?>
 	</div>
 
 	<div class="custom-row">
 		<?php echo $form->labelEx($model,'pduCircuitBus'); ?>
-		<?php echo $form->dropDownList($model,'pduCircuitBus',array('empty'=>'-- Select an option --', 'A'=>'Bus A', 'B'=>'Bus B')); ?>
+		<?php echo $form->dropDownList($model,'pduCircuitBus',array('empty'=>Yii::t('viewst','- Choose an option -'), 'A'=>Yii::t('viewst','Bus A'), 'B'=>Yii::t('viewst','Bus B'))); ?>
 		<?php echo $form->error($model,'pduCircuitBus'); ?>
 	</div>
 
 	<div class="custom-row">
 		<?php echo $form->labelEx($model,'pduCircuitNumber'); ?>
-		<?php echo $form->dropDownList($model,'pduCircuitNumber',$this->getAvailableCircuits($model->pduId),array('empty'=>'-- Select an option --')); ?>
+		<?php echo $form->dropDownList($model,'pduCircuitNumber',$this->getAvailableCircuits($model->pduId),array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'pduCircuitNumber'); ?>
 	</div>
 	</div>
@@ -91,13 +91,13 @@
 	<div>
 	<div class="custom-row">
 		<?php echo $form->labelEx($model,'breakerRate'); ?>
-		<?php echo $form->dropDownList($model,'breakerRate',$this->getBreakerRateOptions(),array('empty'=>'-- Select an option --')); ?>
+		<?php echo $form->dropDownList($model,'breakerRate',$this->getBreakerRateOptions(),array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'breakerRate'); ?>
 	</div>
 	
 	<div class="custom-row">
 		<?php echo $form->labelEx($model,'breakerState'); ?>
-		<?php echo $form->dropDownList($model,'breakerState',array('empty'=>'-- Select an option --', '0'=>'OFF', '1'=>'ON')); ?>
+		<?php echo $form->dropDownList($model,'breakerState',array('empty'=>Yii::t('viewst','- Choose an option -'), '0'=>'OFF', '1'=>'ON')); ?>
 		<?php echo $form->error($model,'breakerState'); ?>
 	</div>
 	
@@ -110,7 +110,7 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('viewst','Create') : Yii::t('viewst','Save'), array('class'=>'btn')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

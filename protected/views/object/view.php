@@ -11,19 +11,18 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Back To Rack', 'url'=>array('rack/view','id'=>$model->rackSpace->rackId)),
-	array('label'=>'Update Object', 'url'=>array('update', 'id'=>$model->objectId)),
-	array('label'=>'Delete Object', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->objectId),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Other Action', 'url'=>'#'),
+	array('label'=>Yii::t('viewst','Back To Rack'), 'url'=>array('rack/view','id'=>$model->rackSpace->rackId)),
+	array('label'=>Yii::t('viewst','Update Object'), 'url'=>array('update', 'id'=>$model->objectId)),
+	array('label'=>Yii::t('viewst','Delete Object'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->objectId),'confirm'=>Yii::t('viewst','Are you sure you want to delete this item?'),'params'=> array('YII_CSRF_TOKEN' => Yii::app()->request->csrfToken))),
+	array('label'=>Yii::t('viewst','Other Action'), 'url'=>'#'),
 );
 ?>
 
-<h1>View Object #<?php echo $model->objectName; ?></h1>
+<h1><?php echo Yii::t('viewst','View Object # '); ?><?php echo $model->objectName; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		//'objectId',
 		array(
 			'name'=>'platformId',
 			'value'=>$model->platform->platformName,
@@ -31,11 +30,5 @@ $this->menu=array(
 		'objectName',
 		'objectAlias',
 		'objectDescription',
-		//'createTime',
-		//'createUserId',
-		//'updateTime',
-		//'updateUserId',
-		//'Status',
-		//'Flag',
 	),
 )); ?>

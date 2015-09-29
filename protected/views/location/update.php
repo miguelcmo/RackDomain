@@ -3,20 +3,15 @@
 /* @var $model Location */
 
 $this->breadcrumbs=array(
-	//'Location'=>array('index'),
 	$model->locationName=>array('view','id'=>$model->locationId),
-	'Update',
+	Yii::t('viewst','Update'),
 );
 
 $this->menu=array(
-	array('label'=>'Back To Location', 'url'=>array('view', 'id'=>$model->locationId)),
-	//array('label'=>'List Location', 'url'=>array('index')),
-	//array('label'=>'Create Location', 'url'=>array('create')),
-	//array('label'=>'View Location', 'url'=>array('view', 'id'=>$model->locationId)),
-	//array('label'=>'Manage Location', 'url'=>array('admin')),
+	array('label'=>Yii::t('viewst','Back To Location'), 'url'=>array('view', 'id'=>$model->locationId)),
 );
 ?>
 
-<h1>Update Location <?php echo $model->locationName; ?></h1>
+<h1><?php echo Yii::t('viewst','Update Location '); ?><?php echo $model->locationName; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

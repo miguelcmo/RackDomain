@@ -51,6 +51,14 @@ class RoomController extends Controller
 			),
 		);
 	} */
+	
+	
+	public function setLocationId($id)//$id del controlador
+	{
+		$model = Room::model()->findByPk($id);
+		$lid = $model->location->locationId;
+		Yii::app()->user->setState('lid',$lid);
+	}
 
 	/**
 	 * Displays a particular model.
@@ -58,6 +66,8 @@ class RoomController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$this->setLocationId($id);
+		
 		$rowDataProvider=new CActiveDataProvider('Row', array(
 			'criteria'=>array(
 				'condition'=>'roomId=:roomId',
@@ -116,6 +126,8 @@ class RoomController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		$this->setLocationId($id);
+		
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
@@ -140,6 +152,8 @@ class RoomController extends Controller
 	 */
 	public function actionDelete($id,$lid)
 	{
+		$this->setLocationId($id);
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -192,7 +206,7 @@ class RoomController extends Controller
 	{
 		$model=Room::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,Yii::t('controllerstranslation','The requested page does not exist.'));
 		return $model;
 	}
 
@@ -222,7 +236,7 @@ class RoomController extends Controller
 			$this->_location=Location::model()->findByPk($id);
 			if($this->_location===null)
 			{
-				throw new CHttpException(404,'The requested Location does not exist.');
+				throw new CHttpException(404,Yii::t('controllerstranslation','The requested Location does not exist.'));
 			}
 		}
 		
@@ -238,9 +252,16 @@ class RoomController extends Controller
 	{
 		//set the sds identifier based on GET input request variables
 		if(isset($_GET['lid']))
+		{
 			$this->loadLocation($_GET['lid']);
-		else throw new CHttpException(403,'Must specify a Location before performing this action.');
+		}
+		else {
+			throw new CHttpException(403,Yii::t('controllerstranslation','Must specify a Location before performing this action.'));
+		}
 		
+		$model = Location::model()->findByPk($this->_location->locationId);
+		$lid = $model->locationId;
+		Yii::app()->user->setState('lid',$lid);
 		//complete the running of other filters and execute the requested action
 		$filterChain->run();
 	}

@@ -20,14 +20,6 @@
 	-->
 	
 	<?php echo $form->errorSummary($model); ?>
-
-	<!--
-	<div class="row">
-		<?php //echo $form->labelEx($model,'roomId'); ?>
-		<?php //echo $form->textField($model,'roomId'); ?>
-		<?php //echo $form->error($model,'roomId'); ?>
-	</div>
-	-->
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'rowName'); ?>
@@ -41,46 +33,8 @@
 		<?php echo $form->error($model,'rowDescription'); ?>
 	</div>
 
-	<!--
-	<div class="row">
-		<?php //echo $form->labelEx($model,'createTime'); ?>
-		<?php //echo $form->textField($model,'createTime'); ?>
-		<?php //echo $form->error($model,'createTime'); ?>
-	</div>
-
-	<div class="row">
-		<?php //echo $form->labelEx($model,'createUserId'); ?>
-		<?php //echo $form->textField($model,'createUserId'); ?>
-		<?php //echo $form->error($model,'createUserId'); ?>
-	</div>
-
-	<div class="row">
-		<?php //echo $form->labelEx($model,'uodateTime'); ?>
-		<?php //echo $form->textField($model,'uodateTime'); ?>
-		<?php //echo $form->error($model,'uodateTime'); ?>
-	</div>
-
-	<div class="row">
-		<?php //echo $form->labelEx($model,'updateUserId'); ?>
-		<?php //echo $form->textField($model,'updateUserId'); ?>
-		<?php //echo $form->error($model,'updateUserId'); ?>
-	</div>
-
-	<div class="row">
-		<?php //echo $form->labelEx($model,'Status'); ?>
-		<?php //echo $form->textField($model,'Status'); ?>
-		<?php //echo $form->error($model,'Status'); ?>
-	</div>
-
-	<div class="row">
-		<?php //echo $form->labelEx($model,'Flag'); ?>
-		<?php //echo $form->textField($model,'Flag'); ?>
-		<?php //echo $form->error($model,'Flag'); ?>
-	</div>
-	-->
-
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('viewst','Create') : Yii::t('viewst','Save'), array('class'=>'btn')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

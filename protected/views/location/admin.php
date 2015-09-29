@@ -3,13 +3,13 @@
 /* @var $model Location */
 
 $this->breadcrumbs=array(
-	'Locations'=>array('index'),
-	'Manage',
+	Yii::t('viewst','Locations')=>array('index'),
+	Yii::t('viewst','Manage'),
 );
 
 $this->menu=array(
-	array('label'=>'Back To Locations', 'url'=>array('index')),
-	array('label'=>'Create Location', 'url'=>array('create')),
+	array('label'=>Yii::t('viewst','Back To Locations'), 'url'=>array('index')),
+	array('label'=>Yii::t('viewst','Create Location'), 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,14 +26,11 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Locations</h1>
+<h1><?php echo Yii::t('viewst','Manage Locations'); ?></h1>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
+<p><?php echo Yii::t('viewst','You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.'); ?></p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<?php echo CHtml::link(Yii::t('viewst','Advanced Search'),'#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -43,37 +40,18 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'location-grid',
 	'itemsCssClass'=>'table table-striped',
-	'dataProvider'=>$model->search(Yii::app()->user->id),
+	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		//'locationId',
 		array(
-			'name'=>'cityId',
+			//'name'=>'city.cityName',
+			//'filter'=>CHtml::activeTextField($model,'city_search'),
+			'name'=>'city_name',
 			'value'=>'$data->city->cityName',
 		),
-		/*
-		array(
-			'name'=>'subdivisionId',
-			'value'=>'$data->subdivision->subdivisionName',
-		),
-		*/
 		'locationName',
 		'locationAddress',
 		'locationNeighborhood',
-		/*
-		'locationType',
-		'locationStatus',
-		'locationManager',
-		'locationOperator'
-		'locationLongitude',
-		'locationLatitude',
-		'createTime',
-		'createUserId',
-		'updateTime',
-		'updateUserId',
-		'Status',
-		'Flag',
-		*/
 		array(
 			'class'=>'CButtonColumn',
 		),

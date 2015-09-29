@@ -52,6 +52,8 @@ class LocationController extends Controller
 	 */
 	public function actionView($id)
 	{	
+		Yii::app()->user->setState('lid',$id);
+		
 		$roomDataProvider=new CActiveDataProvider('Room', array(
 			'criteria'=>array(
 				'condition'=>'locationId=:locationId',
@@ -118,6 +120,8 @@ class LocationController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		Yii::app()->user->setState('lid',$id);
+		
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
@@ -150,6 +154,8 @@ class LocationController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		Yii::app()->user->setState('lid',$id);
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -189,6 +195,16 @@ class LocationController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		
+		$criteria = new CDbCriteria();
+		$criteria->alias = 'tbl_location';
+		$criteria->join = 'INNER JOIN tbl_location_user_assignment ON tbl_location_user_assignment.locationId = tbl_location.locationId';
+		$criteria->condition = 'tbl_location_user_assignment.userId=:userId';
+		$criteria->params = array(':userId'=>Yii::app()->user->id);
+		$dataProvider = new CActiveDataProvider('Location', array(
+			'criteria'=>$criteria,
+		));
+		
 		$model=new Location('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Location']))
@@ -196,6 +212,7 @@ class LocationController extends Controller
 
 		$this->render('admin',array(
 			'model'=>$model,
+			'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -210,7 +227,7 @@ class LocationController extends Controller
 	{
 		$model=Location::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,Yii::t('controllerstranslation','The requested page does not exist.'));
 		return $model;
 	}
 
@@ -301,11 +318,13 @@ class LocationController extends Controller
 	 */
 	public function actionAdduser($lid)
 	{
+		//if(Yii::app()->user->checkAccess('Location.Adduser'))
+		//{
 		$location = $this->loadModel($lid);
 		// check if the current user have access to actionAddUser prevents the access from direct URL injection
 		if(!Yii::app()->user->checkAccess('addUserToLocation', array('location'=>$location)))
 		{
-			throw new CHttpException(403, 'You are not authorized to perform this action.');
+			throw new CHttpException(403, Yii::t('controllerstranslation','You are not authorized to perform this action.'));
 		}
 
 		$form = new LocationUserForm;
@@ -319,17 +338,19 @@ class LocationController extends Controller
 			{
 				if($form->assign())
 				{
-					Yii::app()->user->setFlash('success', $form->username . " has been added to the project." );
+					Yii::app()->user->setFlash('success', $form->username .Yii::t('controllerstranslation',' has been added to the Location.'));
 					//reset the form for another user to be associated if desired
 					$form->unsetAttributes();
 					$form->clearErrors();
 				}
 			}
 		}
-		 
+		//}//end if checkAccess
+		
 		//The CActiveRecord method with relations does not return the role data, by this reason
 		// is needed to obtain thye data from a raw query to the database and convert it into an Data Provider type
 		// using CArrayDataProvider
+		/*
 		$rawData = Yii::app()->db->createCommand()
 			->select('tbl_users.id, tbl_users.username, tbl_location_user_assignment.role')
 			->from('tbl_users')
@@ -345,6 +366,11 @@ class LocationController extends Controller
 				),
 			),
 		));
+		*/
+		$criteria = new CDbCriteria();
+		$criteria->condition = 'locationId=:locationId';
+		$criteria->params = array(':locationId'=>$lid);
+		$locationUsers = new CActiveDataProvider('LocationUserAssignment',array('criteria'=>$criteria));
 		
 		$form->location = $location;
 		
@@ -360,5 +386,22 @@ class LocationController extends Controller
 		$this->render('map', array(
 			'model'=>$model,
 		));
+	}
+	
+	public function actionRemoveUser($lid,$id)
+	{
+		//$criteria = new CDbCriteria();
+		//$criteria->condition = 'locationId=:locationId AND userId=:userId';
+		//$criteria->params = array(':locationId'=>$lid,':userId'=>$id);
+		$model = LocationUserAssignment::model()->findByAttributes(array('locationId'=>$lid,'userId'=>$id));
+		if($model->role=='Coordinator')
+		{
+			Yii::app()->user->setFlash('error',Yii::t('viewst','You need at least one User as Coordinator in this Location'));
+		} else {
+			$model->delete();
+		}
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('location/addUser', 'lid'=>$lid));
+		
 	}
 }

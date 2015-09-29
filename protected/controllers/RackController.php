@@ -57,6 +57,14 @@ class RackController extends Controller
 			),
 		);
 	} */
+	
+	
+	public function setLocationId($id)//$id del controlador
+	{
+		$model = Rack::model()->findByPk($id);
+		$lid = $model->row->room->location->locationId;
+		Yii::app()->user->setState('lid',$lid);
+	}
 
 	/**
 	 * Displays a particular model.
@@ -64,6 +72,8 @@ class RackController extends Controller
 	 */
 	public function actionView($id)//$id is the rackId
 	{	
+		$this->setLocationId($id);
+	
 		$rackSpaceView = Yii::app()->db->createCommand()
 			->select('tbl_rack_space.objectId, tbl_rack_space.rackId, tbl_rack_space.initialRU, tbl_object.objectName, tbl_rack_space.endRU, tbl_platform.platformImagePath, tbl_platform.platformRackUnits')
 			->from('tbl_rack_space')
@@ -128,6 +138,8 @@ class RackController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		$this->setLocationId($id);
+		
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
@@ -152,6 +164,8 @@ class RackController extends Controller
 	 */
 	public function actionDelete($id,$rid)
 	{
+		$this->setLocationId($id);
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -239,7 +253,7 @@ class RackController extends Controller
 	{
 		$model=Rack::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,Yii::t('controllerstranslation','The requested page does not exist.'));
 		return $model;
 	}
 
@@ -268,9 +282,10 @@ class RackController extends Controller
 			$this->_row=Row::model()->findByPk($rowId);
 			if($this->_row===null)
 			{
-				throw new CHttpException(404, 'The requested row does not exist.');
+				throw new CHttpException(404, Yii::t('controllerstranslation','The requested row does not exist.'));
 			}
 		}
+		
 		return $this->_row;
 	}
 	
@@ -287,9 +302,13 @@ class RackController extends Controller
 			$this->loadRow($_GET['rid']);
 			$this->getAvailableRackCount($_GET['rid']);
 		}
-		else 
-			throw new CHttpException(403, 'Must specify a row before performing this action.');
+		else {
+			throw new CHttpException(403, Yii::t('controllerstranslation','Must specify a row before performing this action.'));
+		}
 		
+		$model = Row::model()->findByPk($this->_row->rowId);
+		$lid = $model->room->location->locationId;
+		Yii::app()->user->setState('lid',$lid);
 		//complete the running of the filters and execute the requested action
 		$filterChain->run();
 	}	

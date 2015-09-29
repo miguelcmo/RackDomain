@@ -3,8 +3,8 @@ $this->breadcrumbs=array(
 	UserModule::t("Users"),
 );
 $this->menu=array(
-	array('label'=>'Manage User', 'url'=>array('/user/admin'), 'visible'=>UserModule::isAdmin()),
-	array('label'=>'Manage Profile Field', 'url'=>array('profileField/admin'), 'visible'=>UserModule::isAdmin()),
+	array('label'=>UserModule::t('Manage User'), 'url'=>array('/user/admin'), 'visible'=>UserModule::isAdmin()),
+	array('label'=>UserModule::t('Manage Profile Field'), 'url'=>array('profileField/admin'), 'visible'=>UserModule::isAdmin()),
 );
 ?>
 

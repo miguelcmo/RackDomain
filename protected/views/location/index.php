@@ -3,26 +3,18 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Locations',
+	Yii::t('viewst','Locations'),
 );
 
 $this->menu=array(
-	array('label'=>'Create Location', 'url'=>array('create')),
-	array('label'=>'Manage Location', 'url'=>array('admin')),
+	array('label'=>Yii::t('viewst','Create Location'), 'url'=>array('create')),
+	//array('label'=>Yii::t('viewst','Manage Location'), 'url'=>array('admin')),
 );
 ?>
 
-<h1>Locations</h1>
+<h1><?php echo Yii::t('viewst','Locations'); ?></h1>
 
 <?php 
-	//print_r(Yii::app()->getModule('user'));
-	//$location = $this->loadModel(127);
-	//print_r(Yii::app()->getModule('user')->user()->id);
-	//print_r(Yii::app()->getModule('user')->checkAccess('addUserToLocation', array('location'=>$location)));
-	//var_dump(Yii::app()->getModule('user')->isAdmin());
-	//var_dump(Yii::app()->getModule('user')->getAdmins());
-	//var_dump($dataProvider);
-	
 $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_viewown',

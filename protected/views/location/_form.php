@@ -11,7 +11,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note"><?php echo Yii::t('viewst','Fields with <span class="required">*</span> are required.'); ?></p>
 
 	<?php echo $form->errorSummary($model); ?>
 	
@@ -20,7 +20,7 @@
 		<?php echo $form->labelEx($model,'departmentId'); ?>
 		<?php echo $form->dropDownList($model,'departmentId',$this->actionDepartmentOptions(),
 			array(
-				'empty'=>'-- Select a department --',
+				'empty'=>Yii::t('viewst','- Choose an option -'),
 				'ajax'=>array(
 					'type'=>'POST',
 					'url'=>$this->createUrl('cityOptions'),
@@ -33,7 +33,7 @@
 	
 	<div class="custom-row">
 		<?php echo $form->labelEx($model,'cityId'); ?>
-		<?php echo $form->dropDownList($model,'cityId',array('empty'=>'-- Select a city --')); ?>
+		<?php echo $form->dropDownList($model,'cityId',array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'cityId'); ?>
 	</div>
 	</div>
@@ -43,7 +43,7 @@
 		<?php echo $form->labelEx($model,'divisionId'); ?>
 		<?php echo $form->dropDownList($model,'divisionId',$this->actionDivisionOptions(),
 			array(
-				'empty'=>'-- Select a division --',
+				'empty'=>Yii::t('viewst','- Choose an option -'),
 				'ajax'=>array(
 					'type'=>'POST',
 					'url'=>$this->createUrl('subdivisionOptions'),
@@ -56,7 +56,7 @@
 	
 	<div class="custom-row">
 		<?php echo $form->labelEx($model,'subdivisionId'); ?>
-		<?php echo $form->dropDownList($model,'subdivisionId',array('empty'=>'-- Select a subdivision --')); ?>
+		<?php echo $form->dropDownList($model,'subdivisionId',array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'subdivisionId'); ?>
 	</div>
 	</div>
@@ -80,31 +80,17 @@
 		<?php echo $form->error($model,'locationNeighborhood'); ?>
 	</div>
 	</div>
-	
-	<?php /*
-	<div class="row">
-		<?php echo $form->labelEx($model,'locationDescriptionNotes'); ?>
-		<?php echo $form->textField($model,'locationDescriptionNotes',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'locationDescriptionNotes'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'locationManager'); ?>
-		<?php echo $form->textField($model,'locationManager'); ?>
-		<?php echo $form->error($model,'locationManager'); ?>
-	</div>
-	*/ ?>
 
 	<div style="float:left;">
 	<div class="custom-row">
 		<?php echo $form->labelEx($model,'locationType'); ?>
-		<?php echo $form->dropDownList($model,'locationType', $this->getLocationTypeOptions(), array('empty'=>'-- Select an option --')); ?>
+		<?php echo $form->dropDownList($model,'locationType', $this->getLocationTypeOptions(), array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'locationType'); ?>
 	</div>
 
 	<div class="custom-row">
 		<?php echo $form->labelEx($model,'locationStatus'); ?>
-		<?php echo $form->dropDownList($model,'locationStatus', $this->getLocationStatusOptions(), array('empty'=>'-- Select an option--')); ?>
+		<?php echo $form->dropDownList($model,'locationStatus', $this->getLocationStatusOptions(), array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'locationStatus'); ?>
 	</div>
 	</div>
@@ -123,22 +109,8 @@
 	</div>
 	</div>
 
-	<?php /*
-	<div class="row">
-		<?php echo $form->labelEx($model,'Status'); ?>
-		<?php echo $form->textField($model,'Status'); ?>
-		<?php echo $form->error($model,'Status'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Flag'); ?>
-		<?php echo $form->textField($model,'Flag'); ?>
-		<?php echo $form->error($model,'Flag'); ?>
-	</div>
-	*/ ?>
-
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('viewst','Create') : Yii::t('viewst','Save'), array('class'=>'btn')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -38,6 +38,8 @@
  */
 class Location extends InfraActiveRecord
 {
+	public $city_name;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -72,7 +74,7 @@ class Location extends InfraActiveRecord
 			//array('createTime, updateTime', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('locationId, departmentId, cityId, divisionId, subdivisionId, locationName, locationAddress, locationNeighborhood, locationType, locationStatus, locationManager, locationLongitude, locationLatitude, createTime, createUserId, updateTime, updateUserId, Status, Flag', 'safe', 'on'=>'search'),
+			array('locationId, departmentId, cityId, divisionId, subdivisionId, locationName, locationAddress, locationNeighborhood, locationType, locationStatus, locationManager, locationLongitude, locationLatitude, createTime, createUserId, updateTime, updateUserId, Status, Flag, city_name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -121,6 +123,7 @@ class Location extends InfraActiveRecord
 			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
 			'Status' => Yii::t('modelstranslation', 'Status'),
 			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'city_name' => Yii::t('modelstranslation', 'City Name'),
 		);
 	}
 
@@ -128,7 +131,61 @@ class Location extends InfraActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search($userId)
+	public function search()
+	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
+		$criteria=new CDbCriteria;
+		
+		$criteria->with=array('city');
+
+		$criteria->compare('locationId',$this->locationId);
+		$criteria->compare('departmentId',$this->departmentId);
+		$criteria->compare('city.cityName',$this->city_name,true);
+		$criteria->compare('divisionId',$this->divisionId);
+		$criteria->compare('subdivisionId',$this->subdivisionId);
+		$criteria->compare('locationName',$this->locationName,true);
+		$criteria->compare('locationAddress',$this->locationAddress,true);
+		$criteria->compare('locationNeighborhood',$this->locationNeighborhood,true);
+		$criteria->compare('locationType',$this->locationType);
+		$criteria->compare('locationStatus',$this->locationStatus);
+		$criteria->compare('locationManager',$this->locationManager);
+		$criteria->compare('locationOperator',$this->locationOperator);
+		$criteria->compare('locationLongitude',$this->locationLongitude,true);
+		$criteria->compare('locationLatitude',$this->locationLatitude,true);
+		$criteria->compare('createTime',$this->createTime,true);
+		$criteria->compare('createUserId',$this->createUserId);
+		$criteria->compare('updateTime',$this->updateTime,true);
+		$criteria->compare('updateUserId',$this->updateUserId);
+		$criteria->compare('Status',$this->Status);
+		$criteria->compare('Flag',$this->Flag);
+		
+		//$criteria->alias = 'tbl_location';
+		//$criteria->with = array('users');
+		//$criteria->join = 'INNER JOIN tbl_location_user_assignment ON tbl_location_user_assignment.locationId = tbl_location.locationId';
+		//$criteria->condition = 'tbl_location_user_assignment.userId=:userId';
+		//$criteria->params = array(':userId'=>Yii::app()->user->id);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+			'sort'=>array(
+				'attributes'=>array(
+					'city_name'=>array(
+						'asc'=>'city.cityName',
+						'desc'=>'city.cityName DESC',
+					),
+					'*',
+				),
+			),
+		));
+	}
+	
+	/**
+	 * Retrieves a list of models based on the current search/filter conditions.
+	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+	 */
+	public function searchOwn($userId)
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
@@ -156,8 +213,10 @@ class Location extends InfraActiveRecord
 		$criteria->compare('Status',$this->Status);
 		$criteria->compare('Flag',$this->Flag);
 		
-		$criteria->alias = 'tbl_location';
 		$criteria->join = 'INNER JOIN tbl_location_user_assignment ON tbl_location_user_assignment.locationId = tbl_location.locationId';
+		$criteria->alias = 'tbl_location';
+		$criteria->with = 'users';
+		
 		$criteria->condition = 'tbl_location_user_assignment.userId=:userId';
 		$criteria->params = array(':userId'=>$userId);
 
@@ -173,9 +232,9 @@ class Location extends InfraActiveRecord
 	{
 		$command = Yii::app()->db->createCommand();
 		$command->insert('tbl_location_user_assignment', array(
-			'role'=>$role,
-			'userId'=>$userId,
 			'locationId'=>$this->locationId,
+			'userId'=>$userId,
+			'role'=>$role,
 		));
 	}
 	
@@ -221,6 +280,18 @@ class Location extends InfraActiveRecord
 		$command = Yii::App()->db->createCommand($sql);
 		$command->bindValue(":locationId", $this->locationId, PDO::PARAM_INT);
 		$command->bindValue(":userId", $user->id, PDO::PARAM_INT);
+		return $command->execute()==1;
+	}
+	
+	/**
+	 * Determines whether or not a user is already part of a location for CheckAccess Purposes
+	 */
+	public function isUserOnLocation($userId, $locationId)
+	{
+		$sql = "SELECT userId FROM tbl_location_user_assignment WHERE locationId=:locationId AND userId=:userId";
+		$command = Yii::App()->db->createCommand($sql);
+		$command->bindValue(":locationId", $locationId, PDO::PARAM_INT);
+		$command->bindValue(":userId", $userId, PDO::PARAM_INT);
 		return $command->execute()==1;
 	}
 	

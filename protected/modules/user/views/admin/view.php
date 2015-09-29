@@ -4,12 +4,12 @@ $this->breadcrumbs=array(
 	$model->username,
 );
 $this->menu=array(
-	array('label'=>'Create User', 'url'=>array('create')),
-	array('label'=>'Update User', 'url'=>array('update','id'=>$model->id)),
-	array('label'=>'Delete User', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure to delete this item?')),
-	array('label'=>'List User', 'url'=>array('/user')),
-	array('label'=>'Manage User', 'url'=>array('admin')),
-	array('label'=>'Manage Profile Field', 'url'=>array('profileField/admin')),
+	array('label'=>UserModule::t('Create User'), 'url'=>array('create')),
+	array('label'=>UserModule::t('Update User'), 'url'=>array('update','id'=>$model->id)),
+	array('label'=>UserModule::t('Delete User'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure to delete this item?')),
+	array('label'=>UserModule::t('List User'), 'url'=>array('/user')),
+	array('label'=>UserModule::t('Manage User'), 'url'=>array('admin')),
+	array('label'=>UserModule::t('Manage Profile Field'), 'url'=>array('profileField/admin')),
 );
 ?>
 
@@ -18,6 +18,7 @@ $this->menu=array(
 <?php 
 	$attributes = array(
 		//'id',
+		//UserModule::t('username'),
 		'username',
 	);
 	
@@ -53,7 +54,9 @@ $this->menu=array(
 			'name' => 'status',
 			'value' => User::itemAlias("UserStatus",$model->status),
 		)
+		
 	);
+	
 	
 	$this->widget('zii.widgets.CDetailView', array(
 		'itemCssClass'=>'table table-striped',

@@ -4,11 +4,11 @@ $this->breadcrumbs=array(
 	UserModule::t($model->title),
 );
 $this->menu=array(
-	array('label'=>'Manage User', 'url'=>array('/user/admin')),
-	array('label'=>'Manage Profile Field', 'url'=>array('admin')),
-	array('label'=>'Create Profile Field', 'url'=>array('create')),
-	array('label'=>'Update Profile Field', 'url'=>array('update','id'=>$model->id)),
-	array('label'=>'Delete Profile Field', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure to delete this item?')),
+	array('label'=>UserModule::t('Manage User'), 'url'=>array('/user/admin')),
+	array('label'=>UserModule::t('Manage Profile Field'), 'url'=>array('admin')),
+	array('label'=>UserModule::t('Create Profile Field'), 'url'=>array('create')),
+	array('label'=>UserModule::t('Update Profile Field'), 'url'=>array('update','id'=>$model->id)),
+	array('label'=>UserModule::t('Delete Profile Field'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure to delete this item?')),
 );
 ?>
 <h1><?php echo UserModule::t('View Profile Field #').$model->varname; ?></h1>

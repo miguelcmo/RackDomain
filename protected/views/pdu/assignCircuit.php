@@ -8,15 +8,15 @@ $this->breadcrumbs=array(
 	$model->room->location->locationName=>array('location/view', 'id'=>$model->room->location->locationId),
 	$model->room->roomName=>array('room/view', 'id'=>$model->room->roomId),
 	$model->pduName=>array('view', 'id'=>$model->pduId),
-	'Assign Circuits',
+	Yii::t('viewst','Assign Circuits'),
 );
 
 $this->menu=array(
-	array('label'=>'Back To PDU', 'url'=>array('view', 'id'=>$model->pduId)),
+	array('label'=>Yii::t('viewst','Back To Pdu'), 'url'=>array('view', 'id'=>$model->pduId)),
 );
 ?>
 
-<h1>Assign Circuits -> <?php echo $model->pduName; ?></h1>
+<h1><?php echo Yii::t('viewst','Assign Circuits -> '); ?><?php echo $model->pduName; ?></h1>
 
 <?php //var_dump($roomOptions); ?>
 
@@ -30,13 +30,13 @@ $this->menu=array(
 <?php //This part visualizes the circuits table in the bus A of an PDU ?>
 <table class="pduTable">
 	<tr>
-		<th colspan="4">Bus A</th>
+		<th colspan="4"><?php echo Yii::t('viewst','Bus A'); ?></th>
 	</tr>
 	<tr>
-		<th>#</th>
-		<th>Breaker Rate</th>
-		<th width="200px">Circuit Description</th>
-		<th>Breaker State</th>
+		<th><?php echo Yii::t('viewst','#'); ?></th>
+		<th><?php echo Yii::t('viewst','Breaker Rate'); ?></th>
+		<th width="200px"><?php echo Yii::t('viewst','Circuit Description'); ?></th>
+		<th><?php echo Yii::t('viewst','Breaker State'); ?></th>
 	</tr>
 	
 <?php foreach($circuitBusA as $value)
@@ -66,14 +66,14 @@ $this->menu=array(
 <?php //This part visualizes the circuits table in the bus B of an PDU ?>
 <table class="pduTable">
 	<tr>
-		<th colspan="4">Bus B</th>
+		<th colspan="4"><?php echo Yii::t('viewst','Bus B'); ?></th>
 	</tr>
 	
 	<tr>
-		<th>#</th>
-		<th>Breaker Rate</th>
-		<th width="200px">Circuit Description</th>
-		<th>Breaker State</th>
+		<th><?php echo Yii::t('viewst','#'); ?></th>
+		<th><?php echo Yii::t('viewst','Breaker Rate'); ?></th>
+		<th width="200px"><?php echo Yii::t('viewst','Circuit Description'); ?></th>
+		<th><?php echo Yii::t('viewst','Breaker State'); ?></th>
 	</tr>
 
 <?php foreach($circuitBusB as $value)

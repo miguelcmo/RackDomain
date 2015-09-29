@@ -7,7 +7,7 @@ return array(
 	'Register' => 'Registrar',
     'Login' => 'Inicio de Sesión',
     'Logout' => 'Cerrar sesión',
-    'username' => "Nombre de Usuario",
+    'username' => 'Nombre de Usuario',
     'username or email' => "Nombre de Usuario o Email",
     'password' => 'Contraseña',
     'Remember me next time' => 'Recordarme más tarde',
@@ -103,7 +103,7 @@ return array(
     'For all' => 'Para todos',
     'Only owner' => 'Solo propietario',
     'Hidden' => 'Oculto',
-	'Profile Fields' => 'El perfil de Campos',
+	'Profile Fields' => 'Campos de Perfil',
     'View Profile Field #' => 'Ver Campo de Perfil #',
     'Manage Profile Fields' => 'Administrar Campos de Perfil',
     'Create Profile Field' => 'Crear nuevo Campo de Perfil',
@@ -127,4 +127,5 @@ return array(
 	'Not visited' => 'No visitó',
 	'Mobile Number' => 'Numero de Celular',
 	'Change Password' => 'Cambiar Contraseña',
+	'My Profile'=>'Mi Perfil',
 );

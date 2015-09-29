@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Back To Location', 'url'=>array('location/view','id'=>$model->location->locationId)),
-	array('label'=>'Update Room', 'url'=>array('update', 'id'=>$model->roomId)),
-	array('label'=>'Delete Room', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->roomId,'lid'=>$model->location->locationId),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Create Row', 'url'=>array('row/create', 'rid'=>$model->roomId)),
-	array('label'=>'Create PDU', 'url'=>array('pdu/create', 'rid'=>$model->roomId)),
+	array('label'=>Yii::t('viewst','Back To Location'), 'url'=>array('location/view','id'=>$model->location->locationId)),
+	array('label'=>Yii::t('viewst','Update Room'), 'url'=>array('update', 'id'=>$model->roomId)),
+	array('label'=>Yii::t('viewst','Delete Room'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->roomId,'lid'=>$model->location->locationId),'confirm'=>Yii::t('viewst','Are you sure you want to delete this item?'),'params'=> array('YII_CSRF_TOKEN' => Yii::app()->request->csrfToken))),
+	array('label'=>Yii::t('viewst','Create Row'), 'url'=>array('row/create', 'rid'=>$model->roomId)),
+	array('label'=>Yii::t('viewst','Create PDU'), 'url'=>array('pdu/create', 'rid'=>$model->roomId)),
 );
 ?>
 
-<h1>View Room <?php echo $model->roomName; ?></h1>
+<h1><?php echo Yii::t('viewst','View Room '); ?><?php echo $model->roomName; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -34,7 +34,7 @@ $this->menu=array(
 )); ?>
 
 <br />
-<h1>Room Rows</h1>
+<h1><?php echo Yii::t('viewst','Room Rows'); ?></h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$rowDataProvider,
@@ -42,7 +42,7 @@ $this->menu=array(
 )); ?>
 
 <br />
-<h1>Room PDUs</h1>
+<h1><?php echo Yii::t('viewst','Room PDUs'); ?></h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$pduDataProvider,

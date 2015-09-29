@@ -11,10 +11,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Back To Row', 'url'=>array('row/view', 'id'=>$model->rowId)),
-	array('label'=>'Update Rack', 'url'=>array('update', 'id'=>$model->rackId)),
-	array('label'=>'Delete Rack', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->rackId,'rid'=>$model->row->rowId),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Create Object', 'url'=>array('/object/create', 'rid'=>$model->rackId)),
+	array('label'=>Yii::t('viewst','Back To Row'), 'url'=>array('row/view', 'id'=>$model->rowId)),
+	array('label'=>Yii::t('viewst','Update Rack'), 'url'=>array('update', 'id'=>$model->rackId)),
+	array('label'=>Yii::t('viewst','Delete Rack'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->rackId,'rid'=>$model->row->rowId),'confirm'=>Yii::t('viewst','Are you sure you want to delete this item?'),'params'=> array('YII_CSRF_TOKEN' => Yii::app()->request->csrfToken))),
+	array('label'=>Yii::t('viewst','Create Object'), 'url'=>array('/object/create', 'rid'=>$model->rackId)),
 );
 ?>
 
@@ -35,10 +35,11 @@ if($freeSpace==0){
 ?>
 
 <div class="span6">
-<h1>View Rack # <?php echo $model->rackName; ?></h1>
-<h2>Rack Indicators</h2>
-<h4>Free Space</h4>
-<p>There are <?php echo (42-$usedRU);?> free rack units</p>
+<?php /* <h4>This rack is on location <?php echo Yii::app()->user->getState('lid'); ?></h4> */ ?>
+<h1><?php echo Yii::t('viewst','View Rack # '); ?><?php echo $model->rackName; ?></h1>
+<h2><?php echo Yii::t('viewst','Rack Indicators'); ?></h2>
+<h4><?php echo Yii::t('viewst','Free Space'); ?></h4>
+<p><?php Yii::t('viewst','There are '); ?><?php echo (42-$usedRU);?><?php echo Yii::t('viewst',' free rack units');?></p>
 <?php //var_dump($rackSpaceView); ?>
 <div class="progress progress-striped active" title="Total 42 Rack Units">
 	<div class="bar" title="<?php echo (42-$usedRU);?> free Rack Units" 
@@ -56,14 +57,14 @@ if($freeSpace==0){
 	"></div>
 </div>
 
-<h4>Installed Objects</h4>
-<p>There are <?php echo $devices; ?> objects installed, having <?php echo $usedRU?> rack units in use.</p>
+<h4><?php echo Yii::t('viewst','Installed Objects'); ?></h4>
+<p><?php echo Yii::t('viewst','There are '); ?><?php echo $devices; ?><?php echo Yii::t('viewst',' objects installed, having '); ?><?php echo $usedRU?><?php echo Yii::t('viewst',' rack units in use.'); ?></p>
 <table class="table table-hover" width="60%">
 	<thead>
 		<tr>
-			<th width="40%">Object Name</th>
-			<th width="40%">Object Attribute</th>
-			<th width="20%">Actions</th>
+			<th width="40%"><?php echo Yii::t('viewst','Object Name'); ?></th>
+			<th width="40%"><?php echo Yii::t('viewst','Object Attribute'); ?></th>
+			<th width="20%"><?php echo Yii::t('viewst','Actions'); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -77,7 +78,7 @@ if($freeSpace==0){
 				$update = CHtml::image('/RackDomain/assets/4ee46d47/gridview/update.png', 'update');
 				echo CHtml::link($update, array('/object/update', 'id'=>$value['objectId']));
 				$delete = CHtml::image('/RackDomain/assets/4ee46d47/gridview/delete.png', 'delete');
-				echo CHtml::link($delete, '#', array('submit'=>array('/object/delete','id'=>$value['objectId'],'rid'=>$value['rackId']),'confirm'=>'Are you sure you want to delete this item?','params'=> array('YII_CSRF_TOKEN' => Yii::app()->request->csrfToken)));
+				echo CHtml::link($delete, '#', array('submit'=>array('/object/delete','id'=>$value['objectId'],'rid'=>$value['rackId']),'confirm'=>Yii::t('viewst','Are you sure you want to delete this item?'),'params'=> array('YII_CSRF_TOKEN' => Yii::app()->request->csrfToken)));
 			?></td>
 		</tr>
 		<?php endforeach; ?>
@@ -95,7 +96,7 @@ if($freeSpace==0){
  foreach($rackSpaceView as $value)
  {
 	$ur=(($value['initialRU']-1)*13)+$model->rackType0->deviceTop;
-	$platformPicture = CHtml::image($value['platformImagePath'], 'Platform picture', array(
+	$platformPicture = CHtml::image($value['platformImagePath'], Yii::t('viewst','Platform picture'), array(
 		'class'=>'ru', 
 		'title'=>$value['objectName'],
 		'style'=>'left:'.$model->rackType0->deviceLeft.'px;top:'.$ur.'px',	

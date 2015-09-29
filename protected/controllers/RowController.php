@@ -53,6 +53,14 @@ class RowController extends Controller
 			),
 		);
 	} */
+	
+	public function setLocationId($id)//$id del controlador
+	{
+		$model = Row::model()->findByPk($id);
+		$lid = $model->room->location->locationId;
+		Yii::app()->user->setState('lid',$lid);
+	}
+	
 
 	/**
 	 * Displays a particular model.
@@ -60,6 +68,8 @@ class RowController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$this->setLocationId($id);
+		
 		$rackDataProvider=new CActiveDataProvider('Rack', array(
 			'criteria'=>array(
 				'select'=>'tbl_rack.rackId, tbl_rack.rackName, tbl_rack_type.thumbnailPath as rackThumb',
@@ -113,6 +123,8 @@ class RowController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		$this->setLocationId($id);
+		
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
@@ -137,6 +149,8 @@ class RowController extends Controller
 	 */
 	public function actionDelete($id,$rid)
 	{
+		$this->setLocationId($id);
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -181,7 +195,7 @@ class RowController extends Controller
 	{
 		$model=Row::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,Yii::t('controllerstranslation','The requested page does not exist.'));
 		return $model;
 	}
 
@@ -211,7 +225,7 @@ class RowController extends Controller
 			$this->_room=Room::model()->findByPk($roomId);
 			if($this->_room===null)
 			{
-				throw new CHttpException(404, 'The requested room does not exist.');
+				throw new CHttpException(404,Yii::t('controllerstranslation','The requested room does not exist.'));
 			}
 		}
 		return $this->_room;
@@ -230,9 +244,13 @@ class RowController extends Controller
 			$this->loadRoom($_GET['rid']);
 			//$this->getAvailableRowName($_GET['rid']);
 		}
-		else
-			throw new CHttpException(403, 'Must specify a room before performing this action.');
+		else {
+			throw new CHttpException(403, Yii::t('controllerstranslation','Must specify a room before performing this action.'));
+		}
 		
+		$model = Room::model()->findByPk($this->_room->roomId);
+		$lid = $model->location->locationId;
+		Yii::app()->user->setState('lid',$lid);
 		//complete the running of other filters and execute the requested action
 		$filterChain->run();
 	}

@@ -15,17 +15,9 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note"><?php Yii::t('viewst','Fields with <span class="required">*</span> are required.'); ?></p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<?php /*
-	<div class="row">
-		<?php echo $form->labelEx($model,'roomId'); ?>
-		<?php echo $form->textField($model,'roomId'); ?>
-		<?php echo $form->error($model,'roomId'); ?>
-	</div>
-	*/ ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'pduName'); ?>
@@ -47,50 +39,12 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'pduTypeId'); ?>
-		<?php echo $form->dropDownList($model,'pduTypeId', $this->getAvailablePduTypeOptions(), array('empty'=>'-- Select a PDU --')); ?>
+		<?php echo $form->dropDownList($model,'pduTypeId', $this->getAvailablePduTypeOptions(), array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'pduTypeId'); ?>
 	</div>
 
-	<?php /*
-	<div class="row">
-		<?php echo $form->labelEx($model,'createTime'); ?>
-		<?php echo $form->textField($model,'createTime'); ?>
-		<?php echo $form->error($model,'createTime'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'createUserId'); ?>
-		<?php echo $form->textField($model,'createUserId'); ?>
-		<?php echo $form->error($model,'createUserId'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'updateTime'); ?>
-		<?php echo $form->textField($model,'updateTime'); ?>
-		<?php echo $form->error($model,'updateTime'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'updateUserId'); ?>
-		<?php echo $form->textField($model,'updateUserId'); ?>
-		<?php echo $form->error($model,'updateUserId'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Status'); ?>
-		<?php echo $form->textField($model,'Status'); ?>
-		<?php echo $form->error($model,'Status'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Flag'); ?>
-		<?php echo $form->textField($model,'Flag'); ?>
-		<?php echo $form->error($model,'Flag'); ?>
-	</div>
-	*/ ?>
-
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('viewst','Create') : Yii::t('viewst','Save'), array('class'=>'btn')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

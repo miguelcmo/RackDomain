@@ -4,7 +4,7 @@ $this->breadcrumbs=array(
 	$model->username,
 );
 $this->menu=array(
-	array('label'=>'List User', 'url'=>array('index')),
+	array('label'=>UserModule::t('List User'), 'url'=>array('index')),
 );
 ?>
 <h1><?php echo UserModule::t('View User').' "'.$model->username.'"'; ?></h1>
@@ -35,7 +35,7 @@ $this->menu=array(
 			'value' => (($model->lastvisit)?date("d.m.Y H:i:s",$model->lastvisit):UserModule::t('Not visited')),
 		)
 	);
-			
+
 	$this->widget('zii.widgets.CDetailView', array(
 		'itemCssClass'=>'table table-striped',
 		'data'=>$model,

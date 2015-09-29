@@ -33,23 +33,4 @@
 	<?php echo CHtml::encode($data->createUserId); ?>
 	<br />
 
-	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('updateTime')); ?>:</b>
-	<?php echo CHtml::encode($data->updateTime); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('updateUserId')); ?>:</b>
-	<?php echo CHtml::encode($data->updateUserId); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Status')); ?>:</b>
-	<?php echo CHtml::encode($data->Status); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Flag')); ?>:</b>
-	<?php echo CHtml::encode($data->Flag); ?>
-	<br />
-
-	*/ ?>
-
 </div>

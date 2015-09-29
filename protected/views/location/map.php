@@ -3,13 +3,13 @@
 /* @var $model Location */
 
 $this->breadcrumbs=array(
-	'Locations'=>array('index'),
+	Yii::t('viewst','Locations')=>array('index'),
 	$model->locationName=>array('location/view', 'id'=>$model->locationId),
-	'Location Map',
+	Yii::t('viewst','Location Map'),
 );
 
 $this->menu=array(
-	array('label'=>'Back To Location', 'url'=>array('location/view','id'=>$model->locationId)),
+	array('label'=>Yii::t('viewst','Back To Location'), 'url'=>array('location/view','id'=>$model->locationId)),
 );
 ?>
 
@@ -29,12 +29,12 @@ $mapTypeControlOptions = array(
 );
 
  
-$gMap->mapTypeControlOptions= $mapTypeControlOptions;
+//$gMap->mapTypeControlOptions= $mapTypeControlOptions;
  
 $gMap->setCenter($model->locationLatitude, $model->locationLongitude);
  
 // Create GMapInfoWindows
-$info_window_a = new EGMapInfoWindow('<div>Take a snap with the street view icon at '.$model->locationName.'</div>');
+$info_window_a = new EGMapInfoWindow(Yii::t('viewst','<div>View a snapshot of ').$model->locationName.Yii::t('viewst',' with the street view icon.</div>'));
 $info_window_b = new EGMapInfoWindow('Hey! I am a marker with label!');
  
 $icon = new EGMapMarkerImage('images/racks/sds_pointer_icon.png');

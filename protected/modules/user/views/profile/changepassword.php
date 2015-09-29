@@ -4,12 +4,11 @@ $this->breadcrumbs=array(
 	UserModule::t("Change Password"),
 );
 $this->menu=array(
-	array('label'=>'Manage User', 'url'=>array('/user/admin'), 'visible'=>UserModule::isAdmin()),
-	array('label'=>'List User', 'url'=>array('/user'), 'visible'=>!UserModule::isAdmin()),
-	//array('label'=>'Profile', 'url'=>array('/user/profile')),
-	array('label'=>'Edit', 'url'=>array('edit')),
-	array('label'=>'Change Password', 'url'=>array('changepassword')),
-	array('label'=>'Logout', 'url'=>array('/user/logout')),
+	array('label'=>UserModule::t('Manage User'), 'url'=>array('/user/admin'), 'visible'=>UserModule::isAdmin()),
+	array('label'=>UserModule::t('List User'), 'url'=>array('/user'), 'visible'=>!UserModule::isAdmin()),
+	array('label'=>UserModule::t('Edit'), 'url'=>array('edit')),
+	array('label'=>UserModule::t('Change Password'), 'url'=>array('changepassword')),
+	array('label'=>UserModule::t('Logout'), 'url'=>array('/user/logout')),
 );
 ?>
 

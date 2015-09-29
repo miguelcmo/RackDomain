@@ -9,11 +9,11 @@
 			/*'type'=>'list',*/
 			'encodeLabel'=>false,
 			'items'=>array(
-				array('label'=>'<i class="icon icon-home"></i>  Dashboard ', 'url'=>array('/site/index'),'itemOptions'=>array('class'=>'')),
-				array('label'=>'<i class="icon icon-search"></i> About this App ', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'<i class="icon icon-file"></i> Documents ', 'url'=>'#'),
+				array('label'=>Yii::t('menutranslation','<i class="icon icon-home"></i>  Dashboard '), 'url'=>array('/site/index'),'itemOptions'=>array('class'=>'')),
+				array('label'=>Yii::t('menutranslation','<i class="icon icon-search"></i> About this App '), 'url'=>array('/site/page', 'view'=>'about')),
+				array('label'=>Yii::t('menutranslation','<i class="icon icon-file"></i> Documents '), 'url'=>'#'),
 				// Include the operations menu
-				array('label'=>'OPERATIONS','items'=>$this->menu),
+				array('label'=>Yii::t('menutranslation','OPERATIONS'),'items'=>$this->menu),
 			),
 			));?>
 		</div>

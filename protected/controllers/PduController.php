@@ -52,6 +52,13 @@ class PduController extends Controller
 		);
 	}
 	*/
+	
+	public function setLocationId($id)//$id del controlador
+	{
+		$model = Pdu::model()->findByPk($id);
+		$lid = $model->room->location->locationId;
+		Yii::app()->user->setState('lid',$lid);
+	}
 
 	/**
 	 * Displays a particular model.
@@ -59,6 +66,7 @@ class PduController extends Controller
 	 */
 	public function actionView($id)//this is pduId
 	{
+		$this->setLocationId($id);
 		//$pduTypeId = $this->loadModel($id)->pduTypeId;
 		//$pduCircuits = new PduCircuits::model()->findByPk($pduTypeId);
 		
@@ -117,6 +125,8 @@ class PduController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		$this->setLocationId($id);
+		
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
@@ -141,6 +151,8 @@ class PduController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$this->setLocationId($id);
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -237,7 +249,7 @@ class PduController extends Controller
 				if($modelPduCircuits->save())
 					$this->redirect(array('assignCircuit','id'=>$model->pduId));
 			} else
-				throw new CHttpException(409, 'The requested circuit is already in use, go back and select another circuit.');
+				throw new CHttpException(409, Yii::t('controllerstranslation','The requested circuit is already in use, go back and select another circuit.'));
 		}
 
 		$this->render('assignCircuit',array(
@@ -262,7 +274,7 @@ class PduController extends Controller
 	{
 		$model=Pdu::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,Yii::t('controllerstranslation','The requested page does not exist.'));
 		return $model;
 	}
 
@@ -292,7 +304,7 @@ class PduController extends Controller
 			$this->_room=Room::model()->findByPk($roomId);
 			if($this->_room===null)
 			{
-				throw new CHttpException(404, 'The requested room does not exits.');
+				throw new CHttpException(404, Yii::t('controllerstranslation','The requested room does not exits.'));
 			}
 		}
 		return $this->_room;
@@ -310,9 +322,13 @@ class PduController extends Controller
 		{
 			$this->loadRoom($_GET['rid']);
 		}
-		else
-			throw new CHttpException(403, 'Must specify a room before performing this action.');
+		else {
+			throw new CHttpException(403, Yii::t('controllerstranslation','Must specify a room before performing this action.'));
+		}
 		
+		$model = Room::model()->findByPk($this->_room->roomId);
+		$lid = $model->location->locationId;
+		Yii::app()->user->setState('lid',$lid);
 		//complete the running of the filters and execute the requested action
 		$filterChain->run();
 	}

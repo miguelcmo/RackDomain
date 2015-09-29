@@ -9,30 +9,30 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Back To Room', 'url'=>array('room/view', 'id'=>$model->roomId)),
-	array('label'=>'Update Pdu', 'url'=>array('update', 'id'=>$model->pduId)),
-	array('label'=>'Delete Pdu', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->pduId),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Assign Circuit to PDU', 'url'=>array('assignCircuit', 'id'=>$model->pduId)),
+	array('label'=>Yii::t('viewst','Back To Room'), 'url'=>array('room/view', 'id'=>$model->roomId)),
+	array('label'=>Yii::t('viewst','Update Pdu'), 'url'=>array('update', 'id'=>$model->pduId)),
+	array('label'=>Yii::t('viewst','Delete Pdu'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->pduId),'confirm'=>Yii::t('viewst','Are you sure you want to delete this item?'),'params'=> array('YII_CSRF_TOKEN' => Yii::app()->request->csrfToken))),
+	array('label'=>Yii::t('viewst','Assign Circuit to Pdu'), 'url'=>array('assignCircuit', 'id'=>$model->pduId)),
 );
 ?>
 
 <div class="span6">
 
-<h1>View Pdu -> <?php echo $model->pduName; ?></h1>
+<h1><?php echo Yii::t('viewst','View Pdu -> '); ?><?php echo $model->pduName; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		array(
 			'name'=>'roomId',
-			'value'=>isset($model->room)?CHtml::encode($model->room->roomName):'Unknown',
+			'value'=>isset($model->room)?CHtml::encode($model->room->roomName):Yii::t('viewst','unknown'),
 		),
 		'pduName',
 		'pduAlias',
 		'pduDescription',
 		array(
 			'name'=>'pduTypeId',
-			'value'=>isset($model->pduType)?CHtml::encode($model->pduType->pduTypeName):'Unknown',
+			'value'=>isset($model->pduType)?CHtml::encode($model->pduType->pduTypeName):Yii::t('viewst','unknown'),
 		),
 	),
 )); ?>
@@ -44,13 +44,13 @@ $installedPercent = ($installedCircuits*100)/($model->pduType->pduCircuits*2);
 $reservedPercent = ($reservedCircuits*100)/($model->pduType->pduCircuits*2);
 ?>
 
-<h2>PDU Indicators</h2>
+<h2><?php echo Yii::t('viewst','PDU Indicators'); ?></h2>
 
-<h4>PDU Load</h4>
+<h4><?php echo Yii::t('viewst','PDU Load'); ?></h4>
 <table width="100%">
 	<tr>
-		<th width="50%">Bus A</th>
-		<th width="50%">Bus B</th>
+		<th width="50%"><?php echo Yii::t('viewst','Bus A'); ?></th>
+		<th width="50%"><?php echo Yii::t('viewst','Bus B'); ?></th>
 	</tr>
 	<tr>
 		<td><p class="pduDisplay">124,5A</p></td>
@@ -58,8 +58,8 @@ $reservedPercent = ($reservedCircuits*100)/($model->pduType->pduCircuits*2);
 	</tr>
 </table>
 
-<h4>Free Circuits</h4>
-<p>Actually there are <?php echo $freeCircuits; ?> free circuits of <?php echo $model->pduType->pduCircuits*2; ?> available.</p>
+<h4><?php echo Yii::t('viewst','Free Circuits'); ?></h4>
+<p><?php echo Yii::t('viewst','There are '); ?><?php echo $freeCircuits; ?><?php echo Yii::t('viewst',' free circuits of '); ?><?php echo $model->pduType->pduCircuits*2; ?><?php echo Yii::t('viewst',' available.'); ?></p>
 	<div class="progress progress-striped active" title="Total <?php echo $model->pduType->pduCircuits*2;?>">
 		<div class="bar" title="<?php echo $freeCircuits;?> free circuits" 
 			style="width: <?php echo $freePercent; ?>%;
@@ -76,13 +76,13 @@ $reservedPercent = ($reservedCircuits*100)/($model->pduType->pduCircuits*2);
 			"></div> 
     </div>
 	
-<h4>Installed Circuits</h4>
-<p>There are <?php echo $installedCircuits; ?> installed circuits of <?php echo $model->pduType->pduCircuits*2; ?> available.</p>
+<h4><?php echo Yii::t('viewst','Installed Circuits'); ?></h4>
+<p><?php echo Yii::t('viewst','There are '); ?><?php echo $installedCircuits; ?><?php echo Yii::t('viewst',' installed circuits of '); ?><?php echo $model->pduType->pduCircuits*2; ?><?php echo Yii::t('viewst',' available.'); ?></p>
     <div class="progress progress-striped active" title="Total <?php echo $model->pduType->pduCircuits*2;?>">
       <div class="bar" title="<?php echo $installedCircuits;?> installed circuits" style="width: <?php echo $installedPercent; ?>%;"></div>
     </div>
-<h4>Reserved Circuits</h4>
-<p>There are <?php echo $reservedCircuits; ?> reserved circuits of <?php echo $model->pduType->pduCircuits*2; ?> available.</p>
+<h4><?php echo Yii::t('viewst','Reserved Circuits'); ?></h4>
+<p><?php echo Yii::t('viewst','There are '); ?><?php echo $reservedCircuits; ?><?php echo Yii::t('viewst',' reserved circuits of '); ?><?php echo $model->pduType->pduCircuits*2; ?><?php echo Yii::t('viewst',' available.'); ?></p>
     <div class="progress progress-striped active" title="Total <?php echo $model->pduType->pduCircuits*2;?>">
       <div class="bar" title="<?php echo $reservedCircuits;?> reserved circuits" style="width: <?php echo $reservedPercent; ?>%;"></div>
     </div>
@@ -95,7 +95,6 @@ $reservedPercent = ($reservedCircuits*100)/($model->pduType->pduCircuits*2);
 </div>
 
 <div class="span5">
-<?php //<img src="images/racks/pdu-300-amp-42-circuits.png" alt="PDU 300 Amp 42 circuits"> ?>
-<?php $pduImage=CHtml::image('images/racks/pdu-300-amp-42-circuits.png', 'PDU 300 Amp 42 circuits'); ?>
+<?php $pduImage=CHtml::image('images/racks/pdu-300-amp-42-circuits.png', Yii::t('viewst','PDU 300 Amp 42 circuits')); ?>
 <?php echo CHtml::link($pduImage, array('assignCircuit', 'id'=>$model->pduId)); ?>
 </div>

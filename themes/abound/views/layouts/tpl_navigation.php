@@ -46,26 +46,26 @@
                         array('label'=>'Typography', 'url'=>array('/site/page', 'view'=>'typography')),
                         array('label'=>'Gii generated', 'url'=>array('customer/index')),*/
 						
-						array('label'=>'Locations', 'url'=>array('/location/index'), 'visible'=>!Yii::app()->user->isGuest),
+						array('label'=>Yii::t('menutranslation','Locations'), 'url'=>array('/location/index'), 'visible'=>!Yii::app()->user->isGuest),
 						
-						array('label'=>'Requests', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
+						array('label'=>Yii::t('menutranslation','Requests'), 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
                         'visible'=>!Yii::app()->user->isGuest,
 						'items'=>array(
-                            array('label'=>'Civil', 'url'=>array('/requestCivil')),
-							array('label'=>'Fuel', 'url'=>array('/requestFuel')),
-							array('label'=>'HVAC', 'url'=>array('/requestHvac')),
-							array('label'=>'Power', 'url'=>array('/requestPower')),
-							array('label'=>'Setup Module', 'url'=>'#', 'visible'=>Yii::app()->getModule('user')->isAdmin()),
+                            array('label'=>Yii::t('menutranslation','Civil'), 'url'=>array('/requestCivil')),
+							array('label'=>Yii::t('menutranslation','Fuel'), 'url'=>array('/requestFuel')),
+							array('label'=>Yii::t('menutranslation','HVAC'), 'url'=>array('/requestHvac')),
+							array('label'=>Yii::t('menutranslation','Power'), 'url'=>array('/requestPower')),
+							array('label'=>Yii::t('menutranslation','Setup Module'), 'url'=>'#', 'visible'=>Yii::app()->getModule('user')->isAdmin()),
                         )),
                         
 						
-						array('label'=>'My Account <span class="caret"></span>', 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
+						array('label'=>Yii::t('menutranslation','My Account <span class="caret"></span>'), 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
                         'visible'=>!Yii::app()->user->isGuest,
 						'items'=>array(
                             array('label'=>Yii::app()->getModule('user')->t("My Profile"), 'url'=>Yii::app()->getModule('user')->profileUrl),
-							array('label'=>'My Messages <span class="badge badge-warning">-</span>', 'url'=>'#'),
-							array('label'=>'My Tasks <span class="badge badge-important">-</span>', 'url'=>'#'),
-							array('label'=>'My Invoices <span class="badge badge-info">-</span>', 'url'=>'#'),//class="badge badge-info pull-right"
+							array('label'=>Yii::t('menutranslation','My Messages <span class="badge badge-warning">-</span>'), 'url'=>'#'),
+							array('label'=>Yii::t('menutranslation','My Tasks <span class="badge badge-important">-</span>'), 'url'=>'#'),
+							array('label'=>Yii::t('menutranslation','My Invoices <span class="badge badge-info">-</span>'), 'url'=>'#'),//class="badge badge-info pull-right"
 							//array('label'=>'Separated link', 'url'=>'#'),
 							//array('label'=>'One more separated link', 'url'=>'#'),
                         )),
@@ -89,26 +89,3 @@
 	
 	</div>
 </div>
-<?php /*
-<div class="subnav navbar navbar-fixed-top">
-    <div class="navbar-inner">
-    	<div class="container">
-        
-        	<div class="style-switcher pull-left">
-                <a href="javascript:chooseStyle('none', 60)" checked="checked"><span class="style" style="background-color:#0088CC;"></span></a>
-                <a href="javascript:chooseStyle('style2', 60)"><span class="style" style="background-color:#7c5706;"></span></a>
-                <a href="javascript:chooseStyle('style3', 60)"><span class="style" style="background-color:#468847;"></span></a>
-                <a href="javascript:chooseStyle('style4', 60)"><span class="style" style="background-color:#4e4e4e;"></span></a>
-                <a href="javascript:chooseStyle('style5', 60)"><span class="style" style="background-color:#d85515;"></span></a>
-                <a href="javascript:chooseStyle('style6', 60)"><span class="style" style="background-color:#a00a69;"></span></a>
-                <a href="javascript:chooseStyle('style7', 60)"><span class="style" style="background-color:#a30c22;"></span></a>
-          	</div>
-           <form class="navbar-search pull-right" action="">
-           	 
-           <input type="text" class="search-query span2" placeholder="Search">
-           
-           </form>
-    	</div><!-- container -->
-    </div><!-- navbar-inner -->
-</div><!-- subnav -->
-*/ ?>

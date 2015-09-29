@@ -70,7 +70,7 @@ class LocationUserForm extends CFormModel
 			$this->location->assignUser($this->_user->id, $this->role);  
 			//add the association, along with the RBAC biz rule, to our RBAC hierarchy
 	        $auth = Yii::app()->authManager; 
-			$bizRule=null;//'return isset($params["location"]) && $params["location"]->allowCurrentUser("'.$this->role.'");';  
+			$bizRule='return isset($params["location"]) && $params["location"]->allowCurrentUser("'.$this->role.'")';
 			$auth->assign($this->role,$this->_user->id,$bizRule);
 			return true;
 		}
