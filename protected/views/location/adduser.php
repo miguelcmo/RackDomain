@@ -1,15 +1,15 @@
 <?php
-$this->pageTitle=Yii::app()->name . Yii::t('viewst',' - Add User To Location');
+$this->pageTitle=Yii::app()->name . Yii::t('rdt',' - Add User To Location');
 $this->breadcrumbs=array(
 	$model->location->locationName=>array('view','id'=>$model->location->locationId),
-	Yii::t('viewst','Add User'),
+	Yii::t('rdt','Add User'),
 );
 $this->menu=array(
-	array('label'=>Yii::t('viewst','Back To Location'), 'url'=>array('view','id'=>$model->location->locationId)),
+	array('label'=>Yii::t('rdt','Back To Location'), 'url'=>array('view','id'=>$model->location->locationId)),
 );
 ?>
 
-<h1><?php echo Yii::t('viewst','Add User To '); ?><?php echo $model->location->locationName; ?></h1>
+<h1><?php echo Yii::t('rdt','Add User To '); ?><?php echo $model->location->locationName; ?></h1>
 
 <?php if(Yii::app()->user->hasFlash('success')): ?>
 
@@ -21,10 +21,10 @@ $this->menu=array(
 
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm'); ?>
-	<p class="note"><?php echo Yii::t('viewst','Fields with <span class="required">*</span> are required.'); ?></p>
+	<p class="note"><?php echo Yii::t('rdt','Fields with <span class="required">*</span> are required.'); ?></p>
 
 <div class="row">
-	<?php echo $form->labelEx($model,'username',array('label'=>Yii::t('viewst','Username'))); ?>
+	<?php echo $form->labelEx($model,'username',array('label'=>Yii::t('rdt','Username'))); ?>
 	<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 		'name'=>'username',
 		'source'=>$model->createUsernameList(),
@@ -42,19 +42,19 @@ $this->menu=array(
 </div>
 
 <div class="row">
-	<?php echo $form->labelEx($model,'role', array('label'=>Yii::t('viewst','Role'))); ?>
+	<?php echo $form->labelEx($model,'role', array('label'=>Yii::t('rdt','Role'))); ?>
 	<?php echo $form->dropDownList($model,'role', Location::getUserRoleOptions()); ?>
 	<?php echo $form->error($model,'role'); ?>
 </div>
 
 <div class="row buttons">
-	<?php echo CHtml::submitButton(Yii::t('viewst','Add User'), array('class'=>'btn')); ?>
+	<?php echo CHtml::submitButton(Yii::t('rdt','Add User'), array('class'=>'btn')); ?>
 </div>
 
 <?php $this->endWidget(); ?>
 </div>
 
-<h1><?php echo Yii::t('viewst','Active Users in this Location'); ?></h1>
+<h1><?php echo Yii::t('rdt','Active Users in this Location'); ?></h1>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'locationUsers-grid',

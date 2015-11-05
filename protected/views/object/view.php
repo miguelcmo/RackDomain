@@ -11,14 +11,14 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>Yii::t('viewst','Back To Rack'), 'url'=>array('rack/view','id'=>$model->rackSpace->rackId)),
-	array('label'=>Yii::t('viewst','Update Object'), 'url'=>array('update', 'id'=>$model->objectId)),
-	array('label'=>Yii::t('viewst','Delete Object'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->objectId),'confirm'=>Yii::t('viewst','Are you sure you want to delete this item?'),'params'=> array('YII_CSRF_TOKEN' => Yii::app()->request->csrfToken))),
-	array('label'=>Yii::t('viewst','Other Action'), 'url'=>'#'),
+	array('label'=>Yii::t('rdt','Back To Rack'), 'url'=>array('rack/view','id'=>$model->rackSpace->rackId)),
+	array('label'=>Yii::t('rdt','Update Object'), 'url'=>array('update', 'id'=>$model->objectId)),
+	array('label'=>Yii::t('rdt','Delete Object'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->objectId),'confirm'=>Yii::t('rdt','Are you sure you want to delete this item?'),'params'=> array('YII_CSRF_TOKEN' => Yii::app()->request->csrfToken))),
+	array('label'=>Yii::t('rdt','Other Action'), 'url'=>'#'),
 );
 ?>
 
-<h1><?php echo Yii::t('viewst','View Object # '); ?><?php echo $model->objectName; ?></h1>
+<h1><?php echo Yii::t('rdt','View Object # '); ?><?php echo $model->objectName; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

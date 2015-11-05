@@ -70,21 +70,21 @@ class PduCircuits extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'pduCircuitId' => Yii::t('modelstranslation', 'Pdu Circuit'),
-			'pduId' => Yii::t('modelstranslation', 'Pdu'),
-			'objectId' => Yii::t('modelstranslation', 'Object'),
-			'pduCircuitBus' => Yii::t('modelstranslation', 'Pdu Circuit Bus'),
-			'pduCircuitNumber' => Yii::t('modelstranslation', 'Pdu Circuit Number'),
-			'pduCircuitState' => Yii::t('modelstranslation', 'Pdu Circuit State'),
-			'breakerRate' => Yii::t('modelstranslation', 'Breaker Rate'),
-			'breakerState' => Yii::t('modelstranslation', 'Breaker State'),
-			'pduCircuitDescription' => Yii::t('modelstranslation', 'Pdu Circuit Description'),
-			'createTime' => Yii::t('modelstranslation', 'Create Time'),
-			'createUserId' => Yii::t('modelstranslation', 'Create User'),
-			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
-			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
-			'Status' => Yii::t('modelstranslation', 'Status'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'pduCircuitId' => Yii::t('rdt', 'Pdu Circuit'),
+			'pduId' => Yii::t('rdt', 'Pdu'),
+			'objectId' => Yii::t('rdt', 'Object'),
+			'pduCircuitBus' => Yii::t('rdt', 'Pdu Circuit Bus'),
+			'pduCircuitNumber' => Yii::t('rdt', 'Pdu Circuit Number'),
+			'pduCircuitState' => Yii::t('rdt', 'Pdu Circuit State'),
+			'breakerRate' => Yii::t('rdt', 'Breaker Rate'),
+			'breakerState' => Yii::t('rdt', 'Breaker State'),
+			'pduCircuitDescription' => Yii::t('rdt', 'Pdu Circuit Description'),
+			'createTime' => Yii::t('rdt', 'Create Time'),
+			'createUserId' => Yii::t('rdt', 'Create User'),
+			'updateTime' => Yii::t('rdt', 'Update Time'),
+			'updateUserId' => Yii::t('rdt', 'Update User'),
+			'Status' => Yii::t('rdt', 'Status'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 

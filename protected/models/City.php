@@ -72,13 +72,13 @@ class City extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'cityId' => Yii::t('modelstranslation', 'City'),
-			'departmentId' => Yii::t('modelstranslation', 'Department'),
-			'cityName' => Yii::t('modelstranslation', 'City Name'),
-			'cityLongitude' => Yii::t('modelstranslation', 'City Longitude'),
-			'cityLatitude' => Yii::t('modelstranslation', 'City Latitude'),
-			'Status' => Yii::t('modelstranslation', 'Status'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'cityId' => Yii::t('rdt', 'City'),
+			'departmentId' => Yii::t('rdt', 'Department'),
+			'cityName' => Yii::t('rdt', 'City Name'),
+			'cityLongitude' => Yii::t('rdt', 'City Longitude'),
+			'cityLatitude' => Yii::t('rdt', 'City Latitude'),
+			'Status' => Yii::t('rdt', 'Status'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 

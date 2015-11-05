@@ -36,6 +36,7 @@
 							array('label'=>'Vendor', 'url'=>array('/vendor')),
 							array('label'=>'Rights', 'url'=>array('/rights')),
 							array('label'=>'Gii', 'url'=>array('/gii')),
+							array('label'=>'Auto Tasks', 'url'=>array('/autoTask')),
 							//array('label'=>'', 'url'=>array('/')),
 						)),
 						/*
@@ -46,26 +47,27 @@
                         array('label'=>'Typography', 'url'=>array('/site/page', 'view'=>'typography')),
                         array('label'=>'Gii generated', 'url'=>array('customer/index')),*/
 						
-						array('label'=>Yii::t('menutranslation','Locations'), 'url'=>array('/location/index'), 'visible'=>!Yii::app()->user->isGuest),
+						array('label'=>Yii::t('rdt','Locations'), 'url'=>array('/location/index'), 'visible'=>!Yii::app()->user->isGuest),
 						
-						array('label'=>Yii::t('menutranslation','Requests'), 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
+						array('label'=>Yii::t('rdt','Requests'), 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
                         'visible'=>!Yii::app()->user->isGuest,
 						'items'=>array(
-                            array('label'=>Yii::t('menutranslation','Civil'), 'url'=>array('/requestCivil')),
-							array('label'=>Yii::t('menutranslation','Fuel'), 'url'=>array('/requestFuel')),
-							array('label'=>Yii::t('menutranslation','HVAC'), 'url'=>array('/requestHvac')),
-							array('label'=>Yii::t('menutranslation','Power'), 'url'=>array('/requestPower')),
-							array('label'=>Yii::t('menutranslation','Setup Module'), 'url'=>'#', 'visible'=>Yii::app()->getModule('user')->isAdmin()),
+                            array('label'=>Yii::t('rdt','Civil'), 'url'=>array('/requestCivil')),
+							array('label'=>Yii::t('rdt','Fuel'), 'url'=>array('/requestFuel')),
+							array('label'=>Yii::t('rdt','HVAC'), 'url'=>array('/requestHvac')),
+							array('label'=>Yii::t('rdt','Power'), 'url'=>array('/requestPower')),
+							array('label'=>Yii::t('rdt','Setup Module'), 'url'=>'#', 'visible'=>Yii::app()->getModule('user')->isAdmin()),
                         )),
                         
+						array('label'=>Yii::t('rdt','Reports'), 'url'=>array('/reports/index'), 'visible'=>!Yii::app()->user->isGuest),
 						
-						array('label'=>Yii::t('menutranslation','My Account <span class="caret"></span>'), 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
+						array('label'=>Yii::t('rdt','My Account <span class="caret"></span>'), 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
                         'visible'=>!Yii::app()->user->isGuest,
 						'items'=>array(
                             array('label'=>Yii::app()->getModule('user')->t("My Profile"), 'url'=>Yii::app()->getModule('user')->profileUrl),
-							array('label'=>Yii::t('menutranslation','My Messages <span class="badge badge-warning">-</span>'), 'url'=>'#'),
-							array('label'=>Yii::t('menutranslation','My Tasks <span class="badge badge-important">-</span>'), 'url'=>'#'),
-							array('label'=>Yii::t('menutranslation','My Invoices <span class="badge badge-info">-</span>'), 'url'=>'#'),//class="badge badge-info pull-right"
+							array('label'=>Yii::t('rdt','My Messages <span class="badge badge-warning">-</span>'), 'url'=>'#'),
+							array('label'=>Yii::t('rdt','My Tasks <span class="badge badge-important">-</span>'), 'url'=>'#'),
+							array('label'=>Yii::t('rdt','My Invoices <span class="badge badge-info">-</span>'), 'url'=>'#'),//class="badge badge-info pull-right"
 							//array('label'=>'Separated link', 'url'=>'#'),
 							//array('label'=>'One more separated link', 'url'=>'#'),
                         )),

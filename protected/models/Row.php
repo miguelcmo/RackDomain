@@ -62,16 +62,16 @@ class Row extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'rowId' => Yii::t('modelstranslation', 'Row'),
-			'roomId' => Yii::t('modelstranslation', 'Room'),
-			'rowName' => Yii::t('modelstranslation', 'Row Name'),
-			'rowDescription' => Yii::t('modelstranslation', 'Row Description'),
-			'createTime' => Yii::t('modelstranslation', 'Create Time'),
-			'createUserId' => Yii::t('modelstranslation', 'Create User'),
-			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
-			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
-			'Status' => Yii::t('modelstranslation', 'Status'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'rowId' => Yii::t('rdt', 'Row'),
+			'roomId' => Yii::t('rdt', 'Room'),
+			'rowName' => Yii::t('rdt', 'Row Name'),
+			'rowDescription' => Yii::t('rdt', 'Row Description'),
+			'createTime' => Yii::t('rdt', 'Create Time'),
+			'createUserId' => Yii::t('rdt', 'Create User'),
+			'updateTime' => Yii::t('rdt', 'Update Time'),
+			'updateUserId' => Yii::t('rdt', 'Update User'),
+			'Status' => Yii::t('rdt', 'Status'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 

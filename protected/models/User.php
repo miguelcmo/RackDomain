@@ -87,21 +87,21 @@ class User extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'userId' => Yii::t('modelstranslation', 'User'),
-			'userFirstName' => Yii::t('modelstranslation', 'User First Name'),
-			'userLastName' => Yii::t('modelstranslation', 'User Last Name'),
-			'username' => Yii::t('modelstranslation', 'Username'),
-			'userEmail' => Yii::t('modelstranslation', 'User Email'),
-			'password' => Yii::t('modelstranslation', 'Password'),
-			'userType' => Yii::t('modelstranslation', 'User Type'),
-			'userProfile' => Yii::t('modelstranslation', 'User Profile'),
-			'lastLoginTime' => Yii::t('modelstranslation', 'Last Login Time'),
-			'createTime' => Yii::t('modelstranslation', 'Create Time'),
-			'createUserId' => Yii::t('modelstranslation', 'Create User'),
-			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
-			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
-			'Status' => Yii::t('modelstranslation', 'Status'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'userId' => Yii::t('rdt', 'User'),
+			'userFirstName' => Yii::t('rdt', 'User First Name'),
+			'userLastName' => Yii::t('rdt', 'User Last Name'),
+			'username' => Yii::t('rdt', 'Username'),
+			'userEmail' => Yii::t('rdt', 'User Email'),
+			'password' => Yii::t('rdt', 'Password'),
+			'userType' => Yii::t('rdt', 'User Type'),
+			'userProfile' => Yii::t('rdt', 'User Profile'),
+			'lastLoginTime' => Yii::t('rdt', 'Last Login Time'),
+			'createTime' => Yii::t('rdt', 'Create Time'),
+			'createUserId' => Yii::t('rdt', 'Create User'),
+			'updateTime' => Yii::t('rdt', 'Update Time'),
+			'updateUserId' => Yii::t('rdt', 'Update User'),
+			'Status' => Yii::t('rdt', 'Status'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 

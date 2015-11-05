@@ -116,6 +116,8 @@ class ObjectController extends Controller
 			
 			if($valid)
 			{
+				$this->addToReport($this->_rack->row->room->location->locationId,$_POST['Object']['platformId']);
+				
 				//use false parameter to disable validation
 				if($model->save())
 				{
@@ -127,7 +129,7 @@ class ObjectController extends Controller
 					}
 				}
 			} else 
-				throw new CHttpException(409,Yii::t('controllerstranslation','The requested space for the new object is not available.'));
+				throw new CHttpException(409,Yii::t('rdt','The requested space for the new object is not available.'));
 		}
 		$this->render('create',array(
 			'model'=>$model,
@@ -172,8 +174,11 @@ class ObjectController extends Controller
 	{
 		$this->setLocationId($id);
 		
-		$this->loadModel($id)->delete();
+		$model = $this->loadModel($id);
 
+		$this->removeFromReport($model->rackSpace->rack->row->room->location->locationId,$model->platformId);
+		
+		$model->delete();
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('rack/view', 'id'=>$rid));
@@ -216,7 +221,7 @@ class ObjectController extends Controller
 	{
 		$model=Object::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,Yii::t('controllerstranslation','The requested page does not exist.'));
+			throw new CHttpException(404,Yii::t('rdt','The requested page does not exist.'));
 		return $model;
 	}
 
@@ -246,7 +251,7 @@ class ObjectController extends Controller
 			$this->_rack=Rack::model()->findByPk($rackId);
 			if($this->_rack===null)
 			{
-				throw new CHttpException(404, Yii::t('controllerstranslation','The requested row does not exist.'));
+				throw new CHttpException(404, Yii::t('rdt','The requested row does not exist.'));
 			}
 		}
 		return $this->_rack;
@@ -265,7 +270,7 @@ class ObjectController extends Controller
 			$this->loadRack($_GET['rid']);
 		}
 		else {
-			throw new CHttpException(403, Yii::t('controllerstranslation','Must specify a row before performing this action.'));
+			throw new CHttpException(403, Yii::t('rdt','Must specify a row before performing this action.'));
 		}
 		
 		$model = Rack::model()->findByPk($this->_rack->rackId);
@@ -343,5 +348,33 @@ class ObjectController extends Controller
 		{
 			echo CHtml::tag('option',array('value'=>$value),CHtml::encode($platformName),true);
 		}
+	}
+	
+	public function addToReport($id,$platformId)//$id is the locationId
+	{
+		$q = 'UPDATE tbl_report SET objects=objects+1 WHERE locationId=:locationId';
+		$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$cmd->execute($params);
+		
+		$platformUrs = Platform::model()->findByPk($platformId);
+		$q = 'UPDATE tbl_report SET usedUrs=usedUrs+'.$platformUrs->platformRackUnits.' WHERE locationId=:locationId';
+		$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$cmd->execute($params);
+	}
+	
+	public function removeFromReport($id,$platformId)//$id is the locationId
+	{
+		$q = 'UPDATE tbl_report SET objects=objects-1 WHERE locationId=:locationId';
+		$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$cmd->execute($params);
+		
+		$platformUrs = Platform::model()->findByPk($platformId);
+		$q = 'UPDATE tbl_report SET usedUrs=usedUrs-'.$platformUrs->platformRackUnits.' WHERE locationId=:locationId';
+		$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$cmd->execute($params);
 	}
 }

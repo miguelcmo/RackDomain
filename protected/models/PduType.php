@@ -8,6 +8,7 @@
  * @property string $pduTypeName
  * @property string $pduTypeDescription
  * @property integer $pduCircuits
+ * @property integer $pduBuses
  * @property string $createTime
  * @property integer $createUserId
  * @property string $updateTime
@@ -36,13 +37,13 @@ class PduType extends InfraActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('pduCircuits, createUserId, updateUserId, Status, Flag', 'numerical', 'integerOnly'=>true),
+			array('pduCircuits, pduBuses, createUserId, updateUserId, Status, Flag', 'numerical', 'integerOnly'=>true),
 			array('pduTypeName', 'length', 'max'=>255),
 			array('pduTypeDescription', 'length', 'max'=>1024),
 			array('createTime, updateTime', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('pduTypeId, pduTypeName, pduTypeDescription, pduCircuits, createTime, createUserId, updateTime, updateUserId, Status, Flag', 'safe', 'on'=>'search'),
+			array('pduTypeId, pduTypeName, pduTypeDescription, pduCircuits, pduBuses, createTime, createUserId, updateTime, updateUserId, Status, Flag', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,16 +65,17 @@ class PduType extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'pduTypeId' => Yii::t('modelstranslation', 'Pdu Type'),
-			'pduTypeName' => Yii::t('modelstranslation', 'Pdu Type Name'),
-			'pduTypeDescription' => Yii::t('modelstranslation', 'Pdu Type Description'),
-			'pduCircuits' => Yii::t('modelstranslation', 'Pdu Circuits'),
-			'createTime' => Yii::t('modelstranslation', 'Create Time'),
-			'createUserId' => Yii::t('modelstranslation', 'Create User'),
-			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
-			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
-			'Status' => Yii::t('modelstranslation', 'Status'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'pduTypeId' => Yii::t('rdt', 'Pdu Type'),
+			'pduTypeName' => Yii::t('rdt', 'Pdu Type Name'),
+			'pduTypeDescription' => Yii::t('rdt', 'Pdu Type Description'),
+			'pduCircuits' => Yii::t('rdt', 'Pdu Circuits'),
+			'pduBuses' => Yii::t('rdt', 'Pdu Buses'),
+			'createTime' => Yii::t('rdt', 'Create Time'),
+			'createUserId' => Yii::t('rdt', 'Create User'),
+			'updateTime' => Yii::t('rdt', 'Update Time'),
+			'updateUserId' => Yii::t('rdt', 'Update User'),
+			'Status' => Yii::t('rdt', 'Status'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 
@@ -99,6 +101,7 @@ class PduType extends InfraActiveRecord
 		$criteria->compare('pduTypeName',$this->pduTypeName,true);
 		$criteria->compare('pduTypeDescription',$this->pduTypeDescription,true);
 		$criteria->compare('pduCircuits',$this->pduCircuits);
+		$criteria->compare('pduBuses',$this->pduBuses);
 		$criteria->compare('createTime',$this->createTime,true);
 		$criteria->compare('createUserId',$this->createUserId);
 		$criteria->compare('updateTime',$this->updateTime,true);

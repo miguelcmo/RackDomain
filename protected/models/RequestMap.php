@@ -65,16 +65,16 @@ class RequestMap extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'requestMapId' => Yii::t('modelstranslation', 'Request Map'),
-			'requestServiceId' => Yii::t('modelstranslation', 'Request Service'),
-			'solverId' => Yii::t('modelstranslation', 'Solver'),
-			'solverRoleId' => Yii::t('modelstranslation', 'Solver Role'),
-			'createTime' => Yii::t('modelstranslation', 'Create Time'),
-			'createUserId' => Yii::t('modelstranslation', 'Create User'),
-			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
-			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
-			'Status' => Yii::t('modelstranslation', 'Status'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'requestMapId' => Yii::t('rdt', 'Request Map'),
+			'requestServiceId' => Yii::t('rdt', 'Request Service'),
+			'solverId' => Yii::t('rdt', 'Solver'),
+			'solverRoleId' => Yii::t('rdt', 'Solver Role'),
+			'createTime' => Yii::t('rdt', 'Create Time'),
+			'createUserId' => Yii::t('rdt', 'Create User'),
+			'updateTime' => Yii::t('rdt', 'Update Time'),
+			'updateUserId' => Yii::t('rdt', 'Update User'),
+			'Status' => Yii::t('rdt', 'Status'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 

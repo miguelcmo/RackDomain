@@ -835,3 +835,13 @@ ADITIONAL STYLES SPECIFIC FOR RACK SPACE APPLICATION AND ITS COMPONENTS
 	color: gray;
 }
 
+/* Styles for rack thumbnail positioning of devices
+-----------------------------------------*/
+.rackThumb{
+	float:left;
+	position:relative;
+}
+.rackThumb img.ru{
+	position:absolute;
+}
+

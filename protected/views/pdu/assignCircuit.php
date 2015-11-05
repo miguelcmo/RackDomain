@@ -8,20 +8,21 @@ $this->breadcrumbs=array(
 	$model->room->location->locationName=>array('location/view', 'id'=>$model->room->location->locationId),
 	$model->room->roomName=>array('room/view', 'id'=>$model->room->roomId),
 	$model->pduName=>array('view', 'id'=>$model->pduId),
-	Yii::t('viewst','Assign Circuits'),
+	Yii::t('rdt','Assign Circuits'),
 );
 
 $this->menu=array(
-	array('label'=>Yii::t('viewst','Back To Pdu'), 'url'=>array('view', 'id'=>$model->pduId)),
+	array('label'=>Yii::t('rdt','Back To Pdu'), 'url'=>array('view', 'id'=>$model->pduId)),
 );
 ?>
 
-<h1><?php echo Yii::t('viewst','Assign Circuits -> '); ?><?php echo $model->pduName; ?></h1>
+<h1><?php echo Yii::t('rdt','Assign Circuits -> '); ?><?php echo $model->pduName; ?></h1>
 
 <?php //var_dump($roomOptions); ?>
 
 <?php $this->renderPartial('_assignForm', array(
 	'model'=>$modelPduCircuits, 
+	'modelPdu'=>$model,
 	'modelRoom'=>$modelRoom,
 	'modelRow'=>$modelRow,
 	'modelRack'=>$modelRack,
@@ -30,13 +31,13 @@ $this->menu=array(
 <?php //This part visualizes the circuits table in the bus A of an PDU ?>
 <table class="pduTable">
 	<tr>
-		<th colspan="4"><?php echo Yii::t('viewst','Bus A'); ?></th>
+		<th colspan="4"><?php echo Yii::t('rdt','Bus A'); ?></th>
 	</tr>
 	<tr>
-		<th><?php echo Yii::t('viewst','#'); ?></th>
-		<th><?php echo Yii::t('viewst','Breaker Rate'); ?></th>
-		<th width="200px"><?php echo Yii::t('viewst','Circuit Description'); ?></th>
-		<th><?php echo Yii::t('viewst','Breaker State'); ?></th>
+		<th><?php echo Yii::t('rdt','#'); ?></th>
+		<th><?php echo Yii::t('rdt','Breaker Rate'); ?></th>
+		<th width="200px"><?php echo Yii::t('rdt','Circuit Description'); ?></th>
+		<th><?php echo Yii::t('rdt','Breaker State'); ?></th>
 	</tr>
 	
 <?php foreach($circuitBusA as $value)
@@ -63,17 +64,19 @@ $this->menu=array(
 ?>
 </table>
 
-<?php //This part visualizes the circuits table in the bus B of an PDU ?>
+<?php //This part visualizes the circuits table in the bus B of an PDU 
+if ($model->pduType->pduBuses==2){
+?>
 <table class="pduTable">
 	<tr>
-		<th colspan="4"><?php echo Yii::t('viewst','Bus B'); ?></th>
+		<th colspan="4"><?php echo Yii::t('rdt','Bus B'); ?></th>
 	</tr>
 	
 	<tr>
-		<th><?php echo Yii::t('viewst','#'); ?></th>
-		<th><?php echo Yii::t('viewst','Breaker Rate'); ?></th>
-		<th width="200px"><?php echo Yii::t('viewst','Circuit Description'); ?></th>
-		<th><?php echo Yii::t('viewst','Breaker State'); ?></th>
+		<th><?php echo Yii::t('rdt','#'); ?></th>
+		<th><?php echo Yii::t('rdt','Breaker Rate'); ?></th>
+		<th width="200px"><?php echo Yii::t('rdt','Circuit Description'); ?></th>
+		<th><?php echo Yii::t('rdt','Breaker State'); ?></th>
 	</tr>
 
 <?php foreach($circuitBusB as $value)
@@ -99,3 +102,4 @@ $this->menu=array(
 	}
 ?>
 </table>
+<?php } ?>

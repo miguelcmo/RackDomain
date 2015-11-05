@@ -16,7 +16,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note"><?php echo Yii::t('viewst','Fields with <span class="required">*</span> are required.'); ?></p>
+	<p class="note"><?php echo Yii::t('rdt','Fields with <span class="required">*</span> are required.'); ?></p>
 
 	<?php echo $form->errorSummary(array($model,$rackSpace)); ?>
 
@@ -27,7 +27,7 @@
 			'',
 			$this->getVendorOptions(),
 			array(
-				'empty'=>Yii::t('viewst','- Choose an option -'),
+				'empty'=>Yii::t('rdt','- Choose an option -'),
 				'ajax'=>array(
 					'type'=>'POST',
 					'url'=>$this->createUrl('platformByVendorOptions'),
@@ -44,7 +44,7 @@
 			'',
 			$this->getChapterOptions(),
 			array(
-				'empty'=>Yii::t('viewst',Yii::t('viewst','- Choose an option -')),
+				'empty'=>Yii::t('rdt',Yii::t('rdt','- Choose an option -')),
 				'ajax'=>array(
 					'type'=>'POST',
 					'url'=>$this->createUrl('platformByChapterOptions'),
@@ -56,7 +56,7 @@
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'platformId'); ?>
-		<?php echo $form->dropDownList($model,'platformId', $this->getPlatformOptions(), array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
+		<?php echo $form->dropDownList($model,'platformId', $this->getPlatformOptions(), array('empty'=>Yii::t('rdt','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'platformId'); ?>
 	</div>
 
@@ -73,8 +73,8 @@
 	</div>
 	
 	<div class="row">
-		<?php echo CHtml::label(Yii::t('viewst','Rule Order'), 'ruleOrder'); ?>
-		<?php echo CHtml::dropDownList('ruleOrder','',array('0'=>Yii::t('viewst','Ascendant'),'1'=>Yii::t('viewst','Descendant'))); ?>
+		<?php echo CHtml::label(Yii::t('rdt','Rule Order'), 'ruleOrder'); ?>
+		<?php echo CHtml::dropDownList('ruleOrder','',array('0'=>Yii::t('rdt','Ascendant'),'1'=>Yii::t('rdt','Descendant'))); ?>
 	</div>
 	
 	<div class="row">
@@ -84,7 +84,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('viewst','Create') : Yii::t('viewst','Save'), array('class'=>'btn')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('rdt','Create') : Yii::t('rdt','Save'), array('class'=>'btn')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

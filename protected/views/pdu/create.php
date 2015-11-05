@@ -3,15 +3,15 @@
 /* @var $model Pdu */
 
 $this->breadcrumbs=array(
-	Yii::t('viewst','Pdus')=>array('index'),
-	Yii::t('viewst','Create'),
+	Yii::t('rdt','Pdus')=>array('index'),
+	Yii::t('rdt','Create'),
 );
 
 $this->menu=array(
-	array('label'=>Yii::t('viewst','Back To Room'), 'url'=>array('room/view', 'id'=>$model->roomId)),
+	array('label'=>Yii::t('rdt','Back To Room'), 'url'=>array('room/view', 'id'=>$model->roomId)),
 );
 ?>
 
-<h1><?php echo Yii::t('viewst','Create Pdu'); ?></h1>
+<h1><?php echo Yii::t('rdt','Create Pdu'); ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

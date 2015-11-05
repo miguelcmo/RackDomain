@@ -55,9 +55,9 @@ class LocationType extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'locationTypeId' => Yii::t('modelstranslation', 'Location Type'),
-			'locationTypeName' => Yii::t('modelstranslation', 'Location Type Name'),
-			'locationTypeDescription' => Yii::t('modelstranslation', 'Location Type Description'),
+			'locationTypeId' => Yii::t('rdt', 'Location Type'),
+			'locationTypeName' => Yii::t('rdt', 'Location Type Name'),
+			'locationTypeDescription' => Yii::t('rdt', 'Location Type Description'),
 		);
 	}
 

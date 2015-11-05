@@ -24,7 +24,7 @@ class UserController extends Controller
 	 * Specifies the access control rules.
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
-	 */
+	 
 	public function accessRules()
 	{
 		return array(
@@ -45,6 +45,7 @@ class UserController extends Controller
 			),
 		);
 	}
+	*/
 
 	/**
 	 * Displays a particular model.
@@ -155,7 +156,7 @@ class UserController extends Controller
 	{
 		$model=User::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,Yii::t('rdt','The requested page does not exist.'));
 		return $model;
 	}
 

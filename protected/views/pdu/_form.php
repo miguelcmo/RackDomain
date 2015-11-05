@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note"><?php Yii::t('viewst','Fields with <span class="required">*</span> are required.'); ?></p>
+	<p class="note"><?php Yii::t('rdt','Fields with <span class="required">*</span> are required.'); ?></p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -39,12 +39,12 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'pduTypeId'); ?>
-		<?php echo $form->dropDownList($model,'pduTypeId', $this->getAvailablePduTypeOptions(), array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
+		<?php echo $form->dropDownList($model,'pduTypeId', $this->getAvailablePduTypeOptions(), array('empty'=>Yii::t('rdt','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'pduTypeId'); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('viewst','Create') : Yii::t('viewst','Save'), array('class'=>'btn')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('rdt','Create') : Yii::t('rdt','Save'), array('class'=>'btn')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

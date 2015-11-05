@@ -69,16 +69,16 @@ class Attributes extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'attributeId' => Yii::t('modelstranslation', 'Attribute'),
-			'attributeChapterId' => Yii::t('modelstranslation', 'Attribute Chapter'),
-			'attributeName' => Yii::t('modelstranslation', 'Attribute Name'),
-			'attributeDescription' => Yii::t('modelstranslation', 'Attribute Description'),
-			'createTime' => Yii::t('modelstranslation', 'Create Time'),
-			'createUserId' => Yii::t('modelstranslation', 'Create User'),
-			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
-			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
-			'Satus' => Yii::t('modelstranslation', 'Satus'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'attributeId' => Yii::t('rdt', 'Attribute'),
+			'attributeChapterId' => Yii::t('rdt', 'Attribute Chapter'),
+			'attributeName' => Yii::t('rdt', 'Attribute Name'),
+			'attributeDescription' => Yii::t('rdt', 'Attribute Description'),
+			'createTime' => Yii::t('rdt', 'Create Time'),
+			'createUserId' => Yii::t('rdt', 'Create User'),
+			'updateTime' => Yii::t('rdt', 'Update Time'),
+			'updateUserId' => Yii::t('rdt', 'Update User'),
+			'Satus' => Yii::t('rdt', 'Satus'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 

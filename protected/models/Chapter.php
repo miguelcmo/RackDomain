@@ -64,15 +64,15 @@ class Chapter extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'chapterId' => Yii::t('modelstranslation', 'Chapter'),
-			'chapterName' => Yii::t('modelstranslation', 'Name'),
-			'chapterDescription' => Yii::t('modelstranslation', 'Description'),
-			'createTime' => Yii::t('modelstranslation', 'Create Time'),
-			'createUserId' => Yii::t('modelstranslation', 'Create User'),
-			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
-			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
-			'Status' => Yii::t('modelstranslation', 'Status'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'chapterId' => Yii::t('rdt', 'Chapter'),
+			'chapterName' => Yii::t('rdt', 'Name'),
+			'chapterDescription' => Yii::t('rdt', 'Description'),
+			'createTime' => Yii::t('rdt', 'Create Time'),
+			'createUserId' => Yii::t('rdt', 'Create User'),
+			'updateTime' => Yii::t('rdt', 'Update Time'),
+			'updateUserId' => Yii::t('rdt', 'Update User'),
+			'Status' => Yii::t('rdt', 'Status'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 

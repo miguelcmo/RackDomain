@@ -15,6 +15,7 @@ class RowController extends Controller
 	
 	public $_count = null;
 
+	public $devicesList = null;
 	/**
 	 * @return array action filters
 	 */
@@ -59,6 +60,7 @@ class RowController extends Controller
 		$model = Row::model()->findByPk($id);
 		$lid = $model->room->location->locationId;
 		Yii::app()->user->setState('lid',$lid);
+		
 	}
 	
 
@@ -69,6 +71,13 @@ class RowController extends Controller
 	public function actionView($id)
 	{
 		$this->setLocationId($id);
+		
+		$q='SELECT tbl_rack.rackId,tbl_rack.sortOrder,tbl_rack.rackName,tbl_rack_type.thumbnailPath FROM tbl_rack
+			INNER JOIN tbl_rack_type ON tbl_rack.rackType = tbl_rack_type.rackTypeId
+			WHERE tbl_rack.rowId=:rowId ORDER BY tbl_rack.sortOrder ASC';
+		$params=array(':rowId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$rackList = $cmd->query($params);
 		
 		$rackDataProvider=new CActiveDataProvider('Rack', array(
 			'criteria'=>array(
@@ -86,6 +95,7 @@ class RowController extends Controller
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 			'rackDataProvider'=>$rackDataProvider,
+			'rackList'=>$rackList,
 		));
 	}
 
@@ -106,6 +116,8 @@ class RowController extends Controller
 
 		if(isset($_POST['Row']))
 		{
+			$this->addToReport($this->_room->location->locationId);
+			
 			$model->attributes=$_POST['Row'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->rowId));
@@ -151,7 +163,11 @@ class RowController extends Controller
 	{
 		$this->setLocationId($id);
 		
-		$this->loadModel($id)->delete();
+		$model = $this->loadModel($id);
+		
+		$this->removeFromReport($model->room->location->locationId);
+		
+		$model->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
@@ -195,7 +211,7 @@ class RowController extends Controller
 	{
 		$model=Row::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,Yii::t('controllerstranslation','The requested page does not exist.'));
+			throw new CHttpException(404,Yii::t('rdt','The requested page does not exist.'));
 		return $model;
 	}
 
@@ -225,7 +241,7 @@ class RowController extends Controller
 			$this->_room=Room::model()->findByPk($roomId);
 			if($this->_room===null)
 			{
-				throw new CHttpException(404,Yii::t('controllerstranslation','The requested room does not exist.'));
+				throw new CHttpException(404,Yii::t('rdt','The requested room does not exist.'));
 			}
 		}
 		return $this->_room;
@@ -245,7 +261,7 @@ class RowController extends Controller
 			//$this->getAvailableRowName($_GET['rid']);
 		}
 		else {
-			throw new CHttpException(403, Yii::t('controllerstranslation','Must specify a room before performing this action.'));
+			throw new CHttpException(403, Yii::t('rdt','Must specify a room before performing this action.'));
 		}
 		
 		$model = Room::model()->findByPk($this->_room->roomId);
@@ -269,4 +285,65 @@ class RowController extends Controller
 	
 		return $this->_count;
 	}
+	
+	public function addToReport($id)//$id is the locationId
+	{
+		$q = 'UPDATE tbl_report SET rows=rows+1 WHERE locationId=:locationId';
+		$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$cmd->execute($params);
+	}
+	
+	public function removeFromReport($id)//$id is the locationId
+	{
+		$q = 'UPDATE tbl_report SET rows=rows-1 WHERE locationId=:locationId';
+		$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$cmd->execute($params);
+	}
+	
+	public function getDevicesOnRack($rackId)
+	{
+		$q = 'SELECT tbl_rack_space.rackId,tbl_rack_space.initialRU,tbl_platform.platformThumbPath,tbl_rack_type.deviceTop,tbl_rack_type.deviceLeft,tbl_rack_type.thumbTopOffset,tbl_rack_type.thumbLeftOffset
+			FROM tbl_rack_space
+			INNER JOIN tbl_object ON tbl_rack_space.objectId = tbl_object.objectId
+			INNER JOIN tbl_platform ON tbl_object.platformId = tbl_platform.platformId
+			INNER JOIN tbl_rack ON tbl_rack_space.rackId = tbl_rack.rackId
+			INNER JOIN tbl_rack_type ON tbl_rack.rackType = tbl_rack_type.rackTypeId
+			WHERE tbl_rack_space.rackId=:rackId ORDER BY tbl_rack_space.initialRU ASC';
+		$params = array(':rackId'=>$rackId);
+		$cmd = Yii::app()->db->createCommand($q);
+		$devicesList = $cmd->query($params);
+		
+		$resultThumb = '';
+		foreach ($devicesList as $value){
+			$left=($value['deviceLeft']/3)+$value['thumbLeftOffset'];
+			$top=(($value['initialRU']-1)*4)+($value['deviceTop']/3)+$value['thumbTopOffset'];
+			$resultThumb = $resultThumb.'echo CHtml::image("'.$value["platformThumbPath"].'","",array(
+				"class"=>"ru", "style"=>"left:'.$left.'px;top:'.$top.'px"));';
+		}
+		return $resultThumb;
+	}	
 }
+
+
+/* 
+echo CHtml::image("images/devices/thumbnails/sciat-rf9900reverse2.png", array( "class"=>"ru", "style"=>"left:58px;top:77px"));
+echo CHtml::image("images/devices/thumbnails/sciat-rf9900reverse2.png", array( "class"=>"ru", "style"=>"left:58px;top:105px"));
+echo CHtml::image("images/devices/thumbnails/sciat-rf9900reverse2.png", array( "class"=>"ru", "style"=>"left:58px;top:125px"));
+echo CHtml::image("images/devices/thumbnails/sciat-rf9900reverse2.png", array( "class"=>"ru", "style"=>"left:58px;top:145px"));
+echo CHtml::image("images/devices/thumbnails/sciat-rf9900reverse2.png", array( "class"=>"ru", "style"=>"left:58px;top:165px"));
+echo CHtml::image("images/devices/thumbnails/arris-c4cmts.png", array( "class"=>"ru", "style"=>"left:58px;top:185px"));
+*/
+
+
+
+
+
+
+
+
+
+
+
+

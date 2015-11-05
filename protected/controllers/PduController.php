@@ -149,7 +149,7 @@ class PduController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
+	public function actionDelete($id,$rid)
 	{
 		$this->setLocationId($id);
 		
@@ -157,7 +157,7 @@ class PduController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('room/view', 'id'=>$rid));
 	}
 
 	/**
@@ -249,7 +249,7 @@ class PduController extends Controller
 				if($modelPduCircuits->save())
 					$this->redirect(array('assignCircuit','id'=>$model->pduId));
 			} else
-				throw new CHttpException(409, Yii::t('controllerstranslation','The requested circuit is already in use, go back and select another circuit.'));
+				throw new CHttpException(409, Yii::t('rdt','The requested circuit is already in use, go back and select another circuit.'));
 		}
 
 		$this->render('assignCircuit',array(
@@ -274,7 +274,7 @@ class PduController extends Controller
 	{
 		$model=Pdu::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,Yii::t('controllerstranslation','The requested page does not exist.'));
+			throw new CHttpException(404,Yii::t('rdt','The requested page does not exist.'));
 		return $model;
 	}
 
@@ -304,7 +304,7 @@ class PduController extends Controller
 			$this->_room=Room::model()->findByPk($roomId);
 			if($this->_room===null)
 			{
-				throw new CHttpException(404, Yii::t('controllerstranslation','The requested room does not exits.'));
+				throw new CHttpException(404, Yii::t('rdt','The requested room does not exits.'));
 			}
 		}
 		return $this->_room;
@@ -323,7 +323,7 @@ class PduController extends Controller
 			$this->loadRoom($_GET['rid']);
 		}
 		else {
-			throw new CHttpException(403, Yii::t('controllerstranslation','Must specify a room before performing this action.'));
+			throw new CHttpException(403, Yii::t('rdt','Must specify a room before performing this action.'));
 		}
 		
 		$model = Room::model()->findByPk($this->_room->roomId);
@@ -455,6 +455,7 @@ class PduController extends Controller
 	{
 		$pduType = PduType::model()->findByPk($pduTypeId);
 		$pduCircuits = $pduType->pduCircuits;
+		$pduBuses = $pduType->pduBuses;
 		
 		for($i=1;$i<$pduCircuits+1;$i++)
 		{
@@ -470,19 +471,22 @@ class PduController extends Controller
 						
 			$model->save();
 		}
-		for($i=1;$i<$pduCircuits+1;$i++)
+		if($pduBuses==2)
 		{
-			$model = new PduCircuits;
-			$model->pduId = $pduId;
-			$model->objectId = 0;//No Object
-			$model->pduCircuitBus = 'B';
-			$model->pduCircuitNumber = $i;
-			$model->pduCircuitState = 1;
-			$model->breakerRate = 10;//No Breaker
-			$model->breakerState = 0;//Breaker OFF
-			$model->pduCircuitDescription = 'No description';
+			for($i=1;$i<$pduCircuits+1;$i++)
+			{
+				$model = new PduCircuits;
+				$model->pduId = $pduId;
+				$model->objectId = 0;//No Object
+				$model->pduCircuitBus = 'B';
+				$model->pduCircuitNumber = $i;
+				$model->pduCircuitState = 1;
+				$model->breakerRate = 10;//No Breaker
+				$model->breakerState = 0;//Breaker OFF
+				$model->pduCircuitDescription = 'No description';
 						
-			$model->save();
+				$model->save();
+			}
 		}
 	}
 	

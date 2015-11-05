@@ -64,15 +64,15 @@ class RequestService extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'requestServiceId' => Yii::t('modelstranslation', 'Request Service'),
-			'requestServiceName' => Yii::t('modelstranslation', 'Request Service Name'),
-			'requestServiceDescription' => Yii::t('modelstranslation', 'Request Service Description'),
-			'createTime' => Yii::t('modelstranslation', 'Create Time'),
-			'createUserId' => Yii::t('modelstranslation', 'Create User'),
-			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
-			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
-			'Status' => Yii::t('modelstranslation', 'Status'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'requestServiceId' => Yii::t('rdt', 'Request Service'),
+			'requestServiceName' => Yii::t('rdt', 'Request Service Name'),
+			'requestServiceDescription' => Yii::t('rdt', 'Request Service Description'),
+			'createTime' => Yii::t('rdt', 'Create Time'),
+			'createUserId' => Yii::t('rdt', 'Create User'),
+			'updateTime' => Yii::t('rdt', 'Update Time'),
+			'updateUserId' => Yii::t('rdt', 'Update User'),
+			'Status' => Yii::t('rdt', 'Status'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 

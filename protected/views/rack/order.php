@@ -6,19 +6,19 @@ $this->breadcrumbs=array(
 	$model->room->location->locationName=>array('location/view','id'=>$model->room->location->locationId),
 	$model->room->roomName=>array('room/view','id'=>$model->room->roomId),
 	$model->rowName=>array('row/view','id'=>$model->rowId),
-	Yii::t('viewst','Order'),
+	Yii::t('rdt','Order'),
 );
 
 $this->menu=array(
-	array('label'=>Yii::t('viewst','Back To Row'), 'url'=>array('row/view', 'id'=>$model->rowId)),
+	array('label'=>Yii::t('rdt','Back To Row'), 'url'=>array('row/view', 'id'=>$model->rowId)),
 	//array('label'=>'Create Rack', 'url'=>array('create')),
 	//array('label'=>'Manage Rack', 'url'=>array('admin')),
 );
 ?>
 
-<h1><?php echo Yii::t('viewst','Order Racks'); ?></h1>
+<h1><?php echo Yii::t('rdt','Order Racks'); ?></h1>
 
-<p class="note"><?php echo Yii::t('viewst','Drag and drop the racks to reorder their position, then click on submit button.'); ?></p>
+<p class="note"><?php echo Yii::t('rdt','Drag and drop the racks to reorder their position, then click on submit button.'); ?></p>
 
 <?php
 // Organize the dataProvider data into a Zii-friendly array
@@ -30,7 +30,7 @@ $this->widget('zii.widgets.jui.CJuiSortable', array(
 	//'htmlOptions' => array('class'=>'ui-state-default'),
 ));
 // Add a Submit button to send data to the controller
-echo CHtml::ajaxButton(Yii::t('viewst','Submit Changes'), '', array(
+echo CHtml::ajaxButton(Yii::t('rdt','Submit Changes'), '', array(
 	'type' => 'POST',
 	'data' => array(
 		// Turn the Javascript array into a PHP-friendly string

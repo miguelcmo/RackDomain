@@ -55,9 +55,9 @@ class LocationStatus extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'locationStatusId' => Yii::t('modelstranslation', 'Location Status'),
-			'locationStatusName' => Yii::t('modelstranslation', 'Location Status Name'),
-			'locationStatusDescription' => Yii::t('modelstranslation', 'Location Status Description'),
+			'locationStatusId' => Yii::t('rdt', 'Location Status'),
+			'locationStatusName' => Yii::t('rdt', 'Location Status Name'),
+			'locationStatusDescription' => Yii::t('rdt', 'Location Status Description'),
 		);
 	}
 

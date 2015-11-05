@@ -109,6 +109,8 @@ class RoomController extends Controller
 
 		if(isset($_POST['Room']))
 		{
+			$this->addToReport($this->_location->locationId);
+			
 			$model->attributes=$_POST['Room'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->roomId));
@@ -155,6 +157,8 @@ class RoomController extends Controller
 		$this->setLocationId($id);
 		
 		$this->loadModel($id)->delete();
+		
+		$this->removeFromReport($lid);
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
@@ -206,7 +210,7 @@ class RoomController extends Controller
 	{
 		$model=Room::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,Yii::t('controllerstranslation','The requested page does not exist.'));
+			throw new CHttpException(404,Yii::t('rdt','The requested page does not exist.'));
 		return $model;
 	}
 
@@ -236,7 +240,7 @@ class RoomController extends Controller
 			$this->_location=Location::model()->findByPk($id);
 			if($this->_location===null)
 			{
-				throw new CHttpException(404,Yii::t('controllerstranslation','The requested Location does not exist.'));
+				throw new CHttpException(404,Yii::t('rdt','The requested Location does not exist.'));
 			}
 		}
 		
@@ -256,7 +260,7 @@ class RoomController extends Controller
 			$this->loadLocation($_GET['lid']);
 		}
 		else {
-			throw new CHttpException(403,Yii::t('controllerstranslation','Must specify a Location before performing this action.'));
+			throw new CHttpException(403,Yii::t('rdt','Must specify a Location before performing this action.'));
 		}
 		
 		$model = Location::model()->findByPk($this->_location->locationId);
@@ -264,5 +268,21 @@ class RoomController extends Controller
 		Yii::app()->user->setState('lid',$lid);
 		//complete the running of other filters and execute the requested action
 		$filterChain->run();
+	}
+	
+	public function addToReport($id)//$id is the locationId
+	{
+		$q = 'UPDATE tbl_report SET rooms=rooms+1 WHERE locationId=:locationId';
+		$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$cmd->execute($params);
+	}
+	
+	public function removeFromReport($id)//$id is the locationId
+	{
+		$q = 'UPDATE tbl_report SET rooms=rooms-1 WHERE locationId=:locationId';
+		$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$cmd->execute($params);
 	}
 }

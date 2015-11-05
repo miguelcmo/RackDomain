@@ -67,7 +67,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton(Yii::t('viewst','Search'),array('class'=>'btn')); ?>
+		<?php echo CHtml::submitButton(Yii::t('rdt','Search'),array('class'=>'btn')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

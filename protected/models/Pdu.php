@@ -71,18 +71,18 @@ class Pdu extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'pduId' => Yii::t('modelstranslation', 'Pdu'),
-			'roomId' => Yii::t('modelstranslation', 'Room'),
-			'pduName' => Yii::t('modelstranslation', 'Pdu Name'),
-			'pduAlias' => Yii::t('modelstranslation', 'Pdu Alias'),
-			'pduDescription' => Yii::t('modelstranslation', 'Pdu Description'),
-			'pduTypeId' => Yii::t('modelstranslation', 'Pdu Type'),
-			'createTime' => Yii::t('modelstranslation', 'Create Time'),
-			'createUserId' => Yii::t('modelstranslation', 'Create User'),
-			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
-			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
-			'Status' => Yii::t('modelstranslation', 'Status'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'pduId' => Yii::t('rdt', 'Pdu'),
+			'roomId' => Yii::t('rdt', 'Room'),
+			'pduName' => Yii::t('rdt', 'Pdu Name'),
+			'pduAlias' => Yii::t('rdt', 'Pdu Alias'),
+			'pduDescription' => Yii::t('rdt', 'Pdu Description'),
+			'pduTypeId' => Yii::t('rdt', 'Pdu Type'),
+			'createTime' => Yii::t('rdt', 'Create Time'),
+			'createUserId' => Yii::t('rdt', 'Create User'),
+			'updateTime' => Yii::t('rdt', 'Update Time'),
+			'updateUserId' => Yii::t('rdt', 'Update User'),
+			'Status' => Yii::t('rdt', 'Status'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 

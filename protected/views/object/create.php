@@ -9,11 +9,11 @@ $this->breadcrumbs=array(
 	$modelRack->row->room->roomName=>array('room/view', 'id'=>$modelRack->row->room->roomId),
 	$modelRack->row->rowName=>array('row/view', 'id'=>$modelRack->row->rowId),
 	$modelRack->rackName=>array('rack/view', 'id'=>$modelRack->rackId),
-	Yii::t('viewst','Create object'),
+	Yii::t('rdt','Create object'),
 );
 
 $this->menu=array(
-	array('label'=>Yii::t('viewst','Back To Rack'), 'url'=>array('rack/view', 'id'=>$modelRack->rackId)),
+	array('label'=>Yii::t('rdt','Back To Rack'), 'url'=>array('rack/view', 'id'=>$modelRack->rackId)),
 );
 
 Yii::app()->clientScript->registerScript('rackRule', "
@@ -34,7 +34,7 @@ Yii::app()->clientScript->registerScript('rackRule', "
 ?>
 
 <div class="span6">
-<h1><?php echo Yii::t('viewst','Create Object'); ?></h1>
+<h1><?php echo Yii::t('rdt','Create Object'); ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model,'rackSpace'=>$rackSpace)); ?>
 </div>
@@ -55,9 +55,9 @@ Yii::app()->clientScript->registerScript('rackRule', "
  foreach($rackSpaceView as $value)
  {
 	$ur=(($value['initialRU']-1)*13)+$modelRack->rackType0->deviceTop;
-	$platformPicture = CHtml::image($value['platformImagePath'], Yii::t('viewst','Platform picture'), array(
+	$platformPicture = CHtml::image($value['platformImagePath'], Yii::t('rdt','Platform picture'), array(
 		'class'=>'ru', 
-		'title'=>Yii::t('viewst','Click to view device details'),
+		'title'=>Yii::t('rdt','Click to view device details'),
 		'style'=>'left:'.$modelRack->rackType0->deviceLeft.'px;top:'.$ur.'px',	
 	));
 	echo CHtml::link($platformPicture, array('/object/view','id'=>$value['objectId']));

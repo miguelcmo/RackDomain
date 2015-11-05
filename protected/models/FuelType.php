@@ -53,8 +53,8 @@ class FuelType extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'fuelTypeId' => Yii::t('modelstranslation','Fuel Type'),
-			'fuelTypeName' => Yii::t('modelstranslation','Fuel Type Name'),
+			'fuelTypeId' => Yii::t('rdt','Fuel Type'),
+			'fuelTypeName' => Yii::t('rdt','Fuel Type Name'),
 		);
 	}
 

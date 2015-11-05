@@ -69,11 +69,11 @@ class Subdivision extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'subdivisionId' => Yii::t('modelstranslation', 'Subdivision'),
-			'divisionId' => Yii::t('modelstranslation', 'Division'),
-			'subdivisionName' => Yii::t('modelstranslation', 'Subdivision Name'),
-			'Status' => Yii::t('modelstranslation', 'Status'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'subdivisionId' => Yii::t('rdt', 'Subdivision'),
+			'divisionId' => Yii::t('rdt', 'Division'),
+			'subdivisionName' => Yii::t('rdt', 'Subdivision Name'),
+			'Status' => Yii::t('rdt', 'Status'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 

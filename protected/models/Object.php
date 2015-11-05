@@ -72,17 +72,17 @@ class Object extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'objectId' => Yii::t('modelstranslation', 'Object'),
-			'platformId' => Yii::t('modelstranslation', 'Platform'),
-			'objectName' => Yii::t('modelstranslation', 'Object Name'),
-			'objectAlias' => Yii::t('modelstranslation', 'Object Alias'),
-			'objectDescription' => Yii::t('modelstranslation', 'Object Description'),
-			'createTime' => Yii::t('modelstranslation', 'Create Time'),
-			'createUserId' => Yii::t('modelstranslation', 'Create User'),
-			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
-			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
-			'Status' => Yii::t('modelstranslation', 'Status'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'objectId' => Yii::t('rdt', 'Object'),
+			'platformId' => Yii::t('rdt', 'Platform'),
+			'objectName' => Yii::t('rdt', 'Object Name'),
+			'objectAlias' => Yii::t('rdt', 'Object Alias'),
+			'objectDescription' => Yii::t('rdt', 'Object Description'),
+			'createTime' => Yii::t('rdt', 'Create Time'),
+			'createUserId' => Yii::t('rdt', 'Create User'),
+			'updateTime' => Yii::t('rdt', 'Update Time'),
+			'updateUserId' => Yii::t('rdt', 'Update User'),
+			'Status' => Yii::t('rdt', 'Status'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 

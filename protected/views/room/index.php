@@ -4,17 +4,17 @@
 
 $this->breadcrumbs=array(
 	$model->location->locationName=>array('location/view','id'=>$model->location->locationId),
-	Yii::t('viewst','Rooms'),
+	Yii::t('rdt','Rooms'),
 );
 
 $this->menu=array(
-	array('label'=>Yii::t('viewst','Back To Location'), 'url'=>array('location/view','id'=>$model->location->locationId)),
-	array('label'=>Yii::t('viewst','Create Room'), 'url'=>array('create')),
-	array('label'=>Yii::t('viewst','Manage Room'), 'url'=>array('admin')),
+	array('label'=>Yii::t('rdt','Back To Location'), 'url'=>array('location/view','id'=>$model->location->locationId)),
+	array('label'=>Yii::t('rdt','Create Room'), 'url'=>array('create')),
+	array('label'=>Yii::t('rdt','Manage Room'), 'url'=>array('admin')),
 );
 ?>
 
-<h1><?php echo Yii::t('viewst','Rooms'); ?></h1>
+<h1><?php echo Yii::t('rdt','Rooms'); ?></h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

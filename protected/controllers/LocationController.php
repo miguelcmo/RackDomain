@@ -94,6 +94,7 @@ class LocationController extends Controller
 			
 			if($model->save())
 			{
+				$this->addToReport($model->locationId);
 				//assign the user creating the new location as an owner of the location
 				//so they have access to all project features
 				$form=new LocationUserForm;
@@ -155,7 +156,7 @@ class LocationController extends Controller
 	public function actionDelete($id)
 	{
 		Yii::app()->user->setState('lid',$id);
-		
+		$this->removeFromReport($id);
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -227,7 +228,7 @@ class LocationController extends Controller
 	{
 		$model=Location::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,Yii::t('controllerstranslation','The requested page does not exist.'));
+			throw new CHttpException(404,Yii::t('rdt','The requested page does not exist.'));
 		return $model;
 	}
 
@@ -324,7 +325,7 @@ class LocationController extends Controller
 		// check if the current user have access to actionAddUser prevents the access from direct URL injection
 		if(!Yii::app()->user->checkAccess('addUserToLocation', array('location'=>$location)))
 		{
-			throw new CHttpException(403, Yii::t('controllerstranslation','You are not authorized to perform this action.'));
+			throw new CHttpException(403, Yii::t('rdt','You are not authorized to perform this action.'));
 		}
 
 		$form = new LocationUserForm;
@@ -338,7 +339,7 @@ class LocationController extends Controller
 			{
 				if($form->assign())
 				{
-					Yii::app()->user->setFlash('success', $form->username .Yii::t('controllerstranslation',' has been added to the Location.'));
+					Yii::app()->user->setFlash('success', $form->username .Yii::t('rdt',' has been added to the Location.'));
 					//reset the form for another user to be associated if desired
 					$form->unsetAttributes();
 					$form->clearErrors();
@@ -396,12 +397,39 @@ class LocationController extends Controller
 		$model = LocationUserAssignment::model()->findByAttributes(array('locationId'=>$lid,'userId'=>$id));
 		if($model->role=='Coordinator')
 		{
-			Yii::app()->user->setFlash('error',Yii::t('viewst','You need at least one User as Coordinator in this Location'));
+			Yii::app()->user->setFlash('error',Yii::t('rdt','You need at least one User as Coordinator in this Location'));
 		} else {
 			$model->delete();
 		}
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('location/addUser', 'lid'=>$lid));
 		
+	}
+	
+	public function actionGraphview()
+	{
+		$dataProvider = new CActiveDataProvider('ChartData');
+		$this->render('graphview', array(
+			'dataProvider'=>$dataProvider,
+		));
+		
+	}
+	
+	public function addToReport($id)
+	{
+		$q = 'INSERT INTO tbl_report (locationId) VALUES(:locationId)';
+		//$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$cmd->bindParam(':locationId',$id,PDO::PARAM_STR);
+		$cmd->execute();
+	}
+	
+	public function removeFromReport($id)
+	{
+		$q = 'DELETE FROM tbl_report WHERE locationId=:locationId';
+		$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		//$cmd->bindParam(':locationId',$id,PDO::PARAM_STR);
+		$cmd->execute($params);
 	}
 }

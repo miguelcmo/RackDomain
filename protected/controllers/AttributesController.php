@@ -164,7 +164,7 @@ class AttributesController extends Controller
 	{
 		$model=Attributes::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,Yii::t('rdt','The requested page does not exist.'));
 		return $model;
 	}
 
@@ -194,7 +194,7 @@ class AttributesController extends Controller
 			$this->_attributesChapter=AttributesChapter::model()->findByPk($attributeChapterId);
 			if($this->_attributesChapter===null)
 			{
-				throw new CHttpException(404, 'The requested attribute chapter does not exist.');
+				throw new CHttpException(404, Yii::t('rdt','The requested attribute chapter does not exist.'));
 			}
 		}
 		return $this->_attributesChapter;
@@ -213,7 +213,7 @@ class AttributesController extends Controller
 			$this->loadAttributesChapter($_GET['acid']);
 		}
 		else
-			throw new CHttpException(403, 'Must specify an attribute chapter before performing this action.');
+			throw new CHttpException(403, Yii::t('rdt','Must specify an attribute chapter before performing this action.'));
 		
 		//complete the running of the other filters and execute the requested action
 		$filterChain->run();

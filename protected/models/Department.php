@@ -70,11 +70,11 @@ class Department extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'departmentId' => Yii::t('modelstranslation', 'Department'),
-			'countryId' => Yii::t('modelstranslation', 'Country'),
-			'departmentName' => Yii::t('modelstranslation', 'Department Name'),
-			'Status' => Yii::t('modelstranslation', 'Status'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'departmentId' => Yii::t('rdt', 'Department'),
+			'countryId' => Yii::t('rdt', 'Country'),
+			'departmentName' => Yii::t('rdt', 'Department Name'),
+			'Status' => Yii::t('rdt', 'Status'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 

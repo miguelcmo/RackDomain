@@ -11,7 +11,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note"><?php echo Yii::t('viewst','Fields with <span class="required">*</span> are required.'); ?></p>
+	<p class="note"><?php echo Yii::t('rdt','Fields with <span class="required">*</span> are required.'); ?></p>
 
 	<?php echo $form->errorSummary($model); ?>
 	
@@ -20,7 +20,7 @@
 		<?php echo $form->labelEx($model,'departmentId'); ?>
 		<?php echo $form->dropDownList($model,'departmentId',$this->actionDepartmentOptions(),
 			array(
-				'empty'=>Yii::t('viewst','- Choose an option -'),
+				'empty'=>Yii::t('rdt','- Choose an option -'),
 				'ajax'=>array(
 					'type'=>'POST',
 					'url'=>$this->createUrl('cityOptions'),
@@ -33,7 +33,7 @@
 	
 	<div class="custom-row">
 		<?php echo $form->labelEx($model,'cityId'); ?>
-		<?php echo $form->dropDownList($model,'cityId',array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
+		<?php echo $form->dropDownList($model,'cityId',array('empty'=>Yii::t('rdt','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'cityId'); ?>
 	</div>
 	</div>
@@ -43,7 +43,7 @@
 		<?php echo $form->labelEx($model,'divisionId'); ?>
 		<?php echo $form->dropDownList($model,'divisionId',$this->actionDivisionOptions(),
 			array(
-				'empty'=>Yii::t('viewst','- Choose an option -'),
+				'empty'=>Yii::t('rdt','- Choose an option -'),
 				'ajax'=>array(
 					'type'=>'POST',
 					'url'=>$this->createUrl('subdivisionOptions'),
@@ -56,7 +56,7 @@
 	
 	<div class="custom-row">
 		<?php echo $form->labelEx($model,'subdivisionId'); ?>
-		<?php echo $form->dropDownList($model,'subdivisionId',array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
+		<?php echo $form->dropDownList($model,'subdivisionId',array('empty'=>Yii::t('rdt','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'subdivisionId'); ?>
 	</div>
 	</div>
@@ -84,13 +84,13 @@
 	<div style="float:left;">
 	<div class="custom-row">
 		<?php echo $form->labelEx($model,'locationType'); ?>
-		<?php echo $form->dropDownList($model,'locationType', $this->getLocationTypeOptions(), array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
+		<?php echo $form->dropDownList($model,'locationType', $this->getLocationTypeOptions(), array('empty'=>Yii::t('rdt','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'locationType'); ?>
 	</div>
 
 	<div class="custom-row">
 		<?php echo $form->labelEx($model,'locationStatus'); ?>
-		<?php echo $form->dropDownList($model,'locationStatus', $this->getLocationStatusOptions(), array('empty'=>Yii::t('viewst','- Choose an option -'))); ?>
+		<?php echo $form->dropDownList($model,'locationStatus', $this->getLocationStatusOptions(), array('empty'=>Yii::t('rdt','- Choose an option -'))); ?>
 		<?php echo $form->error($model,'locationStatus'); ?>
 	</div>
 	</div>
@@ -110,7 +110,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('viewst','Create') : Yii::t('viewst','Save'), array('class'=>'btn')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('rdt','Create') : Yii::t('rdt','Save'), array('class'=>'btn')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -75,20 +75,20 @@ class Platform extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'platformId' => Yii::t('modelstranslation', 'Platform'),
-			'vendorId' => Yii::t('modelstranslation', 'Vendor'),
-			'chapterId' => Yii::t('modelstranslation', 'Chapter'),
-			'platformName' => Yii::t('modelstranslation', 'Platform Name'),
-			'platformDescription' => Yii::t('modelstranslation', 'Platform Description'),
-			'platformImagePath' => Yii::t('modelstranslation', 'Platform Image Path'),
-			'platformBackgroundTextColor' => Yii::t('modelstranslation', 'Platform Background Text Color'),
-			'platformRackUnits' => Yii::t('modelstranslation', 'Platform Rack Units'),
-			'createTime' => Yii::t('modelstranslation', 'Create Time'),
-			'createUserId' => Yii::t('modelstranslation', 'Create User'),
-			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
-			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
-			'Status' => Yii::t('modelstranslation', 'Status'),
-			'Flag' => Yii::t('modelstranslation', 'Flag'),
+			'platformId' => Yii::t('rdt', 'Platform'),
+			'vendorId' => Yii::t('rdt', 'Vendor'),
+			'chapterId' => Yii::t('rdt', 'Chapter'),
+			'platformName' => Yii::t('rdt', 'Platform Name'),
+			'platformDescription' => Yii::t('rdt', 'Platform Description'),
+			'platformImagePath' => Yii::t('rdt', 'Platform Image Path'),
+			'platformBackgroundTextColor' => Yii::t('rdt', 'Platform Background Text Color'),
+			'platformRackUnits' => Yii::t('rdt', 'Platform Rack Units'),
+			'createTime' => Yii::t('rdt', 'Create Time'),
+			'createUserId' => Yii::t('rdt', 'Create User'),
+			'updateTime' => Yii::t('rdt', 'Update Time'),
+			'updateUserId' => Yii::t('rdt', 'Update User'),
+			'Status' => Yii::t('rdt', 'Status'),
+			'Flag' => Yii::t('rdt', 'Flag'),
 		);
 	}
 

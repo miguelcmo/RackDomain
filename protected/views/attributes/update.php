@@ -3,7 +3,7 @@
 /* @var $model Attributes */
 
 $this->breadcrumbs=array(
-	Yii::t('viewst','Attributes')=>array('index'),
+	Yii::t('rdt','Attributes')=>array('index'),
 	$model->attributeId=>array('view','id'=>$model->attributeId),
 	'Update',
 );

@@ -3,16 +3,16 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	Yii::t('viewst','Objects'),
+	Yii::t('rdt','Objects'),
 );
 
 $this->menu=array(
-	array('label'=>Yii::t('viewst','Create Object'), 'url'=>array('create')),
-	array('label'=>Yii::t('viewst','Manage Object'), 'url'=>array('admin')),
+	array('label'=>Yii::t('rdt','Create Object'), 'url'=>array('create')),
+	array('label'=>Yii::t('rdt','Manage Object'), 'url'=>array('admin')),
 );
 ?>
 
-<h1><?php echo Yii::t('viewst','Objects'); ?></h1>
+<h1><?php echo Yii::t('rdt','Objects'); ?></h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

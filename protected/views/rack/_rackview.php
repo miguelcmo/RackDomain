@@ -9,6 +9,6 @@
 	<?php echo CHtml::encode($data->rackName); ?>
 	<br />
 
-	<?php echo CHtml::image($data->rackType0->thumbnailPath,Yii::t('viewst','Rack miniature')); ?>
+	<?php echo CHtml::image($data->rackType0->thumbnailPath,Yii::t('rdt','Rack miniature')); ?>
 	
 </div>

@@ -4,14 +4,14 @@
 
 $this->breadcrumbs=array(
 	$model->locationName=>array('view','id'=>$model->locationId),
-	Yii::t('viewst','Update'),
+	Yii::t('rdt','Update'),
 );
 
 $this->menu=array(
-	array('label'=>Yii::t('viewst','Back To Location'), 'url'=>array('view', 'id'=>$model->locationId)),
+	array('label'=>Yii::t('rdt','Back To Location'), 'url'=>array('view', 'id'=>$model->locationId)),
 );
 ?>
 
-<h1><?php echo Yii::t('viewst','Update Location '); ?><?php echo $model->locationName; ?></h1>
+<h1><?php echo Yii::t('rdt','Update Location '); ?><?php echo $model->locationName; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -120,6 +120,8 @@ class RackController extends Controller
 
 		if(isset($_POST['Rack']))
 		{
+			$this->addToReport($this->_row->room->location->locationId, $_POST['Rack']['rackType']);
+			
 			$model->attributes=$_POST['Rack'];
 			if($model->save())
 				$this->redirect(array('create','rid'=>$this->_row->rowId));
@@ -166,7 +168,11 @@ class RackController extends Controller
 	{
 		$this->setLocationId($id);
 		
-		$this->loadModel($id)->delete();
+		$model = $this->loadModel($id);
+		
+		$this->removeFromReport($model->row->room->location->locationId,$model->rackType);
+		
+		$model->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
@@ -253,7 +259,7 @@ class RackController extends Controller
 	{
 		$model=Rack::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,Yii::t('controllerstranslation','The requested page does not exist.'));
+			throw new CHttpException(404,Yii::t('rdt','The requested page does not exist.'));
 		return $model;
 	}
 
@@ -282,7 +288,7 @@ class RackController extends Controller
 			$this->_row=Row::model()->findByPk($rowId);
 			if($this->_row===null)
 			{
-				throw new CHttpException(404, Yii::t('controllerstranslation','The requested row does not exist.'));
+				throw new CHttpException(404, Yii::t('rdt','The requested row does not exist.'));
 			}
 		}
 		
@@ -303,7 +309,7 @@ class RackController extends Controller
 			$this->getAvailableRackCount($_GET['rid']);
 		}
 		else {
-			throw new CHttpException(403, Yii::t('controllerstranslation','Must specify a row before performing this action.'));
+			throw new CHttpException(403, Yii::t('rdt','Must specify a row before performing this action.'));
 		}
 		
 		$model = Row::model()->findByPk($this->_row->rowId);
@@ -337,5 +343,33 @@ class RackController extends Controller
 		$criteria->order='rackTypeName ASC';
 		$rackType=RackType::model()->findAll($criteria);
 		return CHtml::listData($rackType,'rackTypeId','rackTypeName');
+	}
+	
+	public function addToReport($id,$rackTypeId)//$id is the locationId
+	{
+		$q = 'UPDATE tbl_report SET racks=racks+1 WHERE locationId=:locationId';
+		$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$cmd->execute($params);
+		
+		$urs = RackType::model()->findByPk($rackTypeId);
+		$q = 'UPDATE tbl_report SET urs=urs+'.$urs->rackUnits.' WHERE locationId=:locationId';
+		$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$cmd->execute($params);
+	}
+	
+	public function removeFromReport($id,$rackTypeId)//$id is the locationId
+	{
+		$q = 'UPDATE tbl_report SET racks=racks-1 WHERE locationId=:locationId';
+		$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$cmd->execute($params);
+		
+		$urs = RackType::model()->findByPk($rackTypeId);
+		$q = 'UPDATE tbl_report SET urs=urs-'.$urs->rackUnits.' WHERE locationId=:locationId';
+		$params = array(':locationId'=>$id);
+		$cmd = Yii::app()->db->createCommand($q);
+		$cmd->execute($params);
 	}
 }	

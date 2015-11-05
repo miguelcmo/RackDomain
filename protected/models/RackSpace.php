@@ -58,14 +58,14 @@ class RackSpace extends InfraActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'objectId' => Yii::t('modelstranslation', 'Object'),
-			'rackId' => Yii::t('modelstranslation', 'Rack'),
-			'initialRU' => Yii::t('modelstranslation', 'Initial Ru'),
-			'endRU' => Yii::t('modelstranslation', 'End Ru'),
-			'createTime' => Yii::t('modelstranslation', 'Create Time'),
-			'createUserId' => Yii::t('modelstranslation', 'Create User'),
-			'updateTime' => Yii::t('modelstranslation', 'Update Time'),
-			'updateUserId' => Yii::t('modelstranslation', 'Update User'),
+			'objectId' => Yii::t('rdt', 'Object'),
+			'rackId' => Yii::t('rdt', 'Rack'),
+			'initialRU' => Yii::t('rdt', 'Initial Ru'),
+			'endRU' => Yii::t('rdt', 'End Ru'),
+			'createTime' => Yii::t('rdt', 'Create Time'),
+			'createUserId' => Yii::t('rdt', 'Create User'),
+			'updateTime' => Yii::t('rdt', 'Update Time'),
+			'updateUserId' => Yii::t('rdt', 'Update User'),
 		);
 	}
 

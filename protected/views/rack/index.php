@@ -3,16 +3,16 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	Yii::t('viewst','Racks'),
+	Yii::t('rdt','Racks'),
 );
 
 $this->menu=array(
-	array('label'=>Yii::t('viewst','Create Rack'), 'url'=>array('create')),
-	array('label'=>Yii::t('viewst','Manage Rack'), 'url'=>array('admin')),
+	array('label'=>Yii::t('rdt','Create Rack'), 'url'=>array('create')),
+	array('label'=>Yii::t('rdt','Manage Rack'), 'url'=>array('admin')),
 );
 ?>
 
-<h1><?php Yii::t('viewst','Racks'); ?></h1>
+<h1><?php Yii::t('rdt','Racks'); ?></h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
