@@ -29,5 +29,5 @@ It allows teams to model racks, devices, connections, and related physical compo
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/RackDomain.git
+   git clone https://github.com/miguelcmo/RackDomain.git
    cd RackDomain
